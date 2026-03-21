@@ -566,6 +566,14 @@ ul { list-style: none; }
 .hf-msg.ok  { color: var(--green-l); }
 .hf-msg.err { color: #E07070; }
 
+/* Sección registro — layout 2 columnas */
+.reg-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
 /* ============================================================
    PROBLEMA
    ============================================================ */
@@ -1277,6 +1285,7 @@ ul { list-style: none; }
 
   .hero-inner          { grid-template-columns: 1fr 1fr; align-items: center; }
   .hero-card           { display: block; }
+  .reg-grid            { grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
   .how-steps           { grid-template-columns: repeat(3, 1fr); }
   .how-step:first-child { border-radius: var(--r-xl) 0 0 var(--r-xl); }
   .how-step:last-child  { border-radius: 0 var(--r-xl) var(--r-xl) 0; }
@@ -1329,15 +1338,14 @@ ul { list-style: none; }
   </a>
 
   <ul class="nav-links" role="list">
-    <li><a href="#servicios">Servicios</a></li>
-    <li><a href="#maestros">Maestros</a></li>
-    <li><a href="#urgencia">Urgencia</a></li>
+    <li><a href="#registro">Publicar servicio</a></li>
+    <li><a href="#especialistas">Directorio</a></li>
+    <li><a href="#servicios">Cómo funciona</a></li>
     <li><a href="#canales">Canales</a></li>
     <li><a href="#unete">¿Eres maestro?</a></li>
     <li>
-      <a href="https://wa.me/56950147783?text=Hola%20MAESTO%2C%20necesito%20un%20maestro"
-         target="_blank" rel="noopener"
-         class="btn btn-primary">
+      <a href="#especialistas"
+         class="btn btn-primary" id="nav-buscar">
         <svg width="16" height="16" aria-hidden="true"><use href="#ico-wa"/></svg>
         Buscar maestro
       </a>
@@ -1351,14 +1359,13 @@ ul { list-style: none; }
 
 <!-- Mobile overlay -->
 <div class="nav-overlay" id="navOverlay" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Menú de navegación">
-  <a href="#inicio"    class="nav-link">Inicio</a>
-  <a href="#servicios" class="nav-link">Servicios</a>
-  <a href="#maestros"  class="nav-link">Maestros</a>
-  <a href="#urgencia"  class="nav-link">Urgencia</a>
-  <a href="#canales"   class="nav-link">Canales</a>
-  <a href="#unete"     class="nav-link">¿Eres maestro?</a>
-  <a href="https://wa.me/56950147783?text=Hola%20MAESTO%2C%20necesito%20un%20maestro"
-     target="_blank" rel="noopener"
+  <a href="#inicio"       class="nav-link">Inicio</a>
+  <a href="#registro"     class="nav-link">Publicar servicio</a>
+  <a href="#especialistas" class="nav-link">Directorio</a>
+  <a href="#servicios"    class="nav-link">Cómo funciona</a>
+  <a href="#canales"      class="nav-link">Canales</a>
+  <a href="#unete"        class="nav-link">¿Eres maestro?</a>
+  <a href="#especialistas"
      class="btn btn-primary">
     <svg width="18" height="18" aria-hidden="true"><use href="#ico-wa"/></svg>
     Buscar maestro
@@ -1390,67 +1397,132 @@ ul { list-style: none; }
             Busca a tu especialista <strong>a solo unos clicks.</strong> Gasfitería, electricidad, jardinería y más — con referencias reales.
           </p>
           <div class="hero-btns anim-fade-up" style="animation-delay:.3s">
-            <a href="https://wa.me/56950147783?text=Hola%20MAESTO%2C%20necesito%20un%20maestro%20en%20mi%20comuna."
-               target="_blank" rel="noopener"
-               class="btn btn-primary">
+            <button type="button"
+               class="btn btn-primary" id="btn-buscar-hero">
               <svg width="18" height="18" aria-hidden="true"><use href="#ico-wa"/></svg>
               Buscar un maestro
-            </a>
-            <a href="#unete" class="btn btn-outline">Soy maestro, me uno →</a>
+            </button>
+            <button type="button" class="btn btn-outline" id="btn-maestro-hero">Soy maestro, me uno →</button>
           </div>
           <div class="hero-trust anim-fade-up" style="animation-delay:.4s">
-            <br><div class="trust-item"><span class="trust-dot" aria-hidden="true"></span>Gratis para clientes</div>
-            <br><div class="trust-item"><span class="trust-dot" aria-hidden="true"></span>Solo maestros verificados</div>
-            <br><div class="trust-item"><span class="trust-dot" aria-hidden="true"></span>Respuesta inmediata</div>
+            <div class="trust-item"><span class="trust-dot" aria-hidden="true"></span>Gratis para clientes</div>
+            <div class="trust-item"><span class="trust-dot" aria-hidden="true"></span>Solo maestros verificados</div>
+            <div class="trust-item"><span class="trust-dot" aria-hidden="true"></span>Respuesta inmediata</div>
           </div>
         </div>
 
-        <!-- Formulario de registro -->
-        <div class="hero-right">
-          <div class="hero-form-card">
-            <div class="hf-eyebrow">Especialistas · Registro</div>
-            <div class="hf-title">Publica tu servicio<br>completamente gratis</div>
-            <p class="hf-sub">Ingresa al directorio verificado y empieza a recibir clientes en tu zona.</p>
-            <div class="hf-free">Primer mes sin costo · Sin contrato</div>
-
-            <div class="hf-fields">
-              <input class="hf-input" type="text" id="hf-nombre"
-                placeholder="Nombre completo"
-                autocomplete="name" aria-label="Nombre completo" required>
-
-              <select class="hf-select" id="hf-categoria" aria-label="Categoría principal">
-                <option value="">Categoría principal...</option>
-                <option>Gasfitería</option>
-                <option>Electricidad</option>
-                <option>Jardinería</option>
-                <option>Pintura</option>
-                <option>Cerrajería</option>
-                <option>Carpintería</option>
-                <option>Limpieza</option>
-                <option>Climatización</option>
-                <option>Mantención de Parcelas</option>
-                <option>Otro</option>
-              </select>
-
-              <input class="hf-input" type="text" id="hf-servicios"
-                placeholder="Servicios: corte de pasto, pintura fachadas..."
-                aria-label="Servicios que ofrece" required>
-
-              <input class="hf-input" type="text" id="hf-zonas"
-                placeholder="Zonas: Maipú, Pudahuel, Todo Santiago..."
-                aria-label="Zonas donde trabaja" required>
-
-              <input class="hf-input" type="tel" id="hf-telefono"
-                placeholder="Teléfono +569..."
-                autocomplete="tel" aria-label="Número de teléfono" required>
+        <!-- Visual derecho del hero -->
+        <div class="hero-right" aria-hidden="true">
+          <div class="hero-card">
+            <div class="hc-head">
+              <div class="hc-av">M</div>
+              <div>
+                <div class="hc-name">Directorio Activo</div>
+                <div class="hc-spec">MAESTO · CHILE</div>
+              </div>
             </div>
-
-            <button class="hf-submit" id="hf-submit" type="button">
-              Publicar mi servicio gratis
-              <svg width="16" height="16" aria-hidden="true"><use href="#ico-arrow"/></svg>
-            </button>
-            <div class="hf-msg" id="hf-msg" role="status" aria-live="polite"></div>
+            <div class="hc-stats">
+              <div class="hc-stat"><span class="hc-stat-n" id="hero-stat-count">—</span><span class="hc-stat-l">Especialistas</span></div>
+              <div class="hc-stat"><span class="hc-stat-n">✓</span><span class="hc-stat-l">Verificados</span></div>
+              <div class="hc-stat"><span class="hc-stat-n">0$</span><span class="hc-stat-l">Para clientes</span></div>
+            </div>
+            <div class="badge-v" style="margin-bottom:14px">✦ MAESTO VERIFICADO</div>
+            <div class="hc-chips">
+              <span class="chip">Santiago</span>
+              <span class="chip">Región Met.</span>
+              <span class="chip">Chile</span>
+            </div>
           </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       SECCIÓN 2 — REGISTRO DE ESPECIALISTAS (Firebase)
+  ══════════════════════════════════════════════════════ -->
+  <section class="section-pad" id="registro" aria-label="Registro de especialistas">
+    <div class="container">
+      <div class="reg-grid">
+
+        <!-- Argumentos izquierda -->
+        <div class="reveal">
+          <div class="eyebrow">Para especialistas</div>
+          <h2 class="section-title">Publica tu servicio<br><em style="font-style:normal;background:linear-gradient(135deg,var(--cu-l),var(--cu));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">completamente gratis</em></h2>
+          <p style="font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:28px">
+            Ingresa al directorio verificado y empieza a recibir clientes en tu zona. Sin intermediarios — el pago va directo a ti.
+          </p>
+          <div class="join-benefits" role="list">
+            <div class="join-benefit" role="listitem">
+              <div class="jb-icon" aria-hidden="true">📲</div>
+              <div>
+                <div class="jb-title">Clientes en tu zona</div>
+                <div class="jb-text">Te conectamos con personas que buscan exactamente lo que haces, cerca de donde trabajas.</div>
+              </div>
+            </div>
+            <div class="join-benefit" role="listitem">
+              <div class="jb-icon" aria-hidden="true">✦</div>
+              <div>
+                <div class="jb-title">Sello MAESTO CERTIFICADO</div>
+                <div class="jb-text">Tus clientes sabrán que eres un servicio confiable antes de contactarte.</div>
+              </div>
+            </div>
+            <div class="join-benefit" role="listitem">
+              <div class="jb-icon" aria-hidden="true">💰</div>
+              <div>
+                <div class="jb-title">No tocamos tu dinero</div>
+                <div class="jb-text">El pago es directo entre tú y el cliente. Primer mes sin costo.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formulario derecha -->
+        <div class="hero-form-card reveal d2">
+          <div class="hf-eyebrow">Registro · Especialistas</div>
+          <div class="hf-title">Únete al directorio</div>
+          <p class="hf-sub">5 minutos para registrarte. Verificamos tus datos y te publicamos.</p>
+          <div class="hf-free">Primer mes sin costo · Sin contrato · Sin letra chica</div>
+
+          <div class="hf-fields">
+            <input class="hf-input" type="text" id="hf-nombre"
+              placeholder="Nombre completo"
+              autocomplete="name" aria-label="Nombre completo" required>
+
+            <select class="hf-select" id="hf-categoria" aria-label="Categoría principal">
+              <option value="">Categoría principal...</option>
+              <option>Gasfitería</option>
+              <option>Electricidad</option>
+              <option>Jardinería</option>
+              <option>Pintura</option>
+              <option>Cerrajería</option>
+              <option>Carpintería</option>
+              <option>Limpieza</option>
+              <option>Climatización</option>
+              <option>Mantención de Parcelas</option>
+              <option>Mudanzas y Fletes</option>
+              <option>Otro</option>
+            </select>
+
+            <input class="hf-input" type="text" id="hf-servicios"
+              placeholder="Servicios: corte de pasto, pintura fachadas..."
+              aria-label="Servicios que ofrece" required>
+
+            <input class="hf-input" type="text" id="hf-zonas"
+              placeholder="Zonas: Maipú, Pudahuel, Todo Santiago..."
+              aria-label="Zonas donde trabaja" required>
+
+            <input class="hf-input" type="tel" id="hf-telefono"
+              placeholder="Teléfono +569..."
+              autocomplete="tel" aria-label="Número de teléfono" required>
+          </div>
+
+          <button class="hf-submit" id="hf-submit" type="button">
+            Publicar mi servicio gratis
+            <svg width="16" height="16" aria-hidden="true"><use href="#ico-arrow"/></svg>
+          </button>
+          <div class="hf-msg" id="hf-msg" role="status" aria-live="polite"></div>
         </div>
 
       </div>
@@ -1484,7 +1556,6 @@ ul { list-style: none; }
             <li class="flow-item">
               <span class="flow-icon good" aria-hidden="true">✓</span>
               <span class="flow-text"><strong style="color:var(--cream)">Con MAESTO:</strong> te garantizamos maestros disponibles en tu comuna.</span>
-            </li>
             </li>
             <li class="flow-item">
               <span class="flow-icon bad" aria-hidden="true">✕</span>
@@ -1868,7 +1939,7 @@ ul { list-style: none; }
           </div>
           <div class="join-free">
             <span style="font-size:20px" aria-hidden="true">🎁</span>
-            <span><strong>Primer mes completamente gratis.</strong> La oferta expira: 30 de abril de 2023.</span>
+            <span><strong>Primer mes completamente gratis.</strong> Regístrate hoy y empieza a recibir clientes.</span>
           </div>
           <a href="https://wa.me/56950147783?text=Hola%20MAESTO%2C%20quiero%20unirme%20como%20maestro"
              target="_blank" rel="noopener"
@@ -2086,6 +2157,22 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
+/* HERO BUTTONS — scroll a sección destino */
+function scrollTo(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  window.scrollTo({ top: el.getBoundingClientRect().top + scrollY - 68, behavior: 'smooth' });
+}
+/* "Buscar un maestro" → Directorio en vivo (#especialistas) */
+document.getElementById('btn-buscar-hero')
+  ?.addEventListener('click', () => scrollTo('especialistas'));
+/* "Soy maestro, me uno" → Formulario de registro (#registro) */
+document.getElementById('btn-maestro-hero')
+  ?.addEventListener('click', () => scrollTo('registro'));
+/* Navbar "Buscar maestro" → mismo destino */
+document.getElementById('nav-buscar')
+  ?.addEventListener('click', e => { e.preventDefault(); scrollTo('especialistas'); });
+
 /* SCROLL REVEAL */
 const revealObs = new IntersectionObserver(entries => {
   entries.forEach(({ isIntersecting, target }) => {
@@ -2115,9 +2202,10 @@ document.querySelectorAll('section[id]').forEach(s => secObs.observe(s));
   let idx      = 0;
 
   function getConfig() {
-    const w = window.innerWidth;
+    const w       = window.innerWidth;
     const visible = w < 480 ? 1 : w < 768 ? 2 : w < 1024 ? 3 : 4;
     const itemEl  = track.firstElementChild;
+    if (!itemEl) return { visible, itemW: 214, max: 0 };
     const itemW   = itemEl.getBoundingClientRect().width + 14; /* 14 = gap */
     return { visible, itemW, max: Math.max(0, track.children.length - visible) };
   }
@@ -2129,6 +2217,9 @@ document.querySelectorAll('section[id]').forEach(s => secObs.observe(s));
     btnP.disabled = idx === 0;
     btnN.disabled = idx >= max;
   }
+
+  /* Exponer render globalmente para que Firebase lo llame tras insertar tarjetas */
+  window.__carouselRender = function() { idx = 0; render(); };
 
   btnP.addEventListener('click', () => { idx--; render(); });
   btnN.addEventListener('click', () => { idx++; render(); });
@@ -2322,35 +2413,91 @@ document.getElementById('urgencia-submit').addEventListener('click', () => {
 
   /* Referencia al JS existente del carrusel para re-renderizar tras carga */
   function notifyCarousel() {
-    /* Dispara un resize sintético — el IIFE del carrusel escucha resize con debounce */
-    window.dispatchEvent(new Event('resize'));
+    /*
+     * Re-render del carrusel sin depender del debounce de resize.
+     * Llama directamente a la función render expuesta en window.
+     * Si el carrusel IIFE aún no corrió (race condition), el setTimeout
+     * garantiza que se ejecute después.
+     */
+    if (typeof window.__carouselRender === 'function') {
+      window.__carouselRender();
+    } else {
+      setTimeout(() => window.__carouselRender?.(), 100);
+    }
+  }
+
+  /* Sanitiza texto para evitar XSS al insertar datos de Firestore en innerHTML */
+  function esc(str) {
+    return String(str || '')
+      .replace(/&/g,'&amp;')
+      .replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;')
+      .replace(/'/g,'&#039;');
+  }
+
+  /* Construir HTML de una tarjeta de especialista */
+  function buildCard(esp) {
+    const inicial  = esc((esp.nombre || '?')[0].toUpperCase());
+    const nombre   = esc(esp.nombre   || 'Sin nombre');
+    const cat      = esc(esp.categoria || 'Servicio');
+    const emoji    = getEmoji(esp.categoria || '');
+    const chips    = (esp.servicios || []).slice(0, 3)
+                       .map(s => `<span class="ce-chip">${esc(s)}</span>`).join('');
+    const zonasTxt = (esp.zonas || []).slice(0, 2).map(z => esc(z)).join(', ');
+    const waMsg    = encodeURIComponent(
+      `Necesito al siguiente especialista: ${esp.nombre || ''} (${esp.categoria || ''})`
+    );
+    const waLink   = `https://wa.me/56950147783?text=${waMsg}`;
+
+    return `
+      <div class="car-item car-item--esp" role="listitem">
+        <div class="ce-av">${inicial}</div>
+        <div class="ce-head">
+          <div class="ce-name">${nombre}</div>
+          <div class="ce-cat">${emoji} ${cat}</div>
+        </div>
+        <div class="ce-chips">${chips}</div>
+        <div class="ce-zones">${zonasTxt}</div>
+        <a href="${waLink}" target="_blank" rel="noopener" class="ce-btn"
+           aria-label="Contactar a ${nombre} por WhatsApp">
+          <svg width="14" height="14" aria-hidden="true" fill="currentColor"
+               viewBox="0 0 24 24"><use href="#ico-wa"/></svg>
+          Contactar
+        </a>
+      </div>`;
   }
 
   /* Función principal — lee Firestore y puebla el carrusel */
   async function cargarEspecialistas() {
-    const track   = document.getElementById('carTrack');
-    const counter = document.getElementById('car-count');
+    const track      = document.getElementById('carTrack');
+    const counter    = document.getElementById('car-count');
+    const heroStat   = document.getElementById('hero-stat-count');
 
     try {
       /* Query: solo disponibles, ordenados por fecha descendente */
-      const q      = query(
+      const q    = query(
         collection(db, 'Especialistas'),
         where('disponible', '==', true),
         orderBy('fecha', 'desc')
       );
-      const snap   = await getDocs(q);
-      const docs   = snap.docs.map(d => d.data());
+      const snap = await getDocs(q);
+      const docs = snap.docs.map(d => d.data());
+      const total = docs.length;
+
+      /* Actualizar contador del hero */
+      if (heroStat) heroStat.textContent = total || '—';
 
       /* Limpiar skeletons */
       track.innerHTML = '';
 
-      if (docs.length === 0) {
+      if (total === 0) {
         track.innerHTML = `
           <div class="car-empty" role="status">
             Aún no hay especialistas registrados.<br>
             ¡Sé el primero en publicar tu servicio!
           </div>`;
-        counter.textContent = '0 especialistas activos';
+        if (counter) counter.textContent = 'Sé el primero en registrarte';
         notifyCarousel();
         return;
       }
@@ -2358,9 +2505,11 @@ document.getElementById('urgencia-submit').addEventListener('click', () => {
       /* Renderizar tarjetas */
       track.innerHTML = docs.map(buildCard).join('');
 
-      /* Contador */
-      const total = docs.length;
-      counter.textContent = `${total} especialista${total !== 1 ? 's' : ''} activo${total !== 1 ? 's' : ''}`;
+      /* Contador de sección */
+      if (counter) {
+        counter.textContent =
+          `${total} especialista${total !== 1 ? 's' : ''} activo${total !== 1 ? 's' : ''}`;
+      }
 
       /* Informar al carrusel que el DOM cambió */
       notifyCarousel();
