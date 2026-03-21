@@ -1,0 +1,1927 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="MAESTO — Directorio verificado de maestros del hogar en Chile. Gasfitería, electricidad, jardinería y más. Técnicos reales con referencias comprobadas en Santiago.">
+<meta name="theme-color" content="#111318">
+<meta property="og:title" content="MAESTO · Maestros del Hogar Verificados en Santiago, Chile">
+<meta property="og:description" content="Encuentra gasfiteros, electricistas, jardineros y más. Maestros verificados con referencias reales. Sin intermediarios, sin sorpresas.">
+<meta property="og:image" content="https://maesto.cl/og.png">
+<meta property="og:url" content="https://maesto.cl">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://maesto.cl">
+<title>MAESTO · Maestros del Hogar Verificados en Santiago, Chile</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   TOKENS — Sistema de diseño MAESTO
+   ============================================================ */
+:root {
+  /* Colores */
+  --cu:       #C8773A;
+  --cu-l:     #E09B5C;
+  --cu-dim:   rgba(200,119,58,0.08);
+  --bg:       #111318;
+  --bg-d:     #0A0B0F;
+  --surf:     #16191F;
+  --surf2:    #1C2028;
+  --border:   #252830;
+  --border2:  #1E2228;
+  --cream:    #F2EDE4;
+  --muted:    #8B909C;
+  --muted2:   #5C6070;
+  --green-l:  #3D8B68;
+  --wa:       #25D366;
+
+  /* Tipografía */
+  --font-d: 'Playfair Display', Georgia, serif;
+  --font-b: 'DM Sans', system-ui, sans-serif;
+  --font-m: 'DM Mono', 'Courier New', monospace;
+
+  /* Radio */
+  --r-sm:   6px;
+  --r-md:   12px;
+  --r-lg:   20px;
+  --r-xl:   28px;
+  --r-full: 999px;
+
+  /* Sombras */
+  --shadow:    0 4px 24px rgba(0,0,0,0.4);
+  --shadow-cu: 0 8px 32px rgba(200,119,58,0.25);
+
+  /* Transición explícita — NO usar "all" */
+  --trans: background-color 0.25s ease, border-color 0.25s ease,
+           transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+}
+
+/* ============================================================
+   RESET
+   ============================================================ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  background: var(--bg);
+  color: var(--cream);
+  font-family: var(--font-b);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+ul { list-style: none; }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-d); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--cu); }
+
+/* ============================================================
+   UTILIDADES REUTILIZABLES
+   ============================================================ */
+.container {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.section-pad { padding: 80px 0; }
+
+/* Eyebrow label */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-m);
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--cu);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--cu); }
+
+/* Títulos de sección */
+.section-title {
+  font-family: var(--font-d);
+  font-size: clamp(28px, 4vw, 46px);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin-bottom: 14px;
+}
+.section-sub {
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 520px;
+}
+
+/* Badge verificado */
+.badge-v {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(42,92,69,0.15);
+  border: 1px solid rgba(61,139,104,0.4);
+  border-radius: var(--r-sm);
+  padding: 5px 12px;
+  font-family: var(--font-m);
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--green-l);
+  text-transform: uppercase;
+}
+
+/* Botones */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 26px;
+  border-radius: var(--r-md);
+  font-weight: 600;
+  font-size: 15px;
+  transition: var(--trans);
+  white-space: nowrap;
+  cursor: pointer;
+}
+.btn-primary {
+  background: var(--cu);
+  color: #000;
+}
+.btn-primary:hover {
+  background: var(--cu-l);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-cu);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--cream);
+  border: 1px solid var(--border);
+}
+.btn-outline:hover {
+  border-color: var(--cu);
+  color: var(--cu);
+  background: var(--cu-dim);
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+.reveal.d1 { transition-delay: 0.1s; }
+.reveal.d2 { transition-delay: 0.2s; }
+.reveal.d3 { transition-delay: 0.3s; }
+.reveal.d4 { transition-delay: 0.4s; }
+
+/* ============================================================
+   SVG ICONS — definidos una vez, reutilizados con <use>
+   ============================================================ */
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  background: rgba(17,19,24,0.8);
+  /* Fallback para browsers sin backdrop-filter */
+  background: rgba(17,19,24,0.95);
+  border-bottom: 1px solid var(--border2);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+@supports (backdrop-filter: blur(1px)) {
+  .navbar {
+    background: rgba(17,19,24,0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+}
+.navbar.scrolled { background: rgba(10,11,15,0.97); border-bottom-color: var(--border); }
+
+.nav-logo {
+  font-family: var(--font-d);
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  background: linear-gradient(135deg, var(--cream) 30%, var(--cu-l) 70%, var(--cu));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+.nav-logo small {
+  display: block;
+  font-family: var(--font-m);
+  font-size: 9px;
+  letter-spacing: 2px;
+  -webkit-text-fill-color: var(--muted);
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.nav-links {
+  display: none;
+  align-items: center;
+  gap: 28px;
+}
+.nav-links a {
+  font-size: 13px;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--cream); }
+.nav-links .btn-primary { padding: 8px 18px; font-size: 12px; font-weight: 700; }
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
+  z-index: 1001;
+}
+.hamburger span {
+  display: block;
+  width: 24px; height: 2px;
+  background: var(--cream);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  transform-origin: center;
+}
+.hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile overlay */
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(10,11,15,0.98);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.nav-overlay.open { opacity: 1; pointer-events: auto; }
+.nav-overlay a {
+  font-family: var(--font-d);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--cream);
+  transition: color 0.2s;
+}
+.nav-overlay a:hover { color: var(--cu); }
+.nav-overlay .btn-primary { font-size: 16px; padding: 14px 36px; }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 64px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.hero-bg-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 60% 40%, rgba(200,119,58,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 10% 80%, rgba(200,119,58,0.04) 0%, transparent 50%);
+}
+.hero-grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--border2) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border2) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.25;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
+}
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  padding: 60px 0 80px;
+  width: 100%;
+}
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--cu-dim);
+  border: 1px solid rgba(200,119,58,0.25);
+  border-radius: var(--r-full);
+  padding: 6px 14px;
+  font-family: var(--font-m);
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--cu-l);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.hero-eyebrow::before { content: '✦'; }
+.hero-title {
+  font-family: var(--font-d);
+  font-size: clamp(38px, 6vw, 68px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -2px;
+  margin-bottom: 18px;
+}
+.hero-title em {
+  font-style: normal;
+  background: linear-gradient(135deg, var(--cu-l), var(--cu));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-sub {
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 36px;
+  max-width: 500px;
+}
+.hero-sub strong { color: var(--cream); font-weight: 500; }
+.hero-btns {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+.hero-trust {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.trust-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--green-l);
+  flex-shrink: 0;
+  will-change: transform;
+  animation: pulse 2.4s ease infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50%       { transform: scale(1.3); opacity: 0.25; }
+}
+
+/* Tarjeta demo hero */
+.hero-card {
+  display: none; /* visible solo en tablet+ */
+  background: var(--surf);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  padding: 26px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  will-change: transform;
+  animation: floatY 4s ease-in-out infinite;
+}
+.hero-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--cu), var(--cu-l), transparent);
+}
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+.hc-head { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+.hc-av {
+  width: 50px; height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--cu), var(--cu-l));
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-d); font-size: 20px; font-weight: 900; color: #000;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 3px var(--bg-d), 0 0 0 5px var(--cu);
+}
+.hc-name { font-size: 16px; font-weight: 700; color: var(--cream); margin-bottom: 2px; }
+.hc-spec { font-family: var(--font-m); font-size: 11px; color: var(--cu); letter-spacing: 1px; }
+.hc-stats {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 16px;
+}
+.hc-stat {
+  background: var(--bg-d); border-radius: var(--r-md); padding: 10px; text-align: center;
+}
+.hc-stat-n {
+  display: block; font-family: var(--font-m); font-size: 17px; color: var(--cu); margin-bottom: 2px;
+}
+.hc-stat-l { font-size: 9px; color: var(--muted2); text-transform: uppercase; letter-spacing: 1px; }
+.hc-chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.chip {
+  font-family: var(--font-m); font-size: 11px; padding: 4px 10px;
+  border-radius: var(--r-sm); background: var(--bg-d); color: var(--muted); letter-spacing: 0.5px;
+}
+
+/* ============================================================
+   PROBLEMA
+   ============================================================ */
+.problem-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: center;
+}
+.problem-title {
+  font-family: var(--font-d);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+}
+.problem-text { font-size: 15px; color: var(--muted); line-height: 1.8; margin-bottom: 12px; }
+.flow-list { display: flex; flex-direction: column; }
+.flow-item {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border2);
+}
+.flow-item:last-child { border-bottom: none; }
+.flow-icon {
+  width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0; margin-top: 2px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-m); font-size: 11px;
+}
+.flow-icon.bad {
+  background: rgba(139,58,58,0.15); border: 1px solid rgba(200,80,80,0.25); color: #E07070;
+}
+.flow-icon.good {
+  background: var(--cu-dim); border: 1px solid rgba(200,119,58,0.3); color: var(--cu);
+}
+.flow-text { font-size: 14px; color: var(--muted); line-height: 1.6; }
+.flow-text strong { color: var(--cream); font-weight: 500; }
+
+/* ============================================================
+   CÓMO FUNCIONA
+   ============================================================ */
+.section-alt { background: var(--bg-d); position: relative; }
+.section-alt::before,
+.section-alt::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+.section-alt::before { top: 0; }
+.section-alt::after  { bottom: 0; }
+
+.how-header { text-align: center; max-width: 520px; margin: 0 auto 48px; }
+.how-header .eyebrow { justify-content: center; }
+.how-header .eyebrow::before { display: none; }
+
+.how-steps {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2px;
+}
+.how-step {
+  background: var(--surf);
+  padding: 36px 28px;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.25s ease;
+}
+.how-step:first-child { border-radius: var(--r-xl) var(--r-xl) 0 0; }
+.how-step:last-child  { border-radius: 0 0 var(--r-xl) var(--r-xl); }
+.how-step:hover { background: var(--surf2); }
+.how-step::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--cu), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.how-step:hover::before { opacity: 1; }
+.how-num {
+  font-family: var(--font-d); font-size: 56px; font-weight: 900;
+  color: var(--border); line-height: 1; margin-bottom: 14px;
+  transition: color 0.3s ease;
+}
+.how-step:hover .how-num { color: rgba(200,119,58,0.12); }
+.how-icon { font-size: 28px; margin-bottom: 12px; display: block; }
+.how-step h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+.how-step p  { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+/* Guía Instagram */
+.ig-guide {
+  margin-top: 48px;
+  background: var(--surf2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  padding: 32px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  align-items: center;
+}
+.ig-guide-steps { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
+.ig-step {
+  display: flex; gap: 12px; align-items: flex-start;
+  font-size: 13px; color: var(--cream); line-height: 1.6;
+}
+.ig-step::before {
+  content: '→'; color: var(--cu); font-weight: 700; flex-shrink: 0; margin-top: 1px;
+}
+.ig-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+  color: white;
+  padding: 16px 24px;
+  border-radius: var(--r-md);
+  font-weight: 700;
+  font-size: 15px;
+  transition: opacity 0.2s, transform 0.2s;
+  text-align: center;
+  justify-content: center;
+}
+.ig-btn:hover { opacity: 0.9; transform: translateY(-2px); }
+
+/* ============================================================
+   CATEGORÍAS
+   ============================================================ */
+.cats-hd {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+.cats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.cat-card {
+  background: var(--surf);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 24px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  transition: var(--trans);
+  position: relative;
+  overflow: hidden;
+  color: inherit;
+}
+.cat-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--cu-dim), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.cat-card:hover {
+  border-color: var(--cu);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 32px rgba(200,119,58,0.14);
+}
+.cat-card:hover::after { opacity: 1; }
+.cat-card > * { position: relative; z-index: 1; }
+.cat-icon  { font-size: 28px; }
+.cat-name  { font-size: 15px; font-weight: 700; color: var(--cream); }
+.cat-desc  { font-size: 12px; color: var(--muted); line-height: 1.5; }
+.cat-link  {
+  display: flex; align-items: center; gap: 5px;
+  font-family: var(--font-m); font-size: 11px; color: var(--cu); letter-spacing: 1px;
+  margin-top: auto;
+}
+
+/* ============================================================
+   MAESTROS
+   ============================================================ */
+.maestros-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 40px;
+}
+.maestro-card {
+  background: var(--surf);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  padding: 24px;
+  transition: var(--trans);
+  position: relative;
+  overflow: hidden;
+}
+.maestro-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, var(--cu), var(--cu-l), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.maestro-card:hover {
+  border-color: var(--cu);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 40px rgba(200,119,58,0.1);
+}
+.maestro-card:hover::after { opacity: 1; }
+.mc-head {
+  display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;
+}
+.mc-av {
+  width: 52px; height: 52px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-d); font-size: 20px; font-weight: 900; color: #000;
+}
+.mc-name { font-size: 16px; font-weight: 700; margin-bottom: 2px; }
+.mc-spec { font-family: var(--font-m); font-size: 11px; color: var(--cu); letter-spacing: 0.5px; }
+.mc-zona {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 12px; color: var(--muted); margin-bottom: 14px;
+}
+.mc-chips { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 18px; }
+.mc-chip {
+  font-family: var(--font-m); font-size: 10px; padding: 3px 8px;
+  border-radius: var(--r-sm); background: var(--bg-d); color: var(--muted); border: 1px solid var(--border2);
+}
+.mc-foot {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 14px; border-top: 1px solid var(--border2);
+}
+.mc-price { font-family: var(--font-m); font-size: 11px; color: var(--muted2); }
+.mc-wa {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(37,211,102,0.1); border: 1px solid rgba(37,211,102,0.25);
+  border-radius: var(--r-sm); padding: 7px 14px;
+  font-size: 12px; color: var(--wa); font-weight: 600;
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+.mc-wa:hover { background: rgba(37,211,102,0.18); transform: translateY(-1px); }
+
+/* ============================================================
+   TESTIMONIOS
+   ============================================================ */
+.testi-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 40px;
+}
+.testi-card {
+  background: var(--surf);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  padding: 30px;
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+.testi-card:hover { border-color: rgba(200,119,58,0.3); transform: translateY(-2px); }
+.testi-q { font-family: var(--font-d); font-size: 44px; color: var(--cu); line-height: 0.8; opacity: 0.35; margin-bottom: 14px; }
+.testi-text { font-size: 15px; font-style: italic; color: var(--cream); line-height: 1.75; margin-bottom: 20px; }
+.testi-author {
+  display: flex; align-items: center; gap: 12px;
+  padding-top: 16px; border-top: 1px solid var(--border2);
+}
+.testi-av {
+  width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--cu), var(--cu-l));
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 14px; color: #000;
+}
+.testi-name { font-size: 13px; font-weight: 600; color: var(--cream); }
+.testi-loc  { font-family: var(--font-m); font-size: 11px; color: var(--muted); }
+.testi-tag  {
+  margin-left: auto; font-family: var(--font-m); font-size: 10px;
+  padding: 3px 10px; border-radius: var(--r-sm); background: var(--cu-dim); color: var(--cu-l); letter-spacing: 1px;
+}
+
+/* ============================================================
+   CTA PRINCIPAL
+   ============================================================ */
+.cta-wrap {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.cta-wrap .badge-v { margin-bottom: 24px; }
+.cta-title {
+  font-family: var(--font-d);
+  font-size: clamp(32px, 5vw, 60px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -2px;
+  margin-bottom: 18px;
+}
+.cta-title em {
+  font-style: normal;
+  background: linear-gradient(135deg, var(--cu-l), var(--cu));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.cta-sub { font-size: 16px; color: var(--muted); line-height: 1.7; margin-bottom: 36px; }
+.cta-btns { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
+.cta-checks {
+  display: flex; justify-content: center; flex-wrap: wrap; gap: 20px;
+}
+.cta-check {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 13px; color: var(--muted);
+}
+.cta-check::before { content: '✓'; color: var(--green-l); font-weight: 700; }
+.cta-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(200,119,58,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ============================================================
+   FORMULARIO URGENCIA
+   ============================================================ */
+.urgencia-box {
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  position: relative;
+}
+.urgencia-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--cu), var(--cu-l), var(--cu));
+}
+.urgencia-top {
+  background: var(--cu);
+  padding: 18px 28px;
+  display: flex; align-items: center; gap: 12px;
+}
+.urgencia-top h2 {
+  font-family: var(--font-m);
+  font-size: 12px; font-weight: 500; letter-spacing: 3px; color: #000; text-transform: uppercase;
+}
+.urgencia-body {
+  background: linear-gradient(135deg, var(--surf), var(--surf2));
+  padding: 28px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+.form-field { display: flex; flex-direction: column; gap: 6px; }
+.form-label {
+  font-family: var(--font-m); font-size: 10px; letter-spacing: 2px;
+  color: var(--muted); text-transform: uppercase;
+}
+.form-input, .form-select {
+  background: var(--bg-d);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 13px 16px;
+  font-family: var(--font-b); font-size: 14px; color: var(--cream);
+  outline: none; width: 100%;
+  transition: border-color 0.2s ease;
+  /* Select: flecha personalizada */
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238B909C' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+.form-input:focus, .form-select:focus { border-color: var(--cu); }
+.form-input::placeholder { color: var(--muted2); }
+.form-input.error, .form-select.error { border-color: #E07070; }
+.form-btn {
+  background: var(--cu); color: #000;
+  padding: 14px 24px; border-radius: var(--r-md);
+  font-family: var(--font-b); font-weight: 700; font-size: 14px;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  border: none; cursor: pointer; width: 100%;
+}
+.form-btn:hover { background: var(--cu-l); transform: translateY(-2px); box-shadow: var(--shadow-cu); }
+
+/* ============================================================
+   PARA MAESTROS
+   ============================================================ */
+.join-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: center;
+}
+.join-benefits { display: flex; flex-direction: column; gap: 18px; margin: 24px 0 36px; }
+.join-benefit { display: flex; align-items: flex-start; gap: 14px; }
+.jb-icon {
+  width: 38px; height: 38px; border-radius: var(--r-md);
+  background: var(--cu-dim); border: 1px solid rgba(200,119,58,0.2);
+  display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0;
+}
+.jb-title { font-size: 14px; font-weight: 600; margin-bottom: 3px; }
+.jb-text  { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+.join-card {
+  background: var(--surf);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+}
+.join-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--cu), var(--cu-l));
+}
+.join-card h3 { font-family: var(--font-d); font-size: 22px; font-weight: 900; margin-bottom: 6px; }
+.join-card p  { font-size: 13px; color: var(--muted); margin-bottom: 24px; line-height: 1.6; }
+.join-steps { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
+.join-step {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 14px; background: var(--bg-d);
+  border-radius: var(--r-md); border: 1px solid var(--border2);
+}
+.js-n {
+  width: 26px; height: 26px; border-radius: 50%; background: var(--cu); color: #000;
+  font-family: var(--font-m); font-size: 11px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.join-step span { font-size: 13px; color: var(--cream); }
+.join-free {
+  display: flex; align-items: center; gap: 8px;
+  background: rgba(42,92,69,0.15); border: 1px solid rgba(61,139,104,0.3);
+  border-radius: var(--r-md); padding: 12px 16px; margin-bottom: 18px;
+  font-size: 13px; color: var(--cream); line-height: 1.5;
+}
+.join-free strong { color: var(--green-l); }
+.join-note {
+  text-align: center; margin-top: 12px; font-family: var(--font-m); font-size: 11px; color: var(--muted2);
+}
+.join-note a { color: var(--cu); }
+
+/* ============================================================
+   CANALES
+   ============================================================ */
+.canales-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 40px;
+}
+.canal-card {
+  background: var(--surf);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  padding: 24px 18px;
+  display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px;
+  transition: var(--trans); color: inherit;
+}
+.canal-card:hover {
+  border-color: var(--c-color, var(--cu));
+  transform: translateY(-3px);
+  box-shadow: 0 10px 32px rgba(0,0,0,0.25);
+}
+.canal-ico {
+  width: 48px; height: 48px; border-radius: var(--r-md);
+  display: flex; align-items: center; justify-content: center; font-size: 24px;
+  background: var(--c-bg, var(--cu-dim));
+}
+.canal-name   { font-size: 14px; font-weight: 700; }
+.canal-handle { font-family: var(--font-m); font-size: 11px; color: var(--muted); }
+.canal-desc   { font-size: 12px; color: var(--muted2); line-height: 1.5; }
+
+/* ============================================================
+   CARRUSEL
+   ============================================================ */
+.carousel-hd {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap; margin-bottom: 32px;
+}
+.carousel-controls { display: flex; gap: 8px; }
+.car-btn {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: var(--surf); border: 1px solid var(--border); color: var(--cream);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; transition: var(--trans); cursor: pointer;
+}
+.car-btn:hover { background: var(--cu); border-color: var(--cu); color: #000; }
+.car-btn:disabled { opacity: 0.35; cursor: default; }
+.car-btn:disabled:hover { background: var(--surf); border-color: var(--border); color: var(--cream); }
+.car-overflow { overflow: hidden; }
+.car-track {
+  display: flex;
+  gap: 14px;
+  transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.car-item {
+  flex-shrink: 0;
+  width: 200px;
+  background: var(--surf);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  padding: 28px 18px;
+  display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px;
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+.car-item:hover {
+  border-color: var(--cu);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(200,119,58,0.1);
+}
+.car-item-icon { font-size: 36px; }
+.car-item-name { font-size: 15px; font-weight: 700; }
+.car-item-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer { background: var(--bg-d); border-top: 1px solid var(--border2); padding: 52px 0 28px; }
+.footer-top {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 36px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--border2);
+  margin-bottom: 24px;
+}
+.footer-brand-logo {
+  font-family: var(--font-d); font-size: 26px; font-weight: 900; margin-bottom: 6px;
+  background: linear-gradient(135deg, var(--cream), var(--cu-l), var(--cu));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.footer-brand-tag { font-family: var(--font-m); font-size: 10px; color: var(--muted2); letter-spacing: 2px; margin-bottom: 14px; }
+.footer-brand-desc { font-size: 13px; color: var(--muted); line-height: 1.7; max-width: 280px; }
+.footer-social { display: flex; gap: 8px; margin-top: 18px; }
+.f-social-btn {
+  width: 36px; height: 36px; border-radius: var(--r-md);
+  background: var(--surf); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center; font-size: 15px;
+  transition: var(--trans);
+}
+.f-social-btn:hover { background: var(--cu); border-color: var(--cu); }
+.footer-col-title {
+  font-family: var(--font-m); font-size: 11px; font-weight: 700;
+  letter-spacing: 2px; color: var(--cream); text-transform: uppercase; margin-bottom: 16px;
+}
+.footer-links { display: flex; flex-direction: column; gap: 10px; }
+.footer-links a { font-size: 13px; color: var(--muted); transition: color 0.2s; }
+.footer-links a:hover { color: var(--cu); }
+.footer-bottom {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+}
+.footer-copy { font-family: var(--font-m); font-size: 11px; color: var(--muted2); }
+.footer-seal { font-family: var(--font-m); font-size: 11px; color: var(--cu); letter-spacing: 1px; }
+
+/* ============================================================
+   BOTÓN FLOTANTE WA
+   ============================================================ */
+.wa-float {
+  position: fixed;
+  bottom: 24px; right: 24px;
+  z-index: 900;
+  display: flex; flex-direction: column; align-items: flex-end; gap: 10px;
+}
+.wa-tooltip {
+  background: var(--surf); border: 1px solid var(--border);
+  border-radius: var(--r-md); padding: 9px 14px;
+  font-size: 12px; color: var(--cream); white-space: nowrap; box-shadow: var(--shadow);
+  opacity: 0; transform: translateX(8px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+.wa-float:hover .wa-tooltip { opacity: 1; transform: none; }
+.wa-btn {
+  width: 58px; height: 58px; border-radius: 50%;
+  background: var(--wa);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 18px rgba(37,211,102,0.4);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+}
+.wa-btn:hover { transform: scale(1.1); box-shadow: 0 8px 28px rgba(37,211,102,0.5); }
+.wa-ring {
+  position: absolute; inset: -5px; border-radius: 50%;
+  border: 2px solid var(--wa);
+  animation: pulse 2.8s ease infinite;
+  will-change: transform;
+}
+.wa-btn svg { width: 28px; height: 28px; fill: white; }
+
+/* ============================================================
+   RESPONSIVE — TABLET 768px+
+   ============================================================ */
+@media (min-width: 768px) {
+  .section-pad { padding: 96px 0; }
+  .nav-links   { display: flex; }
+  .hamburger   { display: none; }
+
+  .hero-inner          { grid-template-columns: 1fr 1fr; align-items: center; }
+  .hero-card           { display: block; }
+  .how-steps           { grid-template-columns: repeat(3, 1fr); }
+  .how-step:first-child { border-radius: var(--r-xl) 0 0 var(--r-xl); }
+  .how-step:last-child  { border-radius: 0 var(--r-xl) var(--r-xl) 0; }
+  .ig-guide            { grid-template-columns: 1fr 1fr; }
+  .cats-grid           { grid-template-columns: repeat(4, 1fr); }
+  .maestros-grid       { grid-template-columns: repeat(3, 1fr); }
+  .testi-grid          { grid-template-columns: repeat(2, 1fr); }
+  .urgencia-body       { grid-template-columns: 1fr 1fr 1fr; }
+  .form-btn            { width: auto; }
+  .join-grid           { grid-template-columns: 1fr 1fr; gap: 60px; }
+  .canales-grid        { grid-template-columns: repeat(4, 1fr); }
+  .footer-top          { grid-template-columns: 2fr 1fr 1fr; }
+  .problem-grid        { grid-template-columns: 1fr 1fr; gap: 64px; }
+}
+
+/* DESKTOP 1024px+ */
+@media (min-width: 1024px) {
+  .cats-grid   { grid-template-columns: repeat(4, 1fr); }
+  .urgencia-body { grid-template-columns: 1fr 1fr 1fr auto; align-items: end; }
+  .form-btn    { width: auto; align-self: flex-end; }
+}
+</style>
+</head>
+<body>
+
+<!-- SVG Sprite — definidos una vez -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="ico-wa" viewBox="0 0 24 24">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+  </symbol>
+  <symbol id="ico-pin" viewBox="0 0 24 24">
+    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
+  </symbol>
+  <symbol id="ico-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M5 12h14M12 5l7 7-7 7"/>
+  </symbol>
+  <symbol id="ico-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+    <path d="M20 6L9 17l-5-5"/>
+  </symbol>
+</svg>
+
+
+<!-- ============================================================
+     NAVBAR
+     ============================================================ -->
+<nav class="navbar" id="navbar" aria-label="Navegación principal">
+  <a href="#inicio" class="nav-logo" aria-label="MAESTO - ir al inicio">
+    MAESTO
+    <small>Servicios del Hogar</small>
+  </a>
+
+  <ul class="nav-links" role="list">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#maestros">Maestros</a></li>
+    <li><a href="#urgencia">Urgencia</a></li>
+    <li><a href="#canales">Canales</a></li>
+    <li><a href="#unete">¿Eres maestro?</a></li>
+    <li>
+      <a href="https://wa.me/56950147783?text=Hola%20MAESTO%2C%20necesito%20un%20maestro"
+         target="_blank" rel="noopener"
+         class="btn btn-primary">
+        <svg width="16" height="16" aria-hidden="true"><use href="#ico-wa"/></svg>
+        Buscar maestro
+      </a>
+    </li>
+  </ul>
+
+  <button class="hamburger" id="hamburger" aria-expanded="false" aria-label="Abrir menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile overlay -->
+<div class="nav-overlay" id="navOverlay" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Menú de navegación">
+  <a href="#inicio"    class="nav-link">Inicio</a>
+  <a href="#servicios" class="nav-link">Servicios</a>
+  <a href="#maestros"  class="nav-link">Maestros</a>
+  <a href="#urgencia"  class="nav-link">Urgencia</a>
+  <a href="#canales"   class="nav-link">Canales</a>
+  <a href="#unete"     class="nav-link">¿Eres maestro?</a>
+  <a href="https://wa.me/56950147783?text=Hola%20MAESTO%2C%20necesito%20un%20maestro"
+     target="_blank" rel="noopener"
+     class="btn btn-primary">
+    <svg width="18" height="18" aria-hidden="true"><use href="#ico-wa"/></svg>
+    Buscar maestro
+  </a>
+</div>
+
+
+<!-- ============================================================
+     MAIN
+     ============================================================ -->
+<main>
+
+  <!-- HERO -->
+  <section class="hero section-pad" id="inicio" aria-label="Inicio">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="hero-bg-glow"></div>
+      <div class="hero-grid-bg"></div>
+    </div>
+    <div class="container">
+      <div class="hero-inner">
+
+        <!-- Texto -->
+        <div class="hero-left">
+          <div class="hero-eyebrow anim-fade-up">MAESTO VERIFICADO</div>
+          <h1 class="hero-title anim-fade-up" style="animation-delay:.1s">
+            El maestro que<br>buscabas <em>existe.</em><br>Ahora lo encuentras.
+          </h1>
+          <p class="hero-sub anim-fade-up" style="animation-delay:.2s">
+            MAESTO reúne <strong>maestros del hogar verificados</strong> en Santiago. Gasfitería, electricidad, jardinería y más — con referencias reales, sin sorpresas.
+          </p>
+          <div class="hero-btns anim-fade-up" style="animation-delay:.3s">
+            <a href="https://wa.me/56950147783?text=Hola%20MAESTO%2C%20necesito%20un%20maestro"
+               target="_blank" rel="noopener"
+               class="btn btn-primary">
+              <svg width="18" height="18" aria-hidden="true"><use href="#ico-wa"/></svg>
+              Buscar un maestro
+            </a>
+            <a href="#unete" class="btn btn-outline">Soy maestro, me uno →</a>
+          </div>
+          <div class="hero-trust anim-fade-up" style="animation-delay:.4s">
+            <div class="trust-item"><span class="trust-dot" aria-hidden="true"></span>Gratis para clientes</div>
+            <div class="trust-item"><span class="trust-dot" aria-hidden="true"></span>Solo maestros verificados</div>
+            <div class="trust-item"><span class="trust-dot" aria-hidden="true"></span>Respuesta inmediata</div>
+          </div>
+        </div>
+
+        <!-- Tarjeta demo -->
+        <div class="hero-right" aria-hidden="true">
+          <div class="hero-card">
+            <div class="hc-head">
+              <div class="hc-av">C</div>
+              <div>
+                <div class="hc-name">Carlos Medina</div>
+                <div class="hc-spec">GASFITERÍA · MAESTRO</div>
+              </div>
+            </div>
+            <div class="hc-stats">
+              <div class="hc-stat"><span class="hc-stat-n">8+</span><span class="hc-stat-l">Años</span></div>
+              <div class="hc-stat"><span class="hc-stat-n">47</span><span class="hc-stat-l">Trabajos</span></div>
+              <div class="hc-stat"><span class="hc-stat-n">5.0</span><span class="hc-stat-l">Rating</span></div>
+            </div>
+            <div class="badge-v" style="margin-bottom:14px">✦ MAESTO VERIFICADO</div>
+            <div class="hc-chips">
+              <span class="chip">Pudahuel</span>
+              <span class="chip">Maipú</span>
+              <span class="chip">Cerrillos</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEMA -->
+  <section class="section-pad" id="problema" aria-label="El problema">
+    <div class="container">
+      <div class="problem-grid">
+        <div class="reveal">
+          <div class="eyebrow">El problema</div>
+          <h2 class="problem-title">Encontrar un técnico confiable en Chile es una <span style="color:var(--cu)">pesadilla.</span></h2>
+          <p class="problem-text">No es que no existan buenos maestros. El problema es que nadie los organiza.</p>
+          <p class="problem-text"><strong style="color:var(--cream)">MAESTO cambia eso.</strong> Un solo lugar, maestros verificados, contacto directo.</p>
+        </div>
+        <div class="reveal d2">
+          <ol class="flow-list" aria-label="Proceso actual sin MAESTO">
+            <li class="flow-item">
+              <span class="flow-icon bad" aria-hidden="true">✕</span>
+              <span class="flow-text"><strong>Preguntas en WhatsApp familiar</strong> — 4 números distintos, nadie garantiza nada</span>
+            </li>
+            <li class="flow-item">
+              <span class="flow-icon bad" aria-hidden="true">✕</span>
+              <span class="flow-text"><strong>Buscas en Facebook</strong> — publicaciones de 2021 con comentarios contradictorios</span>
+            </li>
+            <li class="flow-item">
+              <span class="flow-icon bad" aria-hidden="true">✕</span>
+              <span class="flow-text"><strong>Llamas al número del poste</strong> — no responde o no va a tu zona</span>
+            </li>
+            <li class="flow-item">
+              <span class="flow-icon bad" aria-hidden="true">✕</span>
+              <span class="flow-text"><strong>Contratas sin saber el precio</strong> — el maestro llega y cobra lo que quiere</span>
+            </li>
+            <li class="flow-item">
+              <span class="flow-icon good" aria-hidden="true">✓</span>
+              <span class="flow-text"><strong style="color:var(--cream)">Con MAESTO:</strong> escribes por WhatsApp, te pasamos el contacto verificado en tu zona. Listo.</span>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CÓMO FUNCIONA -->
+  <section class="section-alt section-pad" id="servicios" aria-label="Cómo funciona MAESTO">
+    <div class="container">
+      <div class="how-header reveal">
+        <div class="eyebrow" style="justify-content:center">Cómo funciona</div>
+        <h2 class="section-title">Simple, rápido<br>y sin sorpresas</h2>
+        <p class="section-sub" style="margin:0 auto">Desde que nos escribes hasta que tienes al maestro puede tomar minutos.</p>
+      </div>
+
+      <div class="how-steps" role="list">
+        <div class="how-step reveal d1" role="listitem">
+          <div class="how-num" aria-hidden="true">01</div>
+          <span class="how-icon" aria-hidden="true">💬</span>
+          <h3>Cuéntanos qué necesitas</h3>
+          <p>Escríbenos por WhatsApp con el servicio y tu zona. Sin formularios, sin esperas. Respuesta inmediata.</p>
+        </div>
+        <div class="how-step reveal d2" role="listitem">
+          <div class="how-num" aria-hidden="true">02</div>
+          <span class="how-icon" aria-hidden="true">✅</span>
+          <h3>Te conectamos con el maestro</h3>
+          <p>Buscamos al maestro verificado para tu zona y especialidad. Solo profesionales con referencias reales.</p>
+        </div>
+        <div class="how-step reveal d3" role="listitem">
+          <div class="how-num" aria-hidden="true">03</div>
+          <span class="how-icon" aria-hidden="true">🛠</span>
+          <h3>El maestro va a tu casa</h3>
+          <p>Coordinas directo con él. El precio y el trabajo son entre tú y el maestro. MAESTO garantiza la confianza.</p>
+        </div>
+      </div>
+
+      <!-- Guía Instagram -->
+      <div class="ig-guide reveal">
+        <div>
+          <div class="eyebrow">Para clientes desde Instagram</div>
+          <h3 class="section-title" style="font-size:clamp(22px,3vw,30px)">Cómo usar @maesto.cl</h3>
+          <div class="ig-guide-steps">
+            <div class="ig-step"><strong>Highlights:</strong>&nbsp;Busca la categoría que necesitas. Ahí están las fichas de maestros por especialidad.</div>
+            <div class="ig-step"><strong>Posts:</strong>&nbsp;Cada publicación tiene nombre, zona y especialidad. Lee la descripción para ver experiencia y referencias.</div>
+            <div class="ig-step"><strong>Link en bio:</strong>&nbsp;Acceso directo por WhatsApp a la categoría que necesitas, sin intermediarios.</div>
+          </div>
+        </div>
+        <div style="text-align:center">
+          <a href="https://instagram.com/maesto.cl" target="_blank" rel="noopener" class="ig-btn" aria-label="Ver perfil Instagram MAESTO">
+            📸 Ver @maesto.cl
+          </a>
+          <p style="margin-top:12px;font-family:var(--font-m);font-size:11px;color:var(--muted2)">Fichas reales · Trabajos reales</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORÍAS -->
+  <section class="section-pad" id="categorias" aria-label="Categorías de servicio">
+    <div class="container">
+      <div class="cats-hd">
+        <div class="reveal">
+          <div class="eyebrow">Nuestros servicios</div>
+          <h2 class="section-title" style="margin-bottom:0">¿Qué necesitas hoy?</h2>
+        </div>
+        <a href="https://wa.me/56950147783?text=Hola%20MAESTO%2C%20necesito%20un%20maestro"
+           target="_blank" rel="noopener"
+           class="btn btn-outline reveal d2">Ver todos →</a>
+      </div>
+      <div class="cats-grid" role="list">
+        <a href="https://wa.me/56950147783?text=Hola%20MAESTO%2C%20necesito%20un%20gasfiter" target="_blank" rel="noopener" class="cat-card reveal d1" role="listitem" aria-label="Buscar gasfiter">
+          <span class="cat-icon" aria-hidden="true">🔧</span>
+          <div class="cat-name">Gasfitería</div>
+          <p class="cat-desc">Filtraciones, calefont, cañerías, baños y duchas.</p>
+          <div class="cat-link">Buscar <svg width="12" height="12" aria-hidden="true"><use href="#ico-arrow"/></svg></div>
+        </a>
+        <a href="https://wa.me/56950147783?text=Hola%20MAESTO%2C%20necesito%20un%20electricista" target="_blank" rel="noopener" class="cat-card reveal d2" role="listitem" aria-label="Buscar electricista">
+          <span class="cat-icon" aria-hidden="true">⚡</span>
+          <div class="cat-name">Electricidad</div>
+          <p class="cat-desc">Tableros, enchufes, empalmes e instalaciones.</p>
+          <div class="cat-link">Buscar <svg width="12" height="12" aria-hidden="true"><use href="#ico-arrow"/></svg></div>
+        </a>
+        <a href="https://wa.me/56950147783?text=Hola%20MAESTO%2C%20necesito%20un%20jardinero" target="_blank" rel="noopener" class="cat-card reveal d3" role="listitem" aria-label="Buscar jardinero">
+          <span class="cat-icon" aria-hidden="true">🌿</span>
+          <div class="cat-name">Jardinería</div>
+          <p class="cat-desc">Mantención, diseño, poda y sistemas de riego.</p>
+          <div class="cat-link">Buscar <svg width="12" height="12" aria-hidden="true"><use href="#ico-arrow"/></svg></div>
+        </a>
+        <a href="https://wa.me/56950147783?text=Hola%20MAESTO%2C%20necesito%20un%20pintor" target="_blank" rel="noopener" class="cat-card reveal d4" role="listitem" aria-label="Buscar pintor">
+          <span class="cat-icon" aria-hidden="true">🎨</span>
+          <div class="cat-name">Pintura</div>
+          <p class="cat-desc">Interior, exterior, barnizado y revestimientos.</p>
+          <div class="cat-link">Buscar <svg width="12" height="12" aria-hidden="true"><use href="#ico-arrow"/></svg></div>
+        </a>
+        <a href="https://wa.me/56950147783?text=Hola%20MAESTO%2C%20necesito%20un%20cerrajero" target="_blank" rel="noopener" class="cat-card reveal d1" role="listitem" aria-label="Buscar cerrajero">
+          <span class="cat-icon" aria-hidden="true">🔒</span>
+          <div class="cat-name">Cerrajería</div>
+          <p class="cat-desc">Apertura de emergencia y cambio de chapas.</p>
+          <div class="cat-link">Buscar <svg width="12" height="12" aria-hidden="true"><use href="#ico-arrow"/></svg></div>
+        </a>
+        <a href="https://wa.me/56950147783?text=Hola%20MAESTO%2C%20necesito%20un%20carpintero" target="_blank" rel="noopener" class="cat-card reveal d2" role="listitem" aria-label="Buscar carpintero">
+          <span class="cat-icon" aria-hidden="true">🪛</span>
+          <div class="cat-name">Carpintería</div>
+          <p class="cat-desc">Muebles, puertas, marcos y pisos flotantes.</p>
+          <div class="cat-link">Buscar <svg width="12" height="12" aria-hidden="true"><use href="#ico-arrow"/></svg></div>
+        </a>
+        <a href="https://wa.me/56950147783?text=Hola%20MAESTO%2C%20necesito%20limpieza" target="_blank" rel="noopener" class="cat-card reveal d3" role="listitem" aria-label="Buscar limpieza">
+          <span class="cat-icon" aria-hidden="true">🧹</span>
+          <div class="cat-name">Limpieza</div>
+          <p class="cat-desc">Profunda, post-construcción y alfombras.</p>
+          <div class="cat-link">Buscar <svg width="12" height="12" aria-hidden="true"><use href="#ico-arrow"/></svg></div>
+        </a>
+        <a href="https://wa.me/56950147783?text=Hola%20MAESTO%2C%20necesito%20climatizaci%C3%B3n" target="_blank" rel="noopener" class="cat-card reveal d4" role="listitem" aria-label="Buscar climatización">
+          <span class="cat-icon" aria-hidden="true">❄️</span>
+          <div class="cat-name">Climatización</div>
+          <p class="cat-desc">Instalación y mantención de A/A y calefacción.</p>
+          <div class="cat-link">Buscar <svg width="12" height="12" aria-hidden="true"><use href="#ico-arrow"/></svg></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAESTROS VERIFICADOS -->
+  <section class="section-alt section-pad" id="maestros" aria-label="Maestros verificados">
+    <div class="container">
+      <div class="reveal">
+        <div class="eyebrow">Quiénes trabajan con nosotros</div>
+        <h2 class="section-title">Maestros reales,<br>con referencias comprobadas</h2>
+        <p class="section-sub">Cada maestro pasó por nuestro proceso de verificación. Nada de nombres al azar.</p>
+      </div>
+      <div class="maestros-grid" role="list">
+
+        <article class="maestro-card reveal d1" role="listitem">
+          <div class="mc-head">
+            <div>
+              <div class="mc-av" style="background:linear-gradient(135deg,#C8773A,#E09B5C)">C</div>
+            </div>
+            <div class="badge-v">✦ VERIFICADO</div>
+          </div>
+          <div class="mc-name">Carlos Medina</div>
+          <div class="mc-spec">🔧 Gasfitería</div>
+          <div class="mc-zona">
+            <svg width="12" height="12" aria-hidden="true" style="color:var(--cu)"><use href="#ico-pin"/></svg>
+            Pudahuel · Maipú · Cerrillos
+          </div>
+          <div class="mc-chips">
+            <span class="mc-chip">8 años exp.</span>
+            <span class="mc-chip">Calefont</span>
+            <span class="mc-chip">Filtraciones</span>
+            <span class="mc-chip">Urgencias</span>
+          </div>
+          <div class="mc-foot">
+            <span class="mc-price">Desde $15.000 la visita</span>
+            <a href="https://wa.me/56950147783?text=Hola%20MAESTO%2C%20vi%20a%20Carlos%20Medina%20(gasfitero)%20y%20me%20interesa"
+               class="mc-wa" target="_blank" rel="noopener" aria-label="Contactar a Carlos Medina">
+              <svg width="14" height="14" aria-hidden="true"><use href="#ico-wa"/></svg>
+              Contactar
+            </a>
+          </div>
+        </article>
+
+        <article class="maestro-card reveal d2" role="listitem">
+          <div class="mc-head">
+            <div>
+              <div class="mc-av" style="background:linear-gradient(135deg,#4A9EFF,#1A5C9E)">P</div>
+            </div>
+            <div class="badge-v">✦ VERIFICADO</div>
+          </div>
+          <div class="mc-name">Pedro Saavedra</div>
+          <div class="mc-spec">⚡ Electricidad</div>
+          <div class="mc-zona">
+            <svg width="12" height="12" aria-hidden="true" style="color:var(--cu)"><use href="#ico-pin"/></svg>
+            Lo Prado · Quinta Normal · Est. Central
+          </div>
+          <div class="mc-chips">
+            <span class="mc-chip">12 años exp.</span>
+            <span class="mc-chip">Tableros</span>
+            <span class="mc-chip">Empalmes</span>
+          </div>
+          <div class="mc-foot">
+            <span class="mc-price">Desde $18.000 la visita</span>
+            <a href="https://wa.me/56950147783?text=Hola%20MAESTO%2C%20vi%20a%20Pedro%20Saavedra%20(electricista)%20y%20me%20interesa"
+               class="mc-wa" target="_blank" rel="noopener" aria-label="Contactar a Pedro Saavedra">
+              <svg width="14" height="14" aria-hidden="true"><use href="#ico-wa"/></svg>
+              Contactar
+            </a>
+          </div>
+        </article>
+
+        <article class="maestro-card reveal d3" role="listitem">
+          <div class="mc-head">
+            <div>
+              <div class="mc-av" style="background:linear-gradient(135deg,#3DBF8A,#1A6B4A)">R</div>
+            </div>
+            <div class="badge-v">✦ VERIFICADO</div>
+          </div>
+          <div class="mc-name">Roberto Fuentes</div>
+          <div class="mc-spec">🌿 Jardinería</div>
+          <div class="mc-zona">
+            <svg width="12" height="12" aria-hidden="true" style="color:var(--cu)"><use href="#ico-pin"/></svg>
+            Las Condes · Vitacura · La Reina
+          </div>
+          <div class="mc-chips">
+            <span class="mc-chip">6 años exp.</span>
+            <span class="mc-chip">Diseño</span>
+            <span class="mc-chip">Poda</span>
+          </div>
+          <div class="mc-foot">
+            <span class="mc-price">Desde $20.000 la visita</span>
+            <a href="https://wa.me/56950147783?text=Hola%20MAESTO%2C%20vi%20a%20Roberto%20Fuentes%20(jardinero)%20y%20me%20interesa"
+               class="mc-wa" target="_blank" rel="noopener" aria-label="Contactar a Roberto Fuentes">
+              <svg width="14" height="14" aria-hidden="true"><use href="#ico-wa"/></svg>
+              Contactar
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIOS -->
+  <section class="section-pad" id="testimonios" aria-label="Testimonios">
+    <div class="container">
+      <div class="reveal">
+        <div class="eyebrow">Lo que dicen nuestros clientes</div>
+        <h2 class="section-title">La confianza que<br>buscabas, comprobada</h2>
+      </div>
+      <div class="testi-grid" role="list">
+        <article class="testi-card reveal d1" role="listitem">
+          <div class="testi-q" aria-hidden="true">"</div>
+          <blockquote class="testi-text">
+            "Llevaba semanas buscando un gasfiter que llegara a Pudahuel sin cobrarme el doble por la distancia. Carlos llegó puntual, diagnosticó la filtración en 10 minutos y la dejó resuelta. Con MAESTO lo encontré en menos de una hora."
+          </blockquote>
+          <div class="testi-author">
+            <div class="testi-av" aria-hidden="true">M</div>
+            <div>
+              <div class="testi-name">María Contreras</div>
+              <div class="testi-loc">Pudahuel, Santiago</div>
+            </div>
+            <span class="testi-tag">Gasfitería</span>
+          </div>
+        </article>
+        <article class="testi-card reveal d2" role="listitem">
+          <div class="testi-q" aria-hidden="true">"</div>
+          <blockquote class="testi-text">
+            "Tenía miedo de contratar a alguien sin conocerlo para que entrara a mi departamento. Las referencias verificadas de MAESTO me dieron la confianza que necesitaba. El electricista fue profesional y cumplió todo lo que dijo."
+          </blockquote>
+          <div class="testi-author">
+            <div class="testi-av" aria-hidden="true">F</div>
+            <div>
+              <div class="testi-name">Felipe Muñoz</div>
+              <div class="testi-loc">Estación Central, Santiago</div>
+            </div>
+            <span class="testi-tag">Electricidad</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA PRINCIPAL -->
+  <section class="section-alt section-pad" aria-label="Encuentra tu maestro">
+    <div class="container">
+      <div class="cta-wrap reveal">
+        <div class="cta-glow" aria-hidden="true"></div>
+        <div class="badge-v" style="margin-bottom:24px">✦ MAESTO VERIFICADO · Santiago, Chile</div>
+        <h2 class="cta-title">Encuentra tu maestro<br><em>ahora mismo</em></h2>
+        <p class="cta-sub">Sin costo para ti. Escríbenos por WhatsApp y te conectamos con el técnico verificado más cercano.</p>
+        <div class="cta-btns">
+          <a href="https://wa.me/56950147783?text=Hola%20MAESTO%2C%20necesito%20un%20maestro"
+             target="_blank" rel="noopener"
+             class="btn btn-primary">
+            <svg width="20" height="20" aria-hidden="true"><use href="#ico-wa"/></svg>
+            Buscar maestro ahora
+          </a>
+          <a href="https://instagram.com/maesto.cl" target="_blank" rel="noopener" class="btn btn-outline">
+            Ver @maesto.cl →
+          </a>
+        </div>
+        <div class="cta-checks">
+          <span class="cta-check">Completamente gratis para clientes</span>
+          <span class="cta-check">Solo maestros verificados</span>
+          <span class="cta-check">Respuesta inmediata por WhatsApp</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMULARIO URGENCIA -->
+  <section class="section-pad" id="urgencia" aria-label="Servicio de urgencia">
+    <div class="container">
+      <div class="urgencia-box reveal">
+        <div class="urgencia-top">
+          <span aria-hidden="true" style="font-size:22px">🚨</span>
+          <h2>¿Necesitas un servicio con urgencia? Rellena estos datos</h2>
+        </div>
+        <div class="urgencia-body">
+          <div class="form-field">
+            <label class="form-label" for="u-comuna">Tu comuna</label>
+            <input class="form-input" type="text" id="u-comuna" placeholder="Ej: Pudahuel, Maipú..." autocomplete="address-level2" aria-required="true">
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="u-servicio">Tipo de servicio</label>
+            <select class="form-select" id="u-servicio" aria-required="true">
+              <option value="">Seleccionar...</option>
+              <option>Gasfitería</option>
+              <option>Electricidad</option>
+              <option>Jardinería</option>
+              <option>Pintura</option>
+              <option>Cerrajería</option>
+              <option>Carpintería</option>
+              <option>Limpieza</option>
+              <option>Climatización</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="u-contacto">Tu WhatsApp o Instagram</label>
+            <input class="form-input" type="text" id="u-contacto" placeholder="+56 9 xxxx xxxx / @usuario" aria-required="true">
+          </div>
+          <button class="form-btn" id="urgencia-submit" type="button">
+            Consultar
+            <svg width="16" height="16" aria-hidden="true"><use href="#ico-arrow"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARA MAESTROS -->
+  <section class="section-alt section-pad" id="unete" aria-label="Únete como maestro">
+    <div class="container">
+      <div class="join-grid">
+        <div class="reveal">
+          <div class="eyebrow">Para maestros</div>
+          <h2 class="section-title">¿Eres maestro del<br>hogar? Únete.</h2>
+          <p style="font-size:15px;color:var(--muted);line-height:1.7">
+            Si tienes experiencia y referencias reales, MAESTO te consigue clientes en tu zona.
+            <br><span style="font-family:var(--font-m);font-size:12px;color:var(--muted2);display:block;margin-top:6px">El primer mes es completamente gratis.</span>
+          </p>
+          <div class="join-benefits" role="list">
+            <div class="join-benefit" role="listitem">
+              <div class="jb-icon" aria-hidden="true">📲</div>
+              <div>
+                <div class="jb-title">Clientes en tu zona</div>
+                <div class="jb-text">Te enviamos contactos de personas que necesitan exactamente tu especialidad, cerca de ti.</div>
+              </div>
+            </div>
+            <div class="join-benefit" role="listitem">
+              <div class="jb-icon" aria-hidden="true">✦</div>
+              <div>
+                <div class="jb-title">El sello MAESTO VERIFICADO</div>
+                <div class="jb-text">Úsalo en tu WhatsApp, tarjeta y publicaciones. Tu cliente sabe que te respaldamos.</div>
+              </div>
+            </div>
+            <div class="join-benefit" role="listitem">
+              <div class="jb-icon" aria-hidden="true">💰</div>
+              <div>
+                <div class="jb-title">Tú cobras lo tuyo</div>
+                <div class="jb-text">MAESTO no toca tu dinero. El pago es directo entre tú y el cliente.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="join-card reveal d2">
+          <h3>Cómo ingresar</h3>
+          <p>El proceso toma menos de 5 minutos. Solo necesitas tener referencias reales de clientes anteriores.</p>
+          <div class="join-steps" role="list">
+            <div class="join-step" role="listitem"><span class="js-n" aria-hidden="true">1</span><span>Llena el formulario con tus datos y especialidad</span></div>
+            <div class="join-step" role="listitem"><span class="js-n" aria-hidden="true">2</span><span>MAESTO verifica tus referencias (5 minutos)</span></div>
+            <div class="join-step" role="listitem"><span class="js-n" aria-hidden="true">3</span><span>Publicamos tu ficha y empiezan a llegar contactos</span></div>
+          </div>
+          <div class="join-free">
+            <span style="font-size:20px" aria-hidden="true">🎁</span>
+            <span><strong>Primer mes completamente gratis.</strong> Sin tarjeta, sin contrato.</span>
+          </div>
+          <a href="https://wa.me/56950147783?text=Hola%20MAESTO%2C%20quiero%20unirme%20como%20maestro"
+             target="_blank" rel="noopener"
+             class="btn btn-primary"
+             style="width:100%;justify-content:center">
+            Quiero unirme como maestro →
+          </a>
+          <p class="join-note">
+            También por Instagram:
+            <a href="https://instagram.com/maesto.cl" target="_blank" rel="noopener">@maesto.cl</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CANALES -->
+  <section class="section-pad" id="canales" aria-label="Canales de MAESTO">
+    <div class="container">
+      <div class="reveal">
+        <div class="eyebrow">Dónde estamos</div>
+        <h2 class="section-title">Todos nuestros canales</h2>
+      </div>
+      <div class="canales-grid" role="list">
+        <a href="https://instagram.com/maesto.cl" target="_blank" rel="noopener"
+           class="canal-card reveal d1" role="listitem"
+           style="--c-color:#E1306C;--c-bg:rgba(225,48,108,0.1)"
+           aria-label="Instagram de MAESTO">
+          <div class="canal-ico" aria-hidden="true">📸</div>
+          <div class="canal-name">Instagram</div>
+          <div class="canal-handle">@maesto.cl</div>
+          <p class="canal-desc">Fichas de maestros, trabajos reales y testimonios.</p>
+        </a>
+        <a href="https://wa.me/56950147783" target="_blank" rel="noopener"
+           class="canal-card reveal d2" role="listitem"
+           style="--c-color:#25D366;--c-bg:rgba(37,211,102,0.1)"
+           aria-label="WhatsApp Business de MAESTO">
+          <div class="canal-ico" aria-hidden="true">💬</div>
+          <div class="canal-name">WhatsApp Business</div>
+          <div class="canal-handle">+56 9 5014 7783</div>
+          <p class="canal-desc">Canal principal. Respuesta inmediata en horario laboral.</p>
+        </a>
+        <a href="https://linktr.ee/maesto.cl" target="_blank" rel="noopener"
+           class="canal-card reveal d3" role="listitem"
+           style="--c-color:#43E55E;--c-bg:rgba(67,229,94,0.08)"
+           aria-label="Linktree de MAESTO">
+          <div class="canal-ico" aria-hidden="true">🔗</div>
+          <div class="canal-name">Linktree</div>
+          <div class="canal-handle">linktr.ee/maesto.cl</div>
+          <p class="canal-desc">Hub de navegación. Acceso a todas las categorías.</p>
+        </a>
+        <a href="https://AQUI-GOOGLE-FORMS.CL" target="_blank" rel="noopener"
+           class="canal-card reveal d4" role="listitem"
+           style="--c-color:#C8773A;--c-bg:rgba(200,119,58,0.1)"
+           aria-label="Formulario de registro para maestros">
+          <div class="canal-ico" aria-hidden="true">📋</div>
+          <div class="canal-name">Formulario</div>
+          <div class="canal-handle">Registro de maestros</div>
+          <p class="canal-desc">¿Eres maestro? Ingresa gratis el primer mes.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARRUSEL DE SERVICIOS -->
+  <section class="section-alt section-pad" aria-label="Todos nuestros servicios">
+    <div class="container">
+      <div class="carousel-hd reveal">
+        <div>
+          <div class="eyebrow">Nuestros servicios</div>
+          <h2 class="section-title" style="margin-bottom:0">Todo lo que tu hogar necesita</h2>
+        </div>
+        <div class="carousel-controls" role="group" aria-label="Controles del carrusel">
+          <button class="car-btn" id="carPrev" aria-label="Anterior" disabled>←</button>
+          <button class="car-btn" id="carNext" aria-label="Siguiente">→</button>
+        </div>
+      </div>
+      <div class="car-overflow" role="region" aria-label="Carrusel de servicios">
+        <div class="car-track" id="carTrack" role="list">
+          <div class="car-item" role="listitem"><span class="car-item-icon" aria-hidden="true">🔧</span><div class="car-item-name">Gasfitería</div><p class="car-item-desc">Filtraciones, calefont, cañerías y duchas</p></div>
+          <div class="car-item" role="listitem"><span class="car-item-icon" aria-hidden="true">🌿</span><div class="car-item-name">Jardinería</div><p class="car-item-desc">Mantención, diseño, poda y riego</p></div>
+          <div class="car-item" role="listitem"><span class="car-item-icon" aria-hidden="true">⚡</span><div class="car-item-name">Electricidad</div><p class="car-item-desc">Tableros, enchufes, empalmes</p></div>
+          <div class="car-item" role="listitem"><span class="car-item-icon" aria-hidden="true">🎨</span><div class="car-item-name">Pintura</div><p class="car-item-desc">Interior, exterior, barnizado</p></div>
+          <div class="car-item" role="listitem"><span class="car-item-icon" aria-hidden="true">🪛</span><div class="car-item-name">Carpintería</div><p class="car-item-desc">Muebles, puertas, marcos</p></div>
+          <div class="car-item" role="listitem"><span class="car-item-icon" aria-hidden="true">❄️</span><div class="car-item-name">Climatización</div><p class="car-item-desc">A/A, calefacción, ventilación</p></div>
+          <div class="car-item" role="listitem"><span class="car-item-icon" aria-hidden="true">🔒</span><div class="car-item-name">Cerrajería</div><p class="car-item-desc">Apertura urgente, cambio de chapas</p></div>
+          <div class="car-item" role="listitem"><span class="car-item-icon" aria-hidden="true">🧹</span><div class="car-item-name">Limpieza</div><p class="car-item-desc">Profunda, post-obra, alfombras</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main><!-- /main -->
+
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-logo">MAESTO</div>
+        <div class="footer-brand-tag">Servicios del Hogar Verificados · Chile</div>
+        <p class="footer-brand-desc">Directorio digital de maestros verificados en Santiago. Gasfitería, electricidad, jardinería y más.</p>
+        <div class="footer-social" role="list">
+          <a href="https://instagram.com/maesto.cl" target="_blank" rel="noopener" class="f-social-btn" role="listitem" aria-label="Instagram">📸</a>
+          <a href="https://wa.me/56950147783" target="_blank" rel="noopener" class="f-social-btn" role="listitem" aria-label="WhatsApp">💬</a>
+          <a href="https://linktr.ee/maesto.cl" target="_blank" rel="noopener" class="f-social-btn" role="listitem" aria-label="Linktree">🔗</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Servicios</div>
+        <nav class="footer-links" aria-label="Servicios">
+          <a href="https://wa.me/56950147783?text=Necesito%20un%20gasfiter">Gasfitería</a>
+          <a href="https://wa.me/56950147783?text=Necesito%20un%20electricista">Electricidad</a>
+          <a href="https://wa.me/56950147783?text=Necesito%20un%20jardinero">Jardinería</a>
+          <a href="https://wa.me/56950147783?text=Necesito%20un%20pintor">Pintura</a>
+          <a href="https://wa.me/56950147783?text=Necesito%20un%20cerrajero">Cerrajería</a>
+        </nav>
+      </div>
+      <div>
+        <div class="footer-col-title">MAESTO</div>
+        <nav class="footer-links" aria-label="Navegación MAESTO">
+          <a href="#inicio">Inicio</a>
+          <a href="#servicios">Cómo funciona</a>
+          <a href="#maestros">Maestros verificados</a>
+          <a href="#urgencia">Servicio urgente</a>
+          <a href="#unete">Soy maestro</a>
+          <a href="https://instagram.com/maesto.cl" target="_blank" rel="noopener">@maesto.cl</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 MAESTO · Servicios del Hogar Verificados · Santiago, Chile</div>
+      <div class="footer-seal" aria-label="Sello MAESTO Verificado">✦ MAESTO VERIFICADO</div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ============================================================
+     BOTÓN FLOTANTE WHATSAPP
+     ============================================================ -->
+<div class="wa-float" role="complementary" aria-label="Contacto rápido">
+  <div class="wa-tooltip" aria-hidden="true">¿Necesitas un maestro? 💬</div>
+  <a href="https://wa.me/56950147783?text=Hola%20MAESTO%2C%20necesito%20ayuda%20con%20un%20servicio%20del%20hogar"
+     target="_blank" rel="noopener"
+     class="wa-btn"
+     aria-label="Hablar con MAESTO por WhatsApp">
+    <div class="wa-ring" aria-hidden="true"></div>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-wa"/></svg>
+  </a>
+</div>
+
+
+<!-- ============================================================
+     JAVASCRIPT — mínimo necesario
+     ============================================================ -->
+<script>
+/* Inline animations en hero — se definen aquí para no depender del observer */
+document.querySelectorAll('.anim-fade-up').forEach(el => {
+  el.style.animation = el.style.animation || 'fadeUp 0.7s ease forwards';
+});
+</script>
+
+<script>
+/* ---- Declaraciones únicas ---- */
+const navbar    = document.getElementById('navbar');
+const hamburger = document.getElementById('hamburger');
+const overlay   = document.getElementById('navOverlay');
+
+/* NAVBAR scroll */
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+
+/* HAMBURGER */
+function toggleNav(open) {
+  hamburger.setAttribute('aria-expanded', open);
+  overlay.classList.toggle('open', open);
+  overlay.setAttribute('aria-hidden', !open);
+  document.body.style.overflow = open ? 'hidden' : '';
+}
+hamburger.addEventListener('click', () => {
+  toggleNav(hamburger.getAttribute('aria-expanded') !== 'true');
+});
+overlay.addEventListener('click', e => { if (e.target === overlay) toggleNav(false); });
+overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleNav(false)));
+
+/* SMOOTH SCROLL */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (!target) return;
+    e.preventDefault();
+    window.scrollTo({ top: target.getBoundingClientRect().top + scrollY - 68, behavior: 'smooth' });
+  });
+});
+
+/* SCROLL REVEAL */
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(({ isIntersecting, target }) => {
+    if (isIntersecting) { target.classList.add('visible'); revealObs.unobserve(target); }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+/* ACTIVE NAV */
+const navAs = document.querySelectorAll('.nav-links a[href^="#"]');
+const secObs = new IntersectionObserver(entries => {
+  entries.forEach(({ isIntersecting, target }) => {
+    if (!isIntersecting) return;
+    navAs.forEach(a => {
+      const active = a.getAttribute('href') === '#' + target.id;
+      a.style.color = active ? 'var(--cream)' : '';
+    });
+  });
+}, { threshold: 0.45 });
+document.querySelectorAll('section[id]').forEach(s => secObs.observe(s));
+
+/* CARRUSEL */
+(function() {
+  const track  = document.getElementById('carTrack');
+  const btnP   = document.getElementById('carPrev');
+  const btnN   = document.getElementById('carNext');
+  let idx      = 0;
+
+  function getConfig() {
+    const w = window.innerWidth;
+    const visible = w < 480 ? 1 : w < 768 ? 2 : w < 1024 ? 3 : 4;
+    const itemEl  = track.firstElementChild;
+    const itemW   = itemEl.getBoundingClientRect().width + 14; /* 14 = gap */
+    return { visible, itemW, max: Math.max(0, track.children.length - visible) };
+  }
+
+  function render() {
+    const { itemW, max } = getConfig();
+    idx = Math.min(Math.max(idx, 0), max);
+    track.style.transform = `translateX(-${idx * itemW}px)`;
+    btnP.disabled = idx === 0;
+    btnN.disabled = idx >= max;
+  }
+
+  btnP.addEventListener('click', () => { idx--; render(); });
+  btnN.addEventListener('click', () => { idx++; render(); });
+
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => { idx = 0; render(); }, 150);
+  }, { passive: true });
+
+  /* Swipe táctil */
+  let tx = 0;
+  track.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend', e => {
+    const d = tx - e.changedTouches[0].clientX;
+    if (Math.abs(d) > 48) { d > 0 ? idx++ : idx--; render(); }
+  }, { passive: true });
+
+  render();
+})();
+
+/* FORMULARIO URGENCIA */
+document.getElementById('urgencia-submit').addEventListener('click', () => {
+  const fields = ['u-comuna', 'u-servicio', 'u-contacto'];
+  const vals   = fields.map(id => ({ el: document.getElementById(id), val: document.getElementById(id).value.trim() }));
+  let valid    = true;
+
+  vals.forEach(({ el, val }) => {
+    el.classList.toggle('error', !val);
+    if (!val) {
+      valid = false;
+      el.addEventListener('input', () => el.classList.remove('error'), { once: true });
+    }
+  });
+  if (!valid) return;
+
+  const [comuna, servicio, contacto] = vals.map(v => v.val);
+  const msg = encodeURIComponent(
+    `Hola MAESTO 🚨 Necesito servicio URGENTE.\n\n📍 Comuna: ${comuna}\n🔧 Servicio: ${servicio}\n📱 Contacto: ${contacto}\n\nPor favor contáctenme lo antes posible.`
+  );
+  window.open(`https://wa.me/56950147783?text=${msg}`, '_blank', 'noopener,noreferrer');
+});
+</script>
+
+<style>
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: none; }
+}
+.anim-fade-up { opacity: 0; animation: fadeUp 0.7s ease forwards; }
+</style>
+
+</body>
+</html>
