@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="MAESTO — Directorio verificado de Servicios del hogar en Chile. Gasfitería, electricidad, jardinería y más. Técnicos reales con referencias comprobadas en Santiago.">
-<meta name="theme-color" content="#111318">
+<meta name="theme-color" content="#181B23">
 <meta property="og:title" content="MAESTO · Servicios del hogar Verificados en Santiago, Chile">
 <meta property="og:description" content="Encuentra gasfiteros, electricistas, jardineros y más. Maestros verificados con referencias reales. Sin intermediarios, sin sorpresas.">
 <meta property="og:image" content="https://maesto.cl/og.png">
@@ -25,8 +25,8 @@
   --cu:       #C8773A;
   --cu-l:     #E09B5C;
   --cu-dim:   rgba(200,119,58,0.08);
-  --bg:       #111318;
-  --bg-d:     #0A0B0F;
+  --bg:       #181B23;
+  --bg-d:     #12141A;
   --surf:     #16191F;
   --surf2:    #1C2028;
   --border:   #252830;
@@ -456,6 +456,115 @@ ul { list-style: none; }
   font-family: var(--font-m); font-size: 11px; padding: 4px 10px;
   border-radius: var(--r-sm); background: var(--bg-d); color: var(--muted); letter-spacing: 0.5px;
 }
+
+/* ============================================================
+   FORMULARIO REGISTRO HERO
+   ============================================================ */
+.hero-form-card {
+  background: var(--surf);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  padding: 30px 28px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.hero-form-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--cu), var(--cu-l), transparent);
+}
+.hf-eyebrow {
+  font-family: var(--font-m);
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--cu);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.hf-title {
+  font-family: var(--font-d);
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--cream);
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+.hf-sub {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 6px;
+  line-height: 1.5;
+}
+.hf-free {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--muted2);
+  font-family: var(--font-m);
+  margin-bottom: 16px;
+}
+.hf-free::before { content: '✦'; color: var(--cu); }
+.hf-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.hf-input, .hf-select {
+  background: var(--bg-d);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 11px 14px;
+  font-family: var(--font-b);
+  font-size: 13px;
+  color: var(--cream);
+  outline: none;
+  width: 100%;
+  transition: border-color 0.2s ease;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.hf-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238B909C' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+.hf-input:focus, .hf-select:focus { border-color: var(--cu); }
+.hf-input::placeholder { color: var(--muted2); font-size: 13px; }
+.hf-input.hf-error, .hf-select.hf-error { border-color: #E07070; }
+.hf-submit {
+  width: 100%;
+  background: var(--cu);
+  color: #000;
+  font-family: var(--font-b);
+  font-weight: 700;
+  font-size: 14px;
+  padding: 13px 20px;
+  border-radius: var(--r-md);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  letter-spacing: 0.3px;
+}
+.hf-submit:hover { background: var(--cu-l); transform: translateY(-2px); box-shadow: var(--shadow-cu); }
+.hf-submit:disabled { opacity: 0.6; cursor: default; transform: none; }
+.hf-msg {
+  margin-top: 10px;
+  font-family: var(--font-m);
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  text-align: center;
+  min-height: 16px;
+}
+.hf-msg.ok  { color: var(--green-l); }
+.hf-msg.err { color: #E07070; }
 
 /* ============================================================
    PROBLEMA
@@ -979,6 +1088,111 @@ ul { list-style: none; }
 .car-item-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
 
 /* ============================================================
+   TARJETAS ESPECIALISTAS — carrusel dinámico
+   ============================================================ */
+
+/* Override de ancho para tarjetas de especialista (más contenido) */
+.car-item--esp {
+  width: 240px;
+  align-items: flex-start;
+  text-align: left;
+  padding: 22px 20px;
+  gap: 0;
+  position: relative;
+}
+
+/* Avatar circular con inicial */
+.ce-av {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--cu), var(--cu-l));
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-d); font-size: 18px; font-weight: 900; color: #000;
+  flex-shrink: 0;
+  margin-bottom: 12px;
+  box-shadow: 0 0 0 2px var(--surf), 0 0 0 3px var(--cu);
+}
+.ce-head { margin-bottom: 4px; }
+.ce-name {
+  font-size: 15px; font-weight: 700; color: var(--cream);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  max-width: 190px;
+}
+.ce-cat {
+  font-family: var(--font-m); font-size: 10px; color: var(--cu);
+  letter-spacing: 1px; margin-bottom: 10px;
+}
+.ce-chips {
+  display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px;
+}
+.ce-chip {
+  font-family: var(--font-m); font-size: 10px; padding: 3px 8px;
+  border-radius: var(--r-sm); background: var(--bg-d);
+  color: var(--muted); border: 1px solid var(--border2);
+  white-space: nowrap;
+}
+.ce-zones {
+  font-size: 11px; color: var(--muted2); margin-bottom: 16px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  max-width: 190px;
+}
+.ce-zones::before { content: '📍 '; }
+.ce-btn {
+  display: flex; align-items: center; justify-content: center; gap: 7px;
+  width: 100%;
+  background: rgba(37,211,102,0.1);
+  border: 1px solid rgba(37,211,102,0.3);
+  border-radius: var(--r-sm);
+  padding: 9px 14px;
+  font-family: var(--font-b); font-size: 12px; font-weight: 700;
+  color: var(--wa);
+  transition: background-color 0.25s ease, transform 0.25s ease;
+  cursor: pointer; text-decoration: none;
+  margin-top: auto;
+}
+.ce-btn:hover {
+  background: rgba(37,211,102,0.18);
+  transform: translateY(-1px);
+}
+
+/* Skeleton loader — mientras carga Firestore */
+.car-skeleton {
+  width: 240px; flex-shrink: 0;
+  background: var(--surf);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  padding: 22px 20px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+@keyframes shimmerBg {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+.skel-line {
+  border-radius: var(--r-sm);
+  background: linear-gradient(90deg, var(--border2) 25%, var(--surf2) 50%, var(--border2) 75%);
+  background-size: 400px 100%;
+  animation: shimmerBg 1.4s ease infinite;
+}
+.skel-av   { width: 44px; height: 44px; border-radius: 50%; }
+.skel-name { height: 14px; width: 70%; }
+.skel-cat  { height: 10px; width: 50%; }
+.skel-chip { height: 10px; width: 85%; }
+.skel-zone { height: 10px; width: 60%; }
+.skel-btn  { height: 34px; width: 100%; border-radius: var(--r-sm); margin-top: 6px; }
+
+/* Estado vacío */
+.car-empty {
+  flex-shrink: 0;
+  padding: 40px 32px;
+  color: var(--muted2);
+  font-size: 14px;
+  font-family: var(--font-m);
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+/* ============================================================
    FOOTER
    ============================================================ */
 .footer { background: var(--bg-d); border-top: 1px solid var(--border2); padding: 52px 0 28px; }
@@ -1191,27 +1405,51 @@ ul { list-style: none; }
           </div>
         </div>
 
-        <!-- Tarjeta demo -->
-        <div class="hero-right" aria-hidden="true">
-          <div class="hero-card">
-            <div class="hc-head">
-              <div class="hc-av">C</div>
-              <div>
-                <div class="hc-name">Carlos Medina</div>
-                <div class="hc-spec">GASFITERÍA · MAESTRO</div>
-              </div>
+        <!-- Formulario de registro -->
+        <div class="hero-right">
+          <div class="hero-form-card">
+            <div class="hf-eyebrow">Especialistas · Registro</div>
+            <div class="hf-title">Publica tu servicio<br>completamente gratis</div>
+            <p class="hf-sub">Ingresa al directorio verificado y empieza a recibir clientes en tu zona.</p>
+            <div class="hf-free">Primer mes sin costo · Sin contrato</div>
+
+            <div class="hf-fields">
+              <input class="hf-input" type="text" id="hf-nombre"
+                placeholder="Nombre completo"
+                autocomplete="name" aria-label="Nombre completo" required>
+
+              <select class="hf-select" id="hf-categoria" aria-label="Categoría principal">
+                <option value="">Categoría principal...</option>
+                <option>Gasfitería</option>
+                <option>Electricidad</option>
+                <option>Jardinería</option>
+                <option>Pintura</option>
+                <option>Cerrajería</option>
+                <option>Carpintería</option>
+                <option>Limpieza</option>
+                <option>Climatización</option>
+                <option>Mantención de Parcelas</option>
+                <option>Otro</option>
+              </select>
+
+              <input class="hf-input" type="text" id="hf-servicios"
+                placeholder="Servicios: corte de pasto, pintura fachadas..."
+                aria-label="Servicios que ofrece" required>
+
+              <input class="hf-input" type="text" id="hf-zonas"
+                placeholder="Zonas: Maipú, Pudahuel, Todo Santiago..."
+                aria-label="Zonas donde trabaja" required>
+
+              <input class="hf-input" type="tel" id="hf-telefono"
+                placeholder="Teléfono +569..."
+                autocomplete="tel" aria-label="Número de teléfono" required>
             </div>
-            <div class="hc-stats">
-              <div class="hc-stat"><span class="hc-stat-n">8+</span><span class="hc-stat-l">Años</span></div>
-              <div class="hc-stat"><span class="hc-stat-n">47</span><span class="hc-stat-l">Trabajos</span></div>
-              <div class="hc-stat"><span class="hc-stat-n">5.0</span><span class="hc-stat-l">Rating</span></div>
-            </div>
-            <div class="badge-v" style="margin-bottom:14px">✦ MAESTO VERIFICADO</div>
-            <div class="hc-chips">
-              <span class="chip">Pudahuel</span>
-              <span class="chip">Maipú</span>
-              <span class="chip">Cerrillos</span>
-            </div>
+
+            <button class="hf-submit" id="hf-submit" type="button">
+              Publicar mi servicio gratis
+              <svg width="16" height="16" aria-hidden="true"><use href="#ico-arrow"/></svg>
+            </button>
+            <div class="hf-msg" id="hf-msg" role="status" aria-live="polite"></div>
           </div>
         </div>
 
@@ -1695,30 +1933,48 @@ ul { list-style: none; }
     </div>
   </section>
 
-  <!-- CARRUSEL DE SERVICIOS -->
-  <section class="section-alt section-pad" aria-label="Todos nuestros servicios">
+  <!-- CARRUSEL DE ESPECIALISTAS (dinámico desde Firestore) -->
+  <section class="section-alt section-pad" id="especialistas" aria-label="Especialistas verificados">
     <div class="container">
       <div class="carousel-hd reveal">
         <div>
-          <div class="eyebrow">Nuestros servicios</div>
-          <h2 class="section-title" style="margin-bottom:0">Todo lo que tu hogar necesita</h2>
+          <div class="eyebrow">Directorio en vivo</div>
+          <h2 class="section-title" style="margin-bottom:4px">Especialistas verificados</h2>
+          <p style="font-size:13px;color:var(--muted);font-family:var(--font-m);letter-spacing:0.5px"
+             id="car-count">Cargando directorio...</p>
         </div>
         <div class="carousel-controls" role="group" aria-label="Controles del carrusel">
           <button class="car-btn" id="carPrev" aria-label="Anterior" disabled>←</button>
           <button class="car-btn" id="carNext" aria-label="Siguiente">→</button>
         </div>
       </div>
-      <div class="car-overflow" role="region" aria-label="Carrusel de servicios">
+      <div class="car-overflow" role="region" aria-label="Carrusel de especialistas">
         <div class="car-track" id="carTrack" role="list">
-          <div class="car-item" role="listitem"><span class="car-item-icon" aria-hidden="true">🔧</span><div class="car-item-name">Gasfitería</div><p class="car-item-desc">Filtraciones, calefont, cañerías y duchas</p></div>
-          <div class="car-item" role="listitem"><span class="car-item-icon" aria-hidden="true">🌿</span><div class="car-item-name">Jardinería</div><p class="car-item-desc">Mantención, diseño, poda y riego</p></div>
-          <div class="car-item" role="listitem"><span class="car-item-icon" aria-hidden="true">⚡</span><div class="car-item-name">Electricidad</div><p class="car-item-desc">Tableros, enchufes, empalmes</p></div>
-          <div class="car-item" role="listitem"><span class="car-item-icon" aria-hidden="true">🎨</span><div class="car-item-name">Pintura</div><p class="car-item-desc">Interior, exterior, barnizado</p></div>
-          <div class="car-item" role="listitem"><span class="car-item-icon" aria-hidden="true">🪛</span><div class="car-item-name">Carpintería</div><p class="car-item-desc">Muebles, puertas, marcos</p></div>
-          <div class="car-item" role="listitem"><span class="car-item-icon" aria-hidden="true">❄️</span><div class="car-item-name">Climatización</div><p class="car-item-desc">A/A, calefacción, ventilación</p></div>
-          <div class="car-item" role="listitem"><span class="car-item-icon" aria-hidden="true">🔒</span><div class="car-item-name">Cerrajería</div><p class="car-item-desc">Apertura urgente, cambio de chapas</p></div>
-          <div class="car-item" role="listitem"><span class="car-item-icon" aria-hidden="true">🧹</span><div class="car-item-name">Limpieza</div><p class="car-item-desc">Profunda, post-obra, alfombras</p></div>
-          <div class="car-item" role="listitem"><span class="car-item-icon" aria-hidden="true">🚛</span><div class="car-item-name">Mudanzas</div><p class="car-item-desc">Traslado de muebles, empacado y desempacado.</p></div>
+          <!-- Skeletons de carga — reemplazados por Firebase -->
+          <div class="car-skeleton" aria-hidden="true">
+            <div class="skel-line skel-av"></div>
+            <div class="skel-line skel-name"></div>
+            <div class="skel-line skel-cat"></div>
+            <div class="skel-line skel-chip"></div>
+            <div class="skel-line skel-zone"></div>
+            <div class="skel-line skel-btn"></div>
+          </div>
+          <div class="car-skeleton" aria-hidden="true">
+            <div class="skel-line skel-av"></div>
+            <div class="skel-line skel-name"></div>
+            <div class="skel-line skel-cat"></div>
+            <div class="skel-line skel-chip"></div>
+            <div class="skel-line skel-zone"></div>
+            <div class="skel-line skel-btn"></div>
+          </div>
+          <div class="car-skeleton" aria-hidden="true">
+            <div class="skel-line skel-av"></div>
+            <div class="skel-line skel-name"></div>
+            <div class="skel-line skel-cat"></div>
+            <div class="skel-line skel-chip"></div>
+            <div class="skel-line skel-zone"></div>
+            <div class="skel-line skel-btn"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -1924,6 +2180,205 @@ document.getElementById('urgencia-submit').addEventListener('click', () => {
 }
 .anim-fade-up { opacity: 0; animation: fadeUp 0.7s ease forwards; }
 </style>
+
+<!-- Firebase + Formulario Hero + Carrusel de Especialistas -->
+<script type="module">
+  import { initializeApp }    from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import {
+    getFirestore,
+    collection,
+    addDoc,
+    getDocs,
+    query,
+    where,
+    orderBy
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+  /* ── Config ─────────────────────────────────────────────── */
+  const firebaseConfig = {
+    apiKey:            "AIzaSyBaZ6RFIZyrpuWJKQpBvjOc09FD6UJJTOs",
+    authDomain:        "maesto-chile.firebaseapp.com",
+    projectId:         "maesto-chile",
+    storageBucket:     "maesto-chile.firebasestorage.app",
+    messagingSenderId: "33979277300",
+    appId:             "1:33979277300:web:738ba23e4de9cf036263a1",
+    measurementId:     "G-Y48HDFH3YQ"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db  = getFirestore(app);
+
+  /* ═══════════════════════════════════════════════════════════
+     FORMULARIO HERO — registro de especialistas
+  ═══════════════════════════════════════════════════════════ */
+  const btn   = document.getElementById('hf-submit');
+  const msg   = document.getElementById('hf-msg');
+  const ids   = ['hf-nombre','hf-categoria','hf-servicios','hf-zonas','hf-telefono'];
+
+  function getEl(id) { return document.getElementById(id); }
+
+  function validate() {
+    let ok = true;
+    ids.forEach(id => {
+      const el = getEl(id);
+      const empty = !el.value.trim();
+      el.classList.toggle('hf-error', empty);
+      if (empty) {
+        ok = false;
+        el.addEventListener('input', () => el.classList.remove('hf-error'), { once: true });
+      }
+    });
+    return ok;
+  }
+
+  btn.addEventListener('click', async () => {
+    if (!validate()) {
+      msg.textContent = 'Por favor completa todos los campos.';
+      msg.className = 'hf-msg err';
+      return;
+    }
+    btn.disabled = true;
+    btn.textContent = 'Publicando...';
+    msg.textContent = '';
+    msg.className = 'hf-msg';
+    try {
+      await addDoc(collection(db, 'Especialistas'), {
+        nombre:     getEl('hf-nombre').value.trim(),
+        categoria:  getEl('hf-categoria').value.trim(),
+        servicios:  getEl('hf-servicios').value.split(',').map(s => s.trim()).filter(Boolean),
+        zonas:      getEl('hf-zonas').value.split(',').map(z => z.trim()).filter(Boolean),
+        telefono:   getEl('hf-telefono').value.trim(),
+        whatsapp:   true,
+        disponible: true,
+        fecha:      new Date().toISOString()
+      });
+      msg.textContent = '✅ ¡Publicado! Te contactamos pronto.';
+      msg.className = 'hf-msg ok';
+      ids.forEach(id => { getEl(id).value = ''; });
+      btn.textContent = '¡Listo! Publicado correctamente';
+      btn.style.background = 'var(--green-l)';
+      /* Recargar carrusel para mostrar el nuevo especialista */
+      cargarEspecialistas();
+    } catch (err) {
+      console.error(err);
+      msg.textContent = '❌ Error al publicar. Inténtalo de nuevo.';
+      msg.className = 'hf-msg err';
+      btn.disabled = false;
+      btn.innerHTML = 'Publicar mi servicio gratis <svg width="16" height="16" aria-hidden="true"><use href="#ico-arrow"/></svg>';
+    }
+  });
+
+  /* ═══════════════════════════════════════════════════════════
+     CARRUSEL DE ESPECIALISTAS — Firestore → DOM
+  ═══════════════════════════════════════════════════════════ */
+
+  /* Emoji por categoría */
+  const CAT_EMOJI = {
+    'gasfitería':            '🔧',
+    'electricidad':          '⚡',
+    'jardinería':            '🌿',
+    'pintura':               '🎨',
+    'cerrajería':            '🔒',
+    'carpintería':           '🪛',
+    'limpieza':              '🧹',
+    'climatización':         '❄️',
+    'mantención de parcelas':'🌾',
+    'mudanzas':              '🚛',
+  };
+
+  function getEmoji(categoria) {
+    return CAT_EMOJI[categoria.toLowerCase()] || '🛠';
+  }
+
+  /* Construir HTML de una tarjeta de especialista */
+  function buildCard(esp) {
+    const inicial  = (esp.nombre || '?')[0].toUpperCase();
+    const emoji    = getEmoji(esp.categoria || '');
+    const chips    = (esp.servicios || []).slice(0, 3)
+                       .map(s => `<span class="ce-chip">${s}</span>`).join('');
+    const zonasTxt = (esp.zonas || []).slice(0, 2).join(', ');
+    const waMsg    = encodeURIComponent(
+      `Necesito al siguiente especialista: ${esp.nombre} (${esp.categoria})`
+    );
+    const waLink   = `https://wa.me/56950147783?text=${waMsg}`;
+
+    return `
+      <div class="car-item car-item--esp" role="listitem">
+        <div class="ce-av">${inicial}</div>
+        <div class="ce-head">
+          <div class="ce-name">${esp.nombre}</div>
+          <div class="ce-cat">${emoji} ${esp.categoria}</div>
+        </div>
+        <div class="ce-chips">${chips}</div>
+        <div class="ce-zones">${zonasTxt}</div>
+        <a href="${waLink}" target="_blank" rel="noopener" class="ce-btn"
+           aria-label="Contactar a ${esp.nombre} por WhatsApp">
+          <svg width="14" height="14" aria-hidden="true" fill="currentColor"
+               viewBox="0 0 24 24"><use href="#ico-wa"/></svg>
+          Contactar
+        </a>
+      </div>`;
+  }
+
+  /* Referencia al JS existente del carrusel para re-renderizar tras carga */
+  function notifyCarousel() {
+    /* Dispara un resize sintético — el IIFE del carrusel escucha resize con debounce */
+    window.dispatchEvent(new Event('resize'));
+  }
+
+  /* Función principal — lee Firestore y puebla el carrusel */
+  async function cargarEspecialistas() {
+    const track   = document.getElementById('carTrack');
+    const counter = document.getElementById('car-count');
+
+    try {
+      /* Query: solo disponibles, ordenados por fecha descendente */
+      const q      = query(
+        collection(db, 'Especialistas'),
+        where('disponible', '==', true),
+        orderBy('fecha', 'desc')
+      );
+      const snap   = await getDocs(q);
+      const docs   = snap.docs.map(d => d.data());
+
+      /* Limpiar skeletons */
+      track.innerHTML = '';
+
+      if (docs.length === 0) {
+        track.innerHTML = `
+          <div class="car-empty" role="status">
+            Aún no hay especialistas registrados.<br>
+            ¡Sé el primero en publicar tu servicio!
+          </div>`;
+        counter.textContent = '0 especialistas activos';
+        notifyCarousel();
+        return;
+      }
+
+      /* Renderizar tarjetas */
+      track.innerHTML = docs.map(buildCard).join('');
+
+      /* Contador */
+      const total = docs.length;
+      counter.textContent = `${total} especialista${total !== 1 ? 's' : ''} activo${total !== 1 ? 's' : ''}`;
+
+      /* Informar al carrusel que el DOM cambió */
+      notifyCarousel();
+
+    } catch (err) {
+      console.error('Error al cargar especialistas:', err);
+      track.innerHTML = `
+        <div class="car-empty" role="alert">
+          Error al cargar el directorio. Intenta recargar la página.
+        </div>`;
+      if (counter) counter.textContent = '';
+    }
+  }
+
+  /* Ejecutar al cargar la página */
+  cargarEspecialistas();
+
+</script>
 
 </body>
 </html>
