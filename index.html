@@ -953,11 +953,68 @@ footer{background:var(--bg2);border-top:1px solid var(--border2);padding:52px 0 
 
 /* Admin responsive */
 @media(max-width:780px){
-  .adm-body{grid-template-columns:1fr}
-  .adm-list-col{max-height:220px;border-right:none;border-bottom:1px solid var(--border2)}
+  /* Header — compacto */
+  .adm-header{padding:0 12px;gap:8px;height:52px}
+  .adm-tag{display:none}
+  .adm-hbtn span{display:none} /* solo iconos */
+  .adm-hbtn{padding:7px 10px;font-size:11px}
+
+  /* Body — single view, cambia con JS */
+  .adm-body{
+    grid-template-columns:1fr;
+    grid-template-rows:1fr;
+    position:relative;
+    overflow:hidden;
+  }
+
+  /* Lista ocupa todo, se oculta cuando hay form activo */
+  .adm-list-col{
+    position:absolute;inset:0;
+    border-right:none;
+    transform:translateX(0);
+    transition:transform .3s var(--ease);
+    z-index:2;
+  }
+  .adm-list-col.slide-out{
+    transform:translateX(-100%);
+    pointer-events:none;
+  }
+
+  /* Form ocupa todo, empieza fuera de pantalla */
+  .adm-form-col{
+    position:absolute;inset:0;
+    padding:20px 16px;
+    transform:translateX(100%);
+    transition:transform .3s var(--ease);
+    z-index:1;
+    background:var(--bg2);
+  }
+  .adm-form-col.slide-in{
+    transform:translateX(0);
+    z-index:3;
+  }
+
+  /* Botón volver dentro del form */
+  .adm-back-btn{
+    display:flex;align-items:center;gap:8px;
+    font-size:13px;font-weight:600;color:var(--muted);
+    margin-bottom:20px;padding:8px 0;
+    transition:color var(--t);
+  }
+  .adm-back-btn:hover{color:var(--cream)}
+
+  /* Form de 1 columna */
   .adm-form{grid-template-columns:1fr}
   .adm-form .full{grid-column:1}
-  .adm-form-col{padding:20px 16px}
+
+  /* Actions en columna */
+  .adm-form-actions{flex-wrap:wrap}
+  .adm-del-btn{margin-left:0;width:100%;justify-content:center}
+}
+
+@media(max-width:480px){
+  .adm-header-actions .adm-hbtn:not(:last-child):not(.danger){display:none}
+  .adm-logo{font-size:14px}
 }
 
 /* ─── RESPONSIVE ─────────────────────────────── */
@@ -1826,6 +1883,9 @@ function openAdmin() {
 function closeAdmin() {
   setState({ isAdminOpen: false, selectedId: null });
   document.getElementById('adminPanel').classList.remove('open');
+  // Reset mobile slide state
+  document.querySelector('.adm-list-col')?.classList.remove('slide-out');
+  document.getElementById('admFormCol')?.classList.remove('slide-in');
   document.body.style.overflow = '';
 }
 
@@ -1871,6 +1931,23 @@ document.getElementById('admClose').addEventListener('click', closeAdmin);
 document.getElementById('admLogout').addEventListener('click', closeAdmin);
 
 /* ═══════════════════════════════════════════════
+   ADMIN — MOBILE SLIDE HELPERS
+   ═══════════════════════════════════════════════ */
+function isMobile() { return window.innerWidth <= 780; }
+
+function admShowForm() {
+  if (!isMobile()) return;
+  document.querySelector('.adm-list-col').classList.add('slide-out');
+  document.getElementById('admFormCol').classList.add('slide-in');
+}
+
+function admShowList() {
+  if (!isMobile()) return;
+  document.querySelector('.adm-list-col').classList.remove('slide-out');
+  document.getElementById('admFormCol').classList.remove('slide-in');
+}
+
+/* ═══════════════════════════════════════════════
    ADMIN — RENDER LIST
    ═══════════════════════════════════════════════ */
 function renderAdminList() {
@@ -1902,7 +1979,7 @@ function renderAdminList() {
   items.querySelectorAll('.adm-item').forEach(el => {
     el.addEventListener('click', () => {
       const m = state.maestros.find(x => x.id === el.dataset.id);
-      if (m) { setState({ selectedId: m.id }); renderAdminList(); renderAdminForm(m); }
+      if (m) { setState({ selectedId: m.id }); renderAdminList(); renderAdminForm(m); admShowForm(); }
     });
   });
 }
@@ -1921,6 +1998,7 @@ function renderAdminForm(m = null) {
   const col = document.getElementById('admFormCol');
 
   col.innerHTML = `
+    <button class="adm-back-btn" id="admBackBtn">← Volver a la lista</button>
     <div class="adm-form-title">${isNew ? 'Agregar maestro' : 'Editar maestro'}</div>
     <div class="adm-form-sub">${isNew ? 'Completa todos los campos obligatorios.' : `ID: ${m.id}`}</div>
     <form id="admForm" class="adm-form" novalidate>
@@ -1972,10 +2050,18 @@ function renderAdminForm(m = null) {
       </div>
     </form>`;
 
+  document.getElementById('admBackBtn').addEventListener('click', () => {
+    admShowList();
+    setState({ selectedId: null });
+    renderAdminList();
+  });
+
   document.getElementById('admFormCancel').addEventListener('click', () => {
     setState({ selectedId: null });
     renderAdminList();
-    col.innerHTML = `<div class="adm-empty"><div class="adm-empty-icon">🔧</div><p>Selecciona un maestro para editar, o presiona "Agregar maestro".</p></div>`;
+    admShowList();
+    col.innerHTML = `<button class="adm-back-btn" id="admBackBtnEmpty">← Volver a la lista</button><div class="adm-empty"><div class="adm-empty-icon">🔧</div><p>Selecciona un maestro para editar, o presiona "Agregar maestro".</p></div>`;
+    document.getElementById('admBackBtnEmpty')?.addEventListener('click', () => admShowList());
   });
 
   if (!isNew) {
@@ -1983,7 +2069,9 @@ function renderAdminForm(m = null) {
       if (confirm(`¿Eliminar a ${m.nombre}? Esta acción no se puede deshacer.`)) {
         deleteMaestro(m.id);
         toast(`🗑 ${m.nombre} eliminado.`, 'err');
-        col.innerHTML = `<div class="adm-empty"><div class="adm-empty-icon">🔧</div><p>Maestro eliminado correctamente.</p></div>`;
+        admShowList();
+        col.innerHTML = `<button class="adm-back-btn" id="admBackBtnDel">← Volver a la lista</button><div class="adm-empty"><div class="adm-empty-icon">🔧</div><p>Maestro eliminado correctamente.</p></div>`;
+        document.getElementById('admBackBtnDel')?.addEventListener('click', () => admShowList());
       }
     });
   }
@@ -2026,7 +2114,9 @@ function renderAdminForm(m = null) {
 
     setState({ selectedId: null });
     renderAdminList();
-    col.innerHTML = `<div class="adm-empty"><div class="adm-empty-icon">🔧</div><p>Cambios guardados. Selecciona otro maestro o agrega uno nuevo.</p></div>`;
+    admShowList();
+    col.innerHTML = `<button class="adm-back-btn" id="admBackBtnSave">← Volver a la lista</button><div class="adm-empty"><div class="adm-empty-icon">🔧</div><p>Cambios guardados. Selecciona otro maestro o agrega uno nuevo.</p></div>`;
+    document.getElementById('admBackBtnSave')?.addEventListener('click', () => admShowList());
   });
 }
 
@@ -2037,6 +2127,7 @@ document.getElementById('admAddBtn').addEventListener('click', () => {
   setState({ selectedId: null });
   renderAdminList();
   renderAdminForm(null);
+  admShowForm();
 });
 
 // Search admin
