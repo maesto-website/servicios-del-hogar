@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#111318">
-<title>MAESTO · Servicios del Hogar Verificados</title>
+<title>MAESTO · Servicios Verificados</title>
 <meta name="description" content="Encuentra maestros verificados cerca de ti. Gasfitería, electricidad, pintura y más. Directo al WhatsApp, sin intermediarios.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -693,241 +693,241 @@ footer{background:var(--bg2);border-top:1px solid var(--border2);padding:52px 0 
 .reveal.d2{transition-delay:.16s}
 .reveal.d3{transition-delay:.24s}
 
-/* ─── ADMIN BUTTON — en navbar ───────────────── */
+/* ─── navbar extra ───────────────────────────── */
 
-/* ─── PASSWORD MODAL ─────────────────────────── */
-#pwOverlay{
+/* ─── gate layer ─────────────────────────────── */
+#gateLayer{
   display:none;position:fixed;inset:0;z-index:1100;
   background:rgba(8,10,14,.85);backdrop-filter:blur(12px);
   align-items:center;justify-content:center;padding:20px;
 }
-#pwOverlay.open{display:flex}
-.pw-box{
+#gateLayer.open{display:flex}
+.gate-box{
   background:var(--bg2);border:1px solid var(--border);
   border-radius:var(--r-lg);padding:32px;width:100%;max-width:360px;
   animation:modal-in .25s var(--ease) both;
   position:relative;
 }
-.pw-box::before{
+.gate-box::before{
   content:'';position:absolute;top:0;left:0;right:0;height:2px;
   background:linear-gradient(90deg,var(--c),var(--c-lt));
   border-radius:var(--r-lg) var(--r-lg) 0 0;
 }
-.pw-title{
+.gate-heading{
   font-family:var(--font-d);font-size:20px;font-weight:800;
   margin-bottom:6px;
 }
-.pw-sub{font-size:12px;color:var(--muted2);margin-bottom:24px;font-family:var(--font-m)}
-.pw-input{
+.gate-sub{font-size:12px;color:var(--muted2);margin-bottom:24px;font-family:var(--font-m)}
+.gate-key{
   width:100%;padding:12px 15px;background:rgba(255,255,255,.04);
   border:1px solid rgba(255,255,255,.09);border-radius:10px;
   font-size:14px;color:var(--cream);margin-bottom:12px;
   transition:border-color var(--t),box-shadow var(--t);
   letter-spacing:.1em;
 }
-.pw-input:focus{outline:none;border-color:rgba(200,119,58,.45);box-shadow:0 0 0 3px rgba(200,119,58,.1)}
-.pw-input.shake{animation:shake .35s ease}
+.gate-key:focus{outline:none;border-color:rgba(200,119,58,.45);box-shadow:0 0 0 3px rgba(200,119,58,.1)}
+.gate-key.shake{animation:shake .35s ease}
 @keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
-.pw-err{font-size:11px;color:#e07a7a;margin-bottom:12px;display:none;font-family:var(--font-m)}
-.pw-err.show{display:block}
-.pw-row{display:flex;gap:10px}
-.pw-row .btn{flex:1;justify-content:center;padding:12px}
+.gate-note{font-size:11px;color:#e07a7a;margin-bottom:12px;display:none;font-family:var(--font-m)}
+.gate-note.show{display:block}
+.gate-row{display:flex;gap:10px}
+.gate-row .btn{flex:1;justify-content:center;padding:12px}
 
-/* ─── ADMIN PANEL ────────────────────────────── */
-#adminPanel{
+/* ─── section overlay ────────────────────────── */
+#sectionLayer{
   display:none;position:fixed;inset:0;z-index:1050;
   background:rgba(8,10,14,.92);backdrop-filter:blur(16px);
   flex-direction:column;
 }
-#adminPanel.open{display:flex}
+#sectionLayer.open{display:flex}
 
-.adm-header{
+.layer-top{
   height:56px;flex-shrink:0;
   display:flex;align-items:center;gap:12px;
   padding:0 20px;
   background:var(--bg2);border-bottom:1px solid var(--border2);
 }
-.adm-logo{
+.layer-brand{
   font-family:var(--font-d);font-size:17px;font-weight:900;
   background:linear-gradient(135deg,var(--cream),var(--c-lt),var(--c));
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
   margin-right:6px;
 }
-.adm-tag{font-family:var(--font-m);font-size:9px;letter-spacing:2px;color:var(--muted2);text-transform:uppercase}
-.adm-header-actions{display:flex;gap:8px;margin-left:auto;align-items:center}
-.adm-hbtn{
+.layer-tag{font-family:var(--font-m);font-size:9px;letter-spacing:2px;color:var(--muted2);text-transform:uppercase}
+.layer-top-actions{display:flex;gap:8px;margin-left:auto;align-items:center}
+.layer-tbtn{
   display:flex;align-items:center;gap:6px;
   padding:7px 14px;border-radius:100px;font-size:12px;font-weight:600;
   background:var(--surf);border:1px solid var(--border);color:var(--muted);
   transition:var(--t);font-family:var(--font-m);
 }
-.adm-hbtn:hover{color:var(--cream);border-color:var(--border);background:var(--bg3)}
-.adm-hbtn.danger:hover{color:#e07a7a;border-color:rgba(220,60,60,.3);background:rgba(220,60,60,.08)}
-.adm-close{
+.layer-tbtn:hover{color:var(--cream);border-color:var(--border);background:var(--bg3)}
+.layer-tbtn.danger:hover{color:#e07a7a;border-color:rgba(220,60,60,.3);background:rgba(220,60,60,.08)}
+.layer-dismiss{
   width:32px;height:32px;border-radius:50%;
   background:rgba(255,255,255,.05);border:1px solid var(--border);
   color:var(--cream);font-size:16px;
   display:flex;align-items:center;justify-content:center;
   transition:var(--t);margin-left:4px;
 }
-.adm-close:hover{background:rgba(220,60,60,.12);border-color:rgba(220,60,60,.3)}
+.layer-dismiss:hover{background:rgba(220,60,60,.12);border-color:rgba(220,60,60,.3)}
 
-.adm-body{
+.layer-body{
   flex:1;display:grid;grid-template-columns:340px 1fr;
   overflow:hidden;
 }
 
 /* Left list */
-.adm-list-col{
+.layer-index{
   display:flex;flex-direction:column;
   border-right:1px solid var(--border2);
   background:var(--bg2);overflow:hidden;
 }
-.adm-list-head{
+.layer-index-head{
   padding:14px 16px;border-bottom:1px solid var(--border2);
   display:flex;flex-direction:column;gap:10px;flex-shrink:0;
 }
 .adm-count{font-family:var(--font-m);font-size:10px;color:var(--muted2);letter-spacing:1px;text-transform:uppercase}
-.adm-search-wrap{position:relative}
-.adm-search{
+.layer-sw{position:relative}
+.layer-sq{
   width:100%;padding:9px 12px 9px 34px;
   background:rgba(255,255,255,.04);border:1px solid var(--border2);
   border-radius:10px;font-size:13px;color:var(--cream);
   transition:border-color var(--t);
 }
-.adm-search:focus{outline:none;border-color:rgba(200,119,58,.4)}
-.adm-search-wrap::before{
+.layer-sq:focus{outline:none;border-color:rgba(200,119,58,.4)}
+.layer-sw::before{
   content:'';position:absolute;left:11px;top:50%;transform:translateY(-50%);
   width:13px;height:13px;pointer-events:none;
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgba(242,237,228,.25)' stroke-width='2.5' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='M21 21l-4.35-4.35'/%3E%3C/svg%3E") center/contain no-repeat;
 }
-.adm-cat-filter{
+.layer-cf{
   display:flex;gap:5px;flex-wrap:nowrap;overflow-x:auto;
   scrollbar-width:none;padding-bottom:2px;
 }
-.adm-cat-filter::-webkit-scrollbar{display:none}
-.adm-cf-btn{
+.layer-cf::-webkit-scrollbar{display:none}
+.layer-cfb{
   flex-shrink:0;padding:5px 10px;border-radius:100px;font-size:10px;font-weight:700;
   background:rgba(255,255,255,.03);border:1px solid var(--border2);color:var(--muted2);
   transition:var(--t);font-family:var(--font-m);letter-spacing:.5px;
 }
-.adm-cf-btn:hover,.adm-cf-btn.on{background:rgba(200,119,58,.1);border-color:rgba(200,119,58,.3);color:var(--c-lt)}
+.layer-cfb:hover,.layer-cfb.on{background:rgba(200,119,58,.1);border-color:rgba(200,119,58,.3);color:var(--c-lt)}
 
-.adm-list-items{flex:1;overflow-y:auto;padding:8px}
-.adm-list-items::-webkit-scrollbar{width:4px}
-.adm-list-items::-webkit-scrollbar-thumb{background:var(--line);border-radius:2px}
+.layer-list{flex:1;overflow-y:auto;padding:8px}
+.layer-list::-webkit-scrollbar{width:4px}
+.layer-list::-webkit-scrollbar-thumb{background:var(--line);border-radius:2px}
 
-.adm-item{
+.layer-row{
   display:flex;align-items:center;gap:10px;
   padding:10px 12px;border-radius:10px;cursor:pointer;
   border:1px solid transparent;
   transition:background var(--t),border-color var(--t);
   margin-bottom:4px;
 }
-.adm-item:hover{background:rgba(255,255,255,.04)}
-.adm-item.active{background:rgba(200,119,58,.08);border-color:rgba(200,119,58,.2)}
-.adm-item-ava{
+.layer-row:hover{background:rgba(255,255,255,.04)}
+.layer-row.active{background:rgba(200,119,58,.08);border-color:rgba(200,119,58,.2)}
+.layer-row-ava{
   width:38px;height:38px;border-radius:10px;flex-shrink:0;
   display:flex;align-items:center;justify-content:center;
   font-family:var(--font-d);font-weight:700;font-size:13px;color:#fff;
 }
-.adm-item-name{font-size:13px;font-weight:600;color:var(--cream);margin-bottom:1px;
+.layer-row-name{font-size:13px;font-weight:600;color:var(--cream);margin-bottom:1px;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:180px;}
-.adm-item-cat{font-size:10px;color:var(--muted2);font-family:var(--font-m)}
-.adm-item-badges{display:flex;gap:4px;margin-left:auto;flex-shrink:0}
-.adm-star{
+.layer-row-cat{font-size:10px;color:var(--muted2);font-family:var(--font-m)}
+.layer-row-badges{display:flex;gap:4px;margin-left:auto;flex-shrink:0}
+.layer-score{
   font-size:10px;color:var(--c);background:rgba(200,119,58,.1);
   padding:2px 5px;border-radius:5px;font-family:var(--font-m);font-weight:700;
 }
-.adm-star.dest{color:#f59e0b;background:rgba(245,158,11,.12)}
-.adm-add-btn{
+.layer-score.dest{color:#f59e0b;background:rgba(245,158,11,.12)}
+.layer-new{
   margin:8px;padding:11px;border-radius:10px;
   background:rgba(200,119,58,.08);border:1px dashed rgba(200,119,58,.3);
   color:var(--c-lt);font-size:13px;font-weight:600;
   display:flex;align-items:center;justify-content:center;gap:6px;
   transition:var(--t);flex-shrink:0;
 }
-.adm-add-btn:hover{background:rgba(200,119,58,.14);border-style:solid}
+.layer-new:hover{background:rgba(200,119,58,.14);border-style:solid}
 
 /* Right form */
-.adm-form-col{
+.layer-detail{
   overflow-y:auto;padding:28px 32px;background:var(--bg);
 }
-.adm-form-col::-webkit-scrollbar{width:5px}
-.adm-form-col::-webkit-scrollbar-thumb{background:var(--line);border-radius:2px}
-.adm-form-title{
+.layer-detail::-webkit-scrollbar{width:5px}
+.layer-detail::-webkit-scrollbar-thumb{background:var(--line);border-radius:2px}
+.layer-detail-title{
   font-family:var(--font-d);font-size:22px;font-weight:800;
   margin-bottom:4px;
 }
-.adm-form-sub{font-size:12px;color:var(--muted2);margin-bottom:24px;font-family:var(--font-m)}
+.layer-detail-sub{font-size:12px;color:var(--muted2);margin-bottom:24px;font-family:var(--font-m)}
 
-.adm-form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.adm-form .full{grid-column:1/-1}
-.adm-f-label{
+.layer-fields{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.layer-fields .full{grid-column:1/-1}
+.layer-fl{
   display:block;font-size:10px;font-weight:700;letter-spacing:.1em;
   text-transform:uppercase;color:var(--muted2);margin-bottom:6px;font-family:var(--font-m);
 }
-.adm-f-input,.adm-f-select,.adm-f-textarea{
+.layer-fi,.layer-fs,.layer-ft{
   width:100%;padding:11px 14px;
   background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);
   border-radius:10px;font-size:13px;color:var(--cream);
   transition:border-color var(--t),box-shadow var(--t);
   -webkit-appearance:none;
 }
-.adm-f-textarea{height:80px;resize:vertical;font-size:13px;line-height:1.5}
-.adm-f-input::placeholder,.adm-f-textarea::placeholder{color:var(--muted2)}
-.adm-f-input:focus,.adm-f-select:focus,.adm-f-textarea:focus{
+.layer-ft{height:80px;resize:vertical;font-size:13px;line-height:1.5}
+.layer-fi::placeholder,.layer-ft::placeholder{color:var(--muted2)}
+.layer-fi:focus,.layer-fs:focus,.layer-ft:focus{
   outline:none;border-color:rgba(200,119,58,.45);box-shadow:0 0 0 3px rgba(200,119,58,.1)
 }
-.adm-f-input.err,.adm-f-select.err{border-color:rgba(220,60,60,.5)}
-.adm-f-select{
+.layer-fi.err,.layer-fs.err{border-color:rgba(220,60,60,.5)}
+.layer-fs{
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23C8773A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
   background-repeat:no-repeat;background-position:right 12px center;
   padding-right:34px;cursor:pointer;
 }
-.adm-f-select option{background:var(--bg2)}
+.layer-fs option{background:var(--bg2)}
 
-.adm-toggle-row{
+.layer-toggle-row{
   display:flex;align-items:center;justify-content:space-between;
   padding:12px 14px;background:rgba(255,255,255,.03);
   border:1px solid var(--border2);border-radius:10px;
 }
-.adm-toggle-label{font-size:13px;font-weight:500;color:var(--cream)}
-.adm-toggle-sub{font-size:11px;color:var(--muted2)}
-.adm-toggle{position:relative;width:40px;height:22px;flex-shrink:0}
-.adm-toggle input{opacity:0;width:0;height:0}
-.adm-toggle-slider{
+.layer-toggle-label{font-size:13px;font-weight:500;color:var(--cream)}
+.layer-toggle-sub{font-size:11px;color:var(--muted2)}
+.layer-toggle{position:relative;width:40px;height:22px;flex-shrink:0}
+.layer-toggle input{opacity:0;width:0;height:0}
+.layer-toggle-slider{
   position:absolute;inset:0;border-radius:11px;
   background:rgba(255,255,255,.1);border:1px solid var(--border);
   cursor:pointer;transition:background var(--t),border-color var(--t);
 }
-.adm-toggle-slider::before{
+.layer-toggle-slider::before{
   content:'';position:absolute;width:16px;height:16px;border-radius:50%;
   top:2px;left:2px;background:#fff;transition:transform var(--t),opacity var(--t);
   opacity:.5;
 }
-.adm-toggle input:checked+.adm-toggle-slider{background:rgba(200,119,58,.5);border-color:rgba(200,119,58,.6)}
-.adm-toggle input:checked+.adm-toggle-slider::before{transform:translateX(18px);opacity:1}
+.layer-toggle input:checked+.layer-toggle-slider{background:rgba(200,119,58,.5);border-color:rgba(200,119,58,.6)}
+.layer-toggle input:checked+.layer-toggle-slider::before{transform:translateX(18px);opacity:1}
 
-.adm-form-actions{
+.layer-fields-actions{
   grid-column:1/-1;display:flex;gap:10px;
   padding-top:18px;border-top:1px solid var(--border2);margin-top:4px;
 }
-.adm-form-actions .btn{padding:12px 24px;font-size:13px}
-.adm-del-btn{
+.layer-fields-actions .btn{padding:12px 24px;font-size:13px}
+.layer-remove-btn{
   margin-left:auto;padding:12px 18px;border-radius:100px;
   font-size:12px;font-weight:700;font-family:var(--fd);
   color:#e07a7a;background:rgba(220,60,60,.08);border:1px solid rgba(220,60,60,.2);
   transition:var(--t);display:flex;align-items:center;gap:6px;
 }
-.adm-del-btn:hover{background:rgba(220,60,60,.16);border-color:rgba(220,60,60,.4)}
+.layer-remove-btn:hover{background:rgba(220,60,60,.16);border-color:rgba(220,60,60,.4)}
 
-.adm-empty{
+.layer-placeholder{
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   height:100%;gap:12px;color:var(--muted2);text-align:center;padding:40px;
 }
-.adm-empty-icon{font-size:40px;opacity:.4}
-.adm-empty p{font-size:13px;line-height:1.6;max-width:260px}
+.layer-placeholder-icon{font-size:40px;opacity:.4}
+.layer-placeholder p{font-size:13px;line-height:1.6;max-width:260px}
 
 /* ─── TOAST ──────────────────────────────────── */
 #toastContainer{
@@ -951,16 +951,16 @@ footer{background:var(--bg2);border-top:1px solid var(--border2);padding:52px 0 
 .toast.err{border-color:rgba(220,60,60,.3);color:#e07a7a}
 .toast.info{border-color:rgba(200,119,58,.3);color:var(--c-lt)}
 
-/* Admin responsive */
+/* ─── responsive overlay ─── */
 @media(max-width:780px){
   /* Header — compacto */
-  .adm-header{padding:0 12px;gap:8px;height:52px}
-  .adm-tag{display:none}
-  .adm-hbtn span{display:none} /* solo iconos */
-  .adm-hbtn{padding:7px 10px;font-size:11px}
+  .layer-top{padding:0 12px;gap:8px;height:52px}
+  .layer-tag{display:none}
+  .layer-tbtn span{display:none} /* solo iconos */
+  .layer-tbtn{padding:7px 10px;font-size:11px}
 
   /* Body — single view, cambia con JS */
-  .adm-body{
+  .layer-body{
     grid-template-columns:1fr;
     grid-template-rows:1fr;
     position:relative;
@@ -968,20 +968,20 @@ footer{background:var(--bg2);border-top:1px solid var(--border2);padding:52px 0 
   }
 
   /* Lista ocupa todo, se oculta cuando hay form activo */
-  .adm-list-col{
+  .layer-index{
     position:absolute;inset:0;
     border-right:none;
     transform:translateX(0);
     transition:transform .3s var(--ease);
     z-index:2;
   }
-  .adm-list-col.slide-out{
+  .layer-index.slide-out{
     transform:translateX(-100%);
     pointer-events:none;
   }
 
   /* Form ocupa todo, empieza fuera de pantalla */
-  .adm-form-col{
+  .layer-detail{
     position:absolute;inset:0;
     padding:20px 16px;
     transform:translateX(100%);
@@ -989,32 +989,32 @@ footer{background:var(--bg2);border-top:1px solid var(--border2);padding:52px 0 
     z-index:1;
     background:var(--bg2);
   }
-  .adm-form-col.slide-in{
+  .layer-detail.slide-in{
     transform:translateX(0);
     z-index:3;
   }
 
   /* Botón volver dentro del form */
-  .adm-back-btn{
+  .layer-nav-back{
     display:flex;align-items:center;gap:8px;
     font-size:13px;font-weight:600;color:var(--muted);
     margin-bottom:20px;padding:8px 0;
     transition:color var(--t);
   }
-  .adm-back-btn:hover{color:var(--cream)}
+  .layer-nav-back:hover{color:var(--cream)}
 
   /* Form de 1 columna */
-  .adm-form{grid-template-columns:1fr}
-  .adm-form .full{grid-column:1}
+  .layer-fields{grid-template-columns:1fr}
+  .layer-fields .full{grid-column:1}
 
   /* Actions en columna */
-  .adm-form-actions{flex-wrap:wrap}
-  .adm-del-btn{margin-left:0;width:100%;justify-content:center}
+  .layer-fields-actions{flex-wrap:wrap}
+  .layer-remove-btn{margin-left:0;width:100%;justify-content:center}
 }
 
 @media(max-width:480px){
-  .adm-header-actions .adm-hbtn:not(:last-child):not(.danger){display:none}
-  .adm-logo{font-size:14px}
+  .layer-top-actions .layer-tbtn:not(:last-child):not(.danger){display:none}
+  .layer-brand{font-size:14px}
 }
 
 /* ─── RESPONSIVE ─────────────────────────────── */
@@ -1060,7 +1060,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border2);padding:52px 0 
         <li><a href="#catalogo">Catálogo</a></li>
       </ul>
       <div style="flex:1"></div>
-      <button id="adminBtn" title="Administración" aria-label="Acceso administración" style="position:static;width:auto;height:auto;border-radius:100px;background:transparent;border:1px solid var(--border2);color:var(--muted2);font-size:13px;padding:7px 14px;display:flex;align-items:center;gap:6px;transition:color var(--t),border-color var(--t),background var(--t);font-family:var(--font-m);letter-spacing:.5px;margin-right:10px;">👤 Admin</button>
+      <button id="cfgBtn" title="Configuración" aria-label="Configuración" style="position:static;width:auto;height:auto;border-radius:100px;background:transparent;border:1px solid var(--border2);color:var(--muted2);font-size:13px;padding:7px 14px;display:flex;align-items:center;gap:6px;transition:color var(--t),border-color var(--t),background var(--t);font-family:var(--font-m);letter-spacing:.5px;margin-right:10px;">⚙</button>
       <div class="nav-actions">
         <a href="#directorio" class="btn btn-outline">Ver maestros</a>
         <a href="#registro" class="btn btn-primary">Soy maestro</a>
@@ -1090,33 +1090,32 @@ footer{background:var(--bg2);border-top:1px solid var(--border2);padding:52px 0 
 
   <div class="wrap" style="width:100%">
     <div class="hero-content">
-      <div class="eyebrow">Servicios verificados · Chile</div>
+      <div class="eyebrow">Santiago de Chile ·</div>
 
       <h1 class="hero-h1">
-        El maestro que<br>necesitas, <em>cerca</em><br>y de confianza.
+        El maestro que necesitas, <em> cerca</em> y de confianza.
       </h1>
 
       <p class="hero-p">
-        Conectamos familias con maestros verificados en gasfitería, electricidad, pintura y más. Contacto directo por WhatsApp, sin intermediarios.
+        Conectamos familias con especialistas verificados en gasfitería, electricidad, pintura y más. Contacto directo por WhatsApp.
       </p>
 
       <div class="hero-ctas">
         <a href="#directorio" class="btn btn-primary">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-          Buscar maestros
+          Buscar especialistas
         </a>
         <a href="#registro" class="btn btn-outline">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          Soy maestro, regístrate
+          Registro de especialistas
         </a>
       </div>
 
       <!-- Trust strip — limpio, sin animaciones flotantes -->
       <div class="trust-strip">
-        <div class="trust-item"><span class="trust-icon">✦</span> Maestros verificados</div>
-        <div class="trust-item"><span class="trust-icon">📲</span> Contacto por WhatsApp</div>
-        <div class="trust-item"><span class="trust-icon">🔒</span> Sin intermediarios</div>
-        <div class="trust-item"><span class="trust-icon">🆓</span> Primer mes gratis</div>
+        <div class="trust-item"><span class="trust-icon">✦</span> Rápido</div>
+        <div class="trust-item"><span class="trust-icon">📲</span> Directo</div>
+        <div class="trust-item"><span class="trust-icon">🔒</span> Seguro</div>
       </div>
     </div>
 
@@ -1131,9 +1130,8 @@ footer{background:var(--bg2);border-top:1px solid var(--border2);padding:52px 0 
 <section id="directorio">
   <div class="wrap">
     <div class="sec-head reveal">
-      <div class="sec-label">Directorio en vivo</div>
-      <h2 class="sec-title">Maestros disponibles <em>ahora</em></h2>
-      <p class="sec-sub">Todos verificados por MAESTO. Toca cualquier tarjeta para ver el perfil completo.</p>
+      <h2 class="sec-title">Especialistas <em>disponibles</em></h2>
+      <p class="sec-sub">Para ver su ficha completa, haz clic en cualquier perfil.</p>
     </div>
   </div>
 
@@ -1157,36 +1155,35 @@ footer{background:var(--bg2);border-top:1px solid var(--border2);padding:52px 0 
 
       <!-- Left -->
       <div class="reveal">
-        <div class="sec-label">Para maestros</div>
-        <h2 class="reg-h2">Llega a clientes que<br>ya te están <span>buscando.</span></h2>
-        <p class="reg-p">Publica tu perfil en 5 minutos. Verificamos tus datos y apareces en el directorio. Sin contrato, sin comisiones, sin letra chica.</p>
+        <h2 class="reg-h2">Llega a más personas<br>registrate en <span>Maesto.</span></h2>
+        <p class="reg-p">¿Tienes una especialidad y quieres llegar a más clientes? Regístrate ahora y publica tu servicio.</p>
 
         <div class="benefits">
           <div class="benefit">
             <div class="benefit-ico">📲</div>
             <div class="benefit-body">
-              <strong>Clientes te contactan directo</strong>
-              <span>Sin plataforma intermedia. Llegan a tu WhatsApp.</span>
+              <strong>Contacto directo por WhatsApp</strong>
+              <span>Sin plataforma intermedia. Solo te publicitamos.</span>
             </div>
           </div>
           <div class="benefit">
             <div class="benefit-ico">✅</div>
             <div class="benefit-body">
-              <strong>Badge de verificación MAESTO</strong>
-              <span>Tu perfil genera confianza automáticamente.</span>
+              <strong>Publicaciones semanales</strong>
+              <span>Aumenta tu visibilidad.</span>
             </div>
           </div>
           <div class="benefit">
             <div class="benefit-ico">📍</div>
             <div class="benefit-body">
-              <strong>Apareces en tu zona</strong>
-              <span>Los clientes del mismo sector te ven primero.</span>
+              <strong>Tú defines el área de cobertura</strong>
+              <span>Si hay zonas especificas que quieres atender.</span>
             </div>
           </div>
           <div class="benefit">
             <div class="benefit-ico">🆓</div>
             <div class="benefit-body">
-              <strong>Primer mes 100% gratis</strong>
+              <strong>Primeros 3 meses 100% gratis</strong>
               <span>Sin tarjeta. Sin compromiso. Sin sorpresas.</span>
             </div>
           </div>
@@ -1196,14 +1193,14 @@ footer{background:var(--bg2);border-top:1px solid var(--border2);padding:52px 0 
           <span class="trust-pill">Sin contrato</span>
           <span class="trust-pill">Sin comisiones</span>
           <span class="trust-pill">Sin app que descargar</span>
-          <span class="trust-pill">5 minutos para publicar</span>
+          <span class="trust-pill">El registro es más abajo</span>
         </div>
       </div>
 
       <!-- Right: form -->
       <div class="reveal d2">
         <div class="form-card">
-          <div class="form-card-title">Publica tu servicio gratis</div>
+          <div class="form-card-title">Publica tu servicio - GRATIS</div>
           <div class="form-card-sub">Verificamos tus datos y te publicamos en 24 horas hábiles.</div>
 
           <form id="regForm" novalidate>
@@ -1232,12 +1229,12 @@ footer{background:var(--bg2);border-top:1px solid var(--border2);padding:52px 0 
             </div>
             <div class="f-group">
               <label class="f-label" for="fSrv">Servicios que ofreces</label>
-              <input class="f-input" type="text" id="fSrv" placeholder="Filtraciones, cañerías, duchas, WC...">
+              <input class="f-input" type="text" id="fSrv" placeholder="Ej: Reparación, instalación de cañerías" autocomplete="off">
             </div>
             <div class="f-row">
               <div class="f-group">
                 <label class="f-label" for="fZona">Zonas donde trabajas</label>
-                <input class="f-input" type="text" id="fZona" placeholder="Maipú, Cerrillos...">
+                <input class="f-input" type="text" id="fZona" placeholder="Ej: Providencia, Ñuñoa, Estación Central" autocomplete="off">
               </div>
               <div class="f-group">
                 <label class="f-label" for="fTel">Teléfono</label>
@@ -1338,58 +1335,58 @@ footer{background:var(--bg2);border-top:1px solid var(--border2);padding:52px 0 
 <div id="toastContainer"></div>
 
 <!-- Password modal -->
-<div id="pwOverlay">
-  <div class="pw-box">
-    <div class="pw-title">Acceso restringido</div>
-    <div class="pw-sub">MAESTO · PANEL ADMIN</div>
-    <input class="pw-input" type="password" id="pwInput" placeholder="Contraseña" autocomplete="off">
-    <div class="pw-err" id="pwErr">Contraseña incorrecta. Intenta de nuevo.</div>
-    <div class="pw-row">
-      <button class="btn btn-outline" id="pwCancel" style="padding:12px">Cancelar</button>
-      <button class="btn btn-primary" id="pwSubmit" style="padding:12px">Entrar →</button>
+<div id="gateLayer">
+  <div class="gate-box">
+    <div class="gate-heading">Acceso restringido</div>
+    <div class="gate-sub">MAESTO · v1.0</div>
+    <input class="gate-key" type="text" style="letter-spacing:.18em;-webkit-text-security:disc;text-security:disc" id="gateKey" placeholder="Contraseña" autocomplete="off">
+    <div class="gate-note" id="gateNote">Contraseña incorrecta. Intenta de nuevo.</div>
+    <div class="gate-row">
+      <button class="btn btn-outline" id="gateBack" style="padding:12px">Cancelar</button>
+      <button class="btn btn-primary" id="gateEnter" style="padding:12px">Entrar →</button>
     </div>
   </div>
 </div>
 
-<!-- Admin panel -->
-<div id="adminPanel">
-  <div class="adm-header">
-    <span class="adm-logo">MAESTO</span>
-    <span class="adm-tag">Admin Panel</span>
-    <div class="adm-header-actions">
-      <button class="adm-hbtn" id="admExport">↑ Exportar JSON</button>
-      <label class="adm-hbtn" style="cursor:pointer">↓ Importar JSON<input type="file" accept=".json" id="admImport" style="display:none"></label>
-      <button class="adm-hbtn danger" id="admLogout">Salir</button>
-      <button class="adm-close" id="admClose">✕</button>
+<!-- overlay -->
+<div id="sectionLayer">
+  <div class="layer-top">
+    <span class="layer-brand">MAESTO</span>
+    <span class="layer-tag">Configuración</span>
+    <div class="layer-top-actions">
+      <button class="layer-tbtn" id="layerExport">↑ Exportar JSON</button>
+      <label class="layer-tbtn" style="cursor:pointer">↓ Importar JSON<input type="file" accept=".json" id="layerImport" style="display:none"></label>
+      <button class="layer-tbtn danger" id="layerExit">Salir</button>
+      <button class="layer-dismiss" id="layerClose">✕</button>
     </div>
   </div>
 
-  <div class="adm-body">
+  <div class="layer-body">
     <!-- LIST -->
-    <div class="adm-list-col">
-      <div class="adm-list-head">
-        <div class="adm-count" id="admCount">0 maestros</div>
-        <div class="adm-search-wrap">
-          <input class="adm-search" type="text" id="admSearch" placeholder="Buscar maestro...">
+    <div class="layer-index">
+      <div class="layer-index-head">
+        <div class="adm-count" id="layerCount">0 maestros</div>
+        <div class="layer-sw">
+          <input class="layer-sq" type="text" id="layerSearch" placeholder="Buscar maestro...">
         </div>
-        <div class="adm-cat-filter" id="admCatFilter">
-          <button class="adm-cf-btn on" data-cf="all">Todos</button>
-          <button class="adm-cf-btn" data-cf="Gasfitería">Gasfitería</button>
-          <button class="adm-cf-btn" data-cf="Electricidad">Electricidad</button>
-          <button class="adm-cf-btn" data-cf="Pintura">Pintura</button>
-          <button class="adm-cf-btn" data-cf="Albañilería">Albañilería</button>
-          <button class="adm-cf-btn" data-cf="Carpintería">Carpintería</button>
-          <button class="adm-cf-btn" data-cf="Otro">Otros</button>
+        <div class="layer-cf" id="layerCats">
+          <button class="layer-cfb on" data-cf="all">Todos</button>
+          <button class="layer-cfb" data-cf="Gasfitería">Gasfitería</button>
+          <button class="layer-cfb" data-cf="Electricidad">Electricidad</button>
+          <button class="layer-cfb" data-cf="Pintura">Pintura</button>
+          <button class="layer-cfb" data-cf="Albañilería">Albañilería</button>
+          <button class="layer-cfb" data-cf="Carpintería">Carpintería</button>
+          <button class="layer-cfb" data-cf="Otro">Otros</button>
         </div>
       </div>
-      <div class="adm-list-items" id="admListItems"></div>
-      <button class="adm-add-btn" id="admAddBtn">+ Agregar maestro</button>
+      <div class="layer-list" id="layerItems"></div>
+      <button class="layer-new" id="layerAddBtn">+ Agregar maestro</button>
     </div>
 
     <!-- FORM -->
-    <div class="adm-form-col" id="admFormCol">
-      <div class="adm-empty">
-        <div class="adm-empty-icon">🔧</div>
+    <div class="layer-detail" id="layerFormCol">
+      <div class="layer-placeholder">
+        <div class="layer-placeholder-icon">🔧</div>
         <p>Selecciona un maestro para editar, o presiona "Agregar maestro" para crear uno nuevo.</p>
       </div>
     </div>
@@ -1411,7 +1408,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border2);padding:52px 0 
    CONSTANTES
    ═══════════════════════════════════════════════ */
 const STORAGE_KEY = 'maesto_maestros_v1';
-const ADMIN_PASS  = 'd4l3r0s1';
+const _mCfg  = '#50147783';
 
 const CAT_COLORS = {
   'Gasfitería':'#3b82f6','Electricidad':'#f59e0b','Pintura':'#8b5cf6',
@@ -1447,9 +1444,9 @@ const SEED_DATA = [
 let state = {
   maestros:        [],
   selectedId:      null,
-  isAdminOpen:     false,
-  adminFilter:     'all',
-  adminSearch:     '',
+  isLayerOpen:     false,
+  layerFilter:     'all',
+  layerSearch:     '',
   /* UI pública */
   activeFilter:    'all',
   searchQuery:     '',
@@ -1500,7 +1497,7 @@ function renderAll() {
   renderCarousel();
   renderCatalogo();
   renderTicker();
-  if (state.isAdminOpen) renderAdminList();
+  if (state.isLayerOpen) renderLayerList();
 }
 
 /* ═══════════════════════════════════════════════
@@ -1542,11 +1539,11 @@ function normTel(t) {
 
 function validarFormulario(v) {
   const errs = [];
-  if (!v.nombre || v.nombre.length < 4) errs.push({ field: 'nombre', msg: 'Nombre muy corto.' });
-  if (!v.categoria) errs.push({ field: 'categoria', msg: 'Selecciona categoría.' });
-  if (!v.servicios || v.servicios.length < 5) errs.push({ field: 'servicios', msg: 'Describe los servicios.' });
-  if (!v.zonas || v.zonas.length < 3) errs.push({ field: 'zonas', msg: 'Indica la zona.' });
-  if (!validTel(v.telefono)) errs.push({ field: 'telefono', msg: 'Teléfono inválido (+569XXXXXXXX).' });
+  if (!v.nombre || v.nombre.length < 4) errs.push({ field: 'nombre', msg: 'Nombre: Ingresa tu nombre verdadero.' });
+  if (!v.categoria) errs.push({ field: 'categoria', msg: 'Categoría: Selecciona una especialidad.' });
+  if (!v.servicios || v.servicios.length < 5) errs.push({ field: 'servicios', msg: 'Servicios: Describe tus servicios.' });
+  if (!v.zonas || v.zonas.length < 3) errs.push({ field: 'zonas', msg: 'Zonas: También puedes indicar que atiendes en un solo lugar.' });
+  if (!validTel(v.telefono)) errs.push({ field: 'telefono', msg: 'Teléfono: el formato debe ser el siguiente (+569XXXXXXXX).'<br>'Son 8 números después del +569.' });
   return errs;
 }
 
@@ -1806,7 +1803,7 @@ function closeModal() {
 
 document.getElementById('modalClose').addEventListener('click', closeModal);
 document.getElementById('modalBg').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); closeAdmin(); } });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); closeLayer(); } });
 
 /* ═══════════════════════════════════════════════
    FILTROS PÚBLICOS
@@ -1870,122 +1867,118 @@ document.getElementById('regForm').addEventListener('submit', async function (e)
   setTimeout(() => window.open(`https://wa.me/56900000000?text=${waAdmin}`, '_blank'), 1200);
 });
 
-/* ═══════════════════════════════════════════════
-   ADMIN — ACCESO
+/* ─── ACCESO ───
    ═══════════════════════════════════════════════ */
-function openAdmin() {
-  setState({ isAdminOpen: true });
-  document.getElementById('adminPanel').classList.add('open');
+function openLayer() {
+  setState({ isLayerOpen: true });
+  document.getElementById('sectionLayer').classList.add('open');
   document.body.style.overflow = 'hidden';
-  renderAdminList();
+  renderLayerList();
 }
 
-function closeAdmin() {
-  setState({ isAdminOpen: false, selectedId: null });
-  document.getElementById('adminPanel').classList.remove('open');
+function closeLayer() {
+  setState({ isLayerOpen: false, selectedId: null });
+  document.getElementById('sectionLayer').classList.remove('open');
   // Reset mobile slide state
-  document.querySelector('.adm-list-col')?.classList.remove('slide-out');
-  document.getElementById('admFormCol')?.classList.remove('slide-in');
+  document.querySelector('.layer-index')?.classList.remove('slide-out');
+  document.getElementById('layerFormCol')?.classList.remove('slide-in');
   document.body.style.overflow = '';
 }
 
-document.getElementById('adminBtn').addEventListener('click', () => {
-  document.getElementById('pwOverlay').classList.add('open');
-  setTimeout(() => document.getElementById('pwInput').focus(), 100);
+document.getElementById('cfgBtn').addEventListener('click', () => {
+  document.getElementById('gateLayer').classList.add('open');
+  setTimeout(() => document.getElementById('gateKey').focus(), 100);
 });
 
-document.getElementById('pwCancel').addEventListener('click', () => {
-  document.getElementById('pwOverlay').classList.remove('open');
-  document.getElementById('pwInput').value = '';
-  document.getElementById('pwErr').classList.remove('show');
+document.getElementById('gateBack').addEventListener('click', () => {
+  document.getElementById('gateLayer').classList.remove('open');
+  document.getElementById('gateKey').value = '';
+  document.getElementById('gateNote').classList.remove('show');
 });
 
 function submitPassword() {
-  const pw = document.getElementById('pwInput').value;
-  if (pw === ADMIN_PASS) {
-    document.getElementById('pwOverlay').classList.remove('open');
-    document.getElementById('pwInput').value = '';
-    document.getElementById('pwErr').classList.remove('show');
-    openAdmin();
+  const pw = document.getElementById('gateKey').value;
+  if (pw === _mCfg) {
+    document.getElementById('gateLayer').classList.remove('open');
+    document.getElementById('gateKey').value = '';
+    document.getElementById('gateNote').classList.remove('show');
+    openLayer();
   } else {
-    const inp = document.getElementById('pwInput');
+    const inp = document.getElementById('gateKey');
     inp.classList.add('shake');
-    document.getElementById('pwErr').classList.add('show');
+    document.getElementById('gateNote').classList.add('show');
     inp.value = '';
     inp.focus();
     setTimeout(() => inp.classList.remove('shake'), 360);
   }
 }
 
-document.getElementById('pwSubmit').addEventListener('click', submitPassword);
-document.getElementById('pwInput').addEventListener('keydown', e => { if (e.key === 'Enter') submitPassword(); });
-document.getElementById('pwOverlay').addEventListener('click', e => {
+document.getElementById('gateEnter').addEventListener('click', submitPassword);
+document.getElementById('gateKey').addEventListener('keydown', e => { if (e.key === 'Enter') submitPassword(); });
+document.getElementById('gateLayer').addEventListener('click', e => {
   if (e.target === e.currentTarget) {
     e.currentTarget.classList.remove('open');
-    document.getElementById('pwInput').value = '';
-    document.getElementById('pwErr').classList.remove('show');
+    document.getElementById('gateKey').value = '';
+    document.getElementById('gateNote').classList.remove('show');
   }
 });
 
-document.getElementById('admClose').addEventListener('click', closeAdmin);
-document.getElementById('admLogout').addEventListener('click', closeAdmin);
+document.getElementById('layerClose').addEventListener('click', closeLayer);
+document.getElementById('layerExit').addEventListener('click', closeLayer);
 
-/* ═══════════════════════════════════════════════
-   ADMIN — MOBILE SLIDE HELPERS
+/* ─── HELPERS ───
    ═══════════════════════════════════════════════ */
-function isMobile() { return window.innerWidth <= 780; }
+function isCompact() { return window.innerWidth <= 780; }
 
-function admShowForm() {
-  if (!isMobile()) return;
-  document.querySelector('.adm-list-col').classList.add('slide-out');
-  document.getElementById('admFormCol').classList.add('slide-in');
+function layerShowDetail() {
+  if (!isCompact()) return;
+  document.querySelector('.layer-index').classList.add('slide-out');
+  document.getElementById('layerFormCol').classList.add('slide-in');
 }
 
-function admShowList() {
-  if (!isMobile()) return;
-  document.querySelector('.adm-list-col').classList.remove('slide-out');
-  document.getElementById('admFormCol').classList.remove('slide-in');
+function layerShowIndex() {
+  if (!isCompact()) return;
+  document.querySelector('.layer-index').classList.remove('slide-out');
+  document.getElementById('layerFormCol').classList.remove('slide-in');
 }
 
-/* ═══════════════════════════════════════════════
-   ADMIN — RENDER LIST
+/* ─── INDEX ───
    ═══════════════════════════════════════════════ */
-function renderAdminList() {
+function renderLayerList() {
   const list = sortedMaestros(state.maestros).filter(m => {
-    const fOk = state.adminFilter === 'all'
-      || m.categoria === state.adminFilter
-      || (state.adminFilter === 'Otro' && !CATEGORIAS.filter(c => c !== 'Otro').includes(m.categoria));
-    const q   = state.adminSearch.toLowerCase();
+    const fOk = state.layerFilter === 'all'
+      || m.categoria === state.layerFilter
+      || (state.layerFilter === 'Otro' && !CATEGORIAS.filter(c => c !== 'Otro').includes(m.categoria));
+    const q   = state.layerSearch.toLowerCase();
     const sOk = !q || m.nombre.toLowerCase().includes(q) || m.categoria.toLowerCase().includes(q);
     return fOk && sOk;
   });
 
-  document.getElementById('admCount').textContent = `${list.length} / ${state.maestros.length} maestros`;
+  document.getElementById('layerCount').textContent = `${list.length} / ${state.maestros.length} maestros`;
 
-  const items = document.getElementById('admListItems');
+  const items = document.getElementById('layerItems');
   items.innerHTML = list.map(m => `
-    <div class="adm-item${state.selectedId === m.id ? ' active' : ''}" data-id="${esc(m.id)}">
-      <div class="adm-item-ava" style="background:linear-gradient(135deg,${CAT_COLORS[m.categoria] || '#C8773A'},#E09B5C)">${getIni(m.nombre)}</div>
+    <div class="layer-row${state.selectedId === m.id ? ' active' : ''}" data-id="${esc(m.id)}">
+      <div class="layer-row-ava" style="background:linear-gradient(135deg,${CAT_COLORS[m.categoria] || '#C8773A'},#E09B5C)">${getIni(m.nombre)}</div>
       <div style="flex:1;min-width:0">
-        <div class="adm-item-name">${esc(m.nombre)}</div>
-        <div class="adm-item-cat">${esc(m.categoria)}</div>
+        <div class="layer-row-name">${esc(m.nombre)}</div>
+        <div class="layer-row-cat">${esc(m.categoria)}</div>
       </div>
-      <div class="adm-item-badges">
-        ${m.destacado ? '<span class="adm-star dest">★</span>' : ''}
-        <span class="adm-star">${m.rating}</span>
+      <div class="layer-row-badges">
+        ${m.destacado ? '<span class="layer-score dest">★</span>' : ''}
+        <span class="layer-score">${m.rating}</span>
       </div>
     </div>`).join('');
 
-  items.querySelectorAll('.adm-item').forEach(el => {
+  items.querySelectorAll('.layer-row').forEach(el => {
     el.addEventListener('click', () => {
       const m = state.maestros.find(x => x.id === el.dataset.id);
-      if (m) { setState({ selectedId: m.id }); renderAdminList(); renderAdminForm(m); admShowForm(); }
+      if (m) { setState({ selectedId: m.id }); renderLayerList(); renderLayerForm(m); layerShowDetail(); }
     });
   });
 }
 
-/* ═══════════════════════════════════════════════
-   ADMIN — RENDER FORM
+/* ─── DETAIL ───
    ═══════════════════════════════════════════════ */
 function catOptions(selected = '') {
   return CATEGORIAS.map(c =>
@@ -1993,90 +1986,90 @@ function catOptions(selected = '') {
   ).join('');
 }
 
-function renderAdminForm(m = null) {
+function renderLayerForm(m = null) {
   const isNew = !m;
-  const col = document.getElementById('admFormCol');
+  const col = document.getElementById('layerFormCol');
 
   col.innerHTML = `
-    <button class="adm-back-btn" id="admBackBtn">← Volver a la lista</button>
-    <div class="adm-form-title">${isNew ? 'Agregar maestro' : 'Editar maestro'}</div>
-    <div class="adm-form-sub">${isNew ? 'Completa todos los campos obligatorios.' : `ID: ${m.id}`}</div>
-    <form id="admForm" class="adm-form" novalidate>
+    <button class="layer-nav-back" id="layerBackBtn">← Volver a la lista</button>
+    <div class="layer-detail-title">${isNew ? 'Agregar maestro' : 'Editar maestro'}</div>
+    <div class="layer-detail-sub">${isNew ? 'Completa todos los campos obligatorios.' : `ID: ${m.id}`}</div>
+    <form id="layerForm" class="layer-fields" novalidate>
       <div>
-        <label class="adm-f-label">Nombre completo *</label>
-        <input class="adm-f-input" name="nombre" value="${esc(m?.nombre || '')}" placeholder="Juan Pérez González" required>
+        <label class="layer-fl">Nombre completo *</label>
+        <input class="layer-fi" name="nombre" value="${esc(m?.nombre || '')}" placeholder="Juan Pérez González" required>
       </div>
       <div>
-        <label class="adm-f-label">Categoría *</label>
-        <select class="adm-f-select" name="categoria">
+        <label class="layer-fl">Categoría *</label>
+        <select class="layer-fs" name="categoria">
           <option value="" disabled ${!m ? 'selected' : ''}>Seleccionar...</option>
           ${catOptions(m?.categoria)}
         </select>
       </div>
       <div class="full">
-        <label class="adm-f-label">Servicios *</label>
-        <input class="adm-f-input" name="servicios" value="${esc(m?.servicios || '')}" placeholder="Filtraciones, cañerías, duchas...">
+        <label class="layer-fl">Servicios *</label>
+        <input class="layer-fi" name="servicios" value="${esc(m?.servicios || '')}" placeholder="Filtraciones, cañerías, duchas...">
       </div>
       <div>
-        <label class="adm-f-label">Zonas *</label>
-        <input class="adm-f-input" name="zonas" value="${esc(m?.zonas || '')}" placeholder="Maipú · Cerrillos">
+        <label class="layer-fl">Zonas *</label>
+        <input class="layer-fi" name="zonas" value="${esc(m?.zonas || '')}" placeholder="Maipú · Cerrillos">
       </div>
       <div>
-        <label class="adm-f-label">Teléfono *</label>
-        <input class="adm-f-input" name="telefono" value="${esc(m?.telefono || '')}" placeholder="+56912345678">
+        <label class="layer-fl">Teléfono *</label>
+        <input class="layer-fi" name="telefono" value="${esc(m?.telefono || '')}" placeholder="+56912345678">
       </div>
       <div class="full">
-        <label class="adm-f-label">Descripción breve</label>
-        <textarea class="adm-f-textarea" name="descripcion" placeholder="Breve presentación del maestro...">${esc(m?.descripcion || '')}</textarea>
+        <label class="layer-fl">Descripción breve</label>
+        <textarea class="layer-ft" name="descripcion" placeholder="Breve presentación del maestro...">${esc(m?.descripcion || '')}</textarea>
       </div>
       <div>
-        <label class="adm-f-label">Rating (1–5)</label>
-        <input class="adm-f-input" name="rating" type="number" min="1" max="5" step="0.1" value="${m?.rating || 5.0}">
+        <label class="layer-fl">Rating (1–5)</label>
+        <input class="layer-fi" name="rating" type="number" min="1" max="5" step="0.1" value="${m?.rating || 5.0}">
       </div>
       <div style="display:flex;flex-direction:column;gap:10px">
-        <div class="adm-toggle-row">
-          <div><div class="adm-toggle-label">Verificado</div><div style="font-size:11px;color:var(--muted2)">Muestra badge oficial</div></div>
-          <label class="adm-toggle"><input type="checkbox" name="verificado" ${(m?.verificado !== false) ? 'checked' : ''}><span class="adm-toggle-slider"></span></label>
+        <div class="layer-toggle-row">
+          <div><div class="layer-toggle-label">Verificado</div><div style="font-size:11px;color:var(--muted2)">Muestra badge oficial</div></div>
+          <label class="layer-toggle"><input type="checkbox" name="verificado" ${(m?.verificado !== false) ? 'checked' : ''}><span class="layer-toggle-slider"></span></label>
         </div>
-        <div class="adm-toggle-row">
-          <div><div class="adm-toggle-label">Destacado</div><div style="font-size:11px;color:var(--muted2)">Aparece primero siempre</div></div>
-          <label class="adm-toggle"><input type="checkbox" name="destacado" ${m?.destacado ? 'checked' : ''}><span class="adm-toggle-slider"></span></label>
+        <div class="layer-toggle-row">
+          <div><div class="layer-toggle-label">Destacado</div><div style="font-size:11px;color:var(--muted2)">Aparece primero siempre</div></div>
+          <label class="layer-toggle"><input type="checkbox" name="destacado" ${m?.destacado ? 'checked' : ''}><span class="layer-toggle-slider"></span></label>
         </div>
       </div>
-      <div class="adm-form-actions">
+      <div class="layer-fields-actions">
         <button type="submit" class="btn btn-primary">${isNew ? '+ Crear maestro' : '✓ Guardar cambios'}</button>
-        <button type="button" class="btn btn-outline" id="admFormCancel">Cancelar</button>
-        ${!isNew ? `<button type="button" class="adm-del-btn" id="admDelBtn">🗑 Eliminar</button>` : ''}
+        <button type="button" class="btn btn-outline" id="layerFormCancel">Cancelar</button>
+        ${!isNew ? `<button type="button" class="layer-remove-btn" id="layerDelBtn">🗑 Eliminar</button>` : ''}
       </div>
     </form>`;
 
-  document.getElementById('admBackBtn').addEventListener('click', () => {
-    admShowList();
+  document.getElementById('layerBackBtn').addEventListener('click', () => {
+    layerShowIndex();
     setState({ selectedId: null });
-    renderAdminList();
+    renderLayerList();
   });
 
-  document.getElementById('admFormCancel').addEventListener('click', () => {
+  document.getElementById('layerFormCancel').addEventListener('click', () => {
     setState({ selectedId: null });
-    renderAdminList();
-    admShowList();
-    col.innerHTML = `<button class="adm-back-btn" id="admBackBtnEmpty">← Volver a la lista</button><div class="adm-empty"><div class="adm-empty-icon">🔧</div><p>Selecciona un maestro para editar, o presiona "Agregar maestro".</p></div>`;
-    document.getElementById('admBackBtnEmpty')?.addEventListener('click', () => admShowList());
+    renderLayerList();
+    layerShowIndex();
+    col.innerHTML = `<button class="layer-nav-back" id="layerBackBtnEmpty">← Volver a la lista</button><div class="layer-placeholder"><div class="layer-placeholder-icon">🔧</div><p>Selecciona un maestro para editar, o presiona "Agregar maestro".</p></div>`;
+    document.getElementById('layerBackBtnEmpty')?.addEventListener('click', () => layerShowIndex());
   });
 
   if (!isNew) {
-    document.getElementById('admDelBtn').addEventListener('click', () => {
+    document.getElementById('layerDelBtn').addEventListener('click', () => {
       if (confirm(`¿Eliminar a ${m.nombre}? Esta acción no se puede deshacer.`)) {
         deleteMaestro(m.id);
         toast(`🗑 ${m.nombre} eliminado.`, 'err');
-        admShowList();
-        col.innerHTML = `<button class="adm-back-btn" id="admBackBtnDel">← Volver a la lista</button><div class="adm-empty"><div class="adm-empty-icon">🔧</div><p>Maestro eliminado correctamente.</p></div>`;
-        document.getElementById('admBackBtnDel')?.addEventListener('click', () => admShowList());
+        layerShowIndex();
+        col.innerHTML = `<button class="layer-nav-back" id="layerBackBtnDel">← Volver a la lista</button><div class="layer-placeholder"><div class="layer-placeholder-icon">🔧</div><p>Maestro eliminado correctamente.</p></div>`;
+        document.getElementById('layerBackBtnDel')?.addEventListener('click', () => layerShowIndex());
       }
     });
   }
 
-  document.getElementById('admForm').addEventListener('submit', async function (e) {
+  document.getElementById('layerForm').addEventListener('submit', async function (e) {
     e.preventDefault();
     const fd = new FormData(this);
     const data = {
@@ -2092,7 +2085,7 @@ function renderAdminForm(m = null) {
     };
 
     // Limpiar errores previos
-    this.querySelectorAll('.adm-f-input.err,.adm-f-select.err').forEach(f => f.classList.remove('err'));
+    this.querySelectorAll('.layer-fi.err,.layer-fs.err').forEach(f => f.classList.remove('err'));
 
     const errs = validarFormulario(data);
     if (errs.length) {
@@ -2113,43 +2106,42 @@ function renderAdminForm(m = null) {
     }
 
     setState({ selectedId: null });
-    renderAdminList();
-    admShowList();
-    col.innerHTML = `<button class="adm-back-btn" id="admBackBtnSave">← Volver a la lista</button><div class="adm-empty"><div class="adm-empty-icon">🔧</div><p>Cambios guardados. Selecciona otro maestro o agrega uno nuevo.</p></div>`;
-    document.getElementById('admBackBtnSave')?.addEventListener('click', () => admShowList());
+    renderLayerList();
+    layerShowIndex();
+    col.innerHTML = `<button class="layer-nav-back" id="layerBackBtnSave">← Volver a la lista</button><div class="layer-placeholder"><div class="layer-placeholder-icon">🔧</div><p>Cambios guardados. Selecciona otro maestro o agrega uno nuevo.</p></div>`;
+    document.getElementById('layerBackBtnSave')?.addEventListener('click', () => layerShowIndex());
   });
 }
 
-/* ═══════════════════════════════════════════════
-   ADMIN — CONTROLES
+/* ─── CONTROLES ───
    ═══════════════════════════════════════════════ */
-document.getElementById('admAddBtn').addEventListener('click', () => {
+document.getElementById('layerAddBtn').addEventListener('click', () => {
   setState({ selectedId: null });
-  renderAdminList();
-  renderAdminForm(null);
-  admShowForm();
+  renderLayerList();
+  renderLayerForm(null);
+  layerShowDetail();
 });
 
-// Search admin
-document.getElementById('admSearch').addEventListener('input', e => {
-  setState({ adminSearch: e.target.value });
-  renderAdminList();
+// search
+document.getElementById('layerSearch').addEventListener('input', e => {
+  setState({ layerSearch: e.target.value });
+  renderLayerList();
 });
 
-// Cat filter admin
-document.getElementById('admCatFilter').addEventListener('click', e => {
-  const btn = e.target.closest('.adm-cf-btn');
+// category filter
+document.getElementById('layerCats').addEventListener('click', e => {
+  const btn = e.target.closest('.layer-cfb');
   if (!btn) return;
-  document.querySelectorAll('.adm-cf-btn').forEach(b => b.classList.remove('on'));
+  document.querySelectorAll('.layer-cfb').forEach(b => b.classList.remove('on'));
   btn.classList.add('on');
-  setState({ adminFilter: btn.dataset.cf });
-  renderAdminList();
+  setState({ layerFilter: btn.dataset.cf });
+  renderLayerList();
 });
 
 /* ═══════════════════════════════════════════════
    EXPORT / IMPORT JSON
    ═══════════════════════════════════════════════ */
-document.getElementById('admExport').addEventListener('click', () => {
+document.getElementById('layerExport').addEventListener('click', () => {
   const payload = JSON.stringify({ version: 1, lastUpdate: Date.now(), maestros: state.maestros }, null, 2);
   const blob = new Blob([payload], { type: 'application/json' });
   const a = document.createElement('a');
@@ -2160,7 +2152,7 @@ document.getElementById('admExport').addEventListener('click', () => {
   toast('↑ Backup exportado correctamente.', 'info');
 });
 
-document.getElementById('admImport').addEventListener('change', function () {
+document.getElementById('layerImport').addEventListener('change', function () {
   const file = this.files[0];
   if (!file) return;
   const reader = new FileReader();
@@ -2171,7 +2163,7 @@ document.getElementById('admImport').addEventListener('change', function () {
       if (!confirm(`Importar ${data.maestros.length} maestros? Se reemplazará el contenido actual.`)) return;
       state.maestros = data.maestros;
       sync();
-      renderAdminList();
+      renderLayerList();
       toast(`↓ ${data.maestros.length} maestros importados.`, 'ok');
     } catch (_) {
       toast('✖ Error al importar. Verifica el archivo JSON.', 'err');
