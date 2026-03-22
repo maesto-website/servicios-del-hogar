@@ -2,1928 +2,2131 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="MAESTO — Directorio verificado de Servicios del hogar en Chile. Gasfitería, electricidad, jardinería y más. Técnicos reales con referencias comprobadas en Santiago.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#111318">
-<meta property="og:title" content="MAESTO · Servicios del hogar Verificados en Santiago, Chile">
-<meta property="og:description" content="Encuentra gasfiteros, electricistas, jardineros y más. Maestros verificados con referencias reales. Sin intermediarios, sin sorpresas.">
-<meta property="og:image" content="https://maesto.cl/og.png">
-<meta property="og:url" content="https://maesto.cl">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="https://maesto.cl">
-<title>MAESTO · Servicios del hogar Verificados en Santiago, Chile</title>
+<title>MAESTO · Servicios del Hogar Verificados</title>
+<meta name="description" content="Encuentra maestros verificados cerca de ti. Gasfitería, electricidad, pintura y más. Directo al WhatsApp, sin intermediarios.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* ============================================================
-   TOKENS — Sistema de diseño MAESTO
-   ============================================================ */
+/* ─── TOKENS ─────────────────────────────────── */
 :root {
-  /* Colores */
-  --cu:       #C8773A;
-  --cu-l:     #E09B5C;
-  --cu-dim:   rgba(200,119,58,0.08);
-  --bg:       #111318;
-  --bg-d:     #0A0B0F;
-  --surf:     #16191F;
-  --surf2:    #1C2028;
-  --border:   #252830;
-  --border2:  #1E2228;
-  --cream:    #F2EDE4;
-  --muted:    #8B909C;
-  --muted2:   #5C6070;
-  --green-l:  #3D8B68;
-  --wa:       #25D366;
-
-  /* Tipografía */
-  --font-d: 'Playfair Display', Georgia, serif;
-  --font-b: 'DM Sans', system-ui, sans-serif;
-  --font-m: 'DM Mono', 'Courier New', monospace;
-
-  /* Radio */
-  --r-sm:   6px;
-  --r-md:   12px;
-  --r-lg:   20px;
-  --r-xl:   28px;
-  --r-full: 999px;
-
-  /* Sombras */
-  --shadow:    0 4px 24px rgba(0,0,0,0.4);
-  --shadow-cu: 0 8px 32px rgba(200,119,58,0.25);
-
-  /* Transición explícita — NO usar "all" */
-  --trans: background-color 0.25s ease, border-color 0.25s ease,
-           transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+  --c:       #C8773A;
+  --c-lt:    #E09B5C;
+  --g:       #2A5C45;
+  --g-lt:    #3a7a5e;
+  --bg:      #111318;
+  --bg2:     #16191f;
+  --bg3:     #1c2028;
+  --cream:   #F2EDE4;
+  --muted:   rgba(242,237,228,0.45);
+  --muted2:  rgba(242,237,228,0.22);
+  --line:    rgba(255,255,255,0.07);
+  --glass:   rgba(255,255,255,0.035);
+  --glass-b: rgba(255,255,255,0.08);
+  --glow-c:  rgba(200,119,58,0.18);
+  --glow-g:  rgba(42,92,69,0.18);
+  --r:       14px;
+  --r-lg:    22px;
+  --ease:    cubic-bezier(.4,0,.2,1);
+  --t:       .25s var(--ease);
+  --fd:      'Syne', sans-serif;
+  --fb:      'DM Sans', sans-serif;
+  /* ─ Tipografía de referencia ─ */
+  --font-d:  'Playfair Display', Georgia, serif;
+  --font-b:  'DM Sans', system-ui, sans-serif;
+  --font-m:  'DM Mono', 'Courier New', monospace;
+  /* ─ Superficies extra ─ */
+  --surf:    rgba(255,255,255,0.05);
+  --border:  rgba(255,255,255,0.10);
+  --border2: rgba(255,255,255,0.06);
+  --wa:      #25D366;
+  --shadow:  0 8px 32px rgba(0,0,0,0.45);
 }
 
-/* ============================================================
-   RESET
-   ============================================================ */
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; font-size: 16px; }
-body {
-  background: var(--bg);
-  color: var(--cream);
-  font-family: var(--font-b);
-  line-height: 1.6;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
+/* ─── RESET ──────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);color:var(--cream);
+  font-family:var(--fb);font-size:16px;line-height:1.6;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;
 }
-a { color: inherit; text-decoration: none; }
-img { max-width: 100%; display: block; }
-button { cursor: pointer; border: none; background: none; font-family: inherit; }
-ul { list-style: none; }
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;border:none;outline:none;background:none;font-family:var(--fb)}
+input,select{font-family:var(--fb);color:var(--cream)}
+ul{list-style:none}
 
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--bg-d); }
-::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: var(--cu); }
-
-/* ============================================================
-   UTILIDADES REUTILIZABLES
-   ============================================================ */
-.container {
-  max-width: 1160px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-.section-pad { padding: 80px 0; }
-
-/* Eyebrow label */
-.eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-family: var(--font-m);
-  font-size: 10px;
-  letter-spacing: 4px;
-  color: var(--cu);
-  text-transform: uppercase;
-  margin-bottom: 20px;
-}
-.eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--cu); }
-
-/* Títulos de sección */
-.section-title {
-  font-family: var(--font-d);
-  font-size: clamp(28px, 4vw, 46px);
-  font-weight: 900;
-  line-height: 1.1;
-  letter-spacing: -1px;
-  margin-bottom: 14px;
-}
-.section-sub {
-  font-size: 16px;
-  color: var(--muted);
-  line-height: 1.7;
-  max-width: 520px;
+/* Subtle grain */
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:9000;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)' opacity='.028'/%3E%3C/svg%3E");
+  opacity:.5;
 }
 
-/* Badge verificado */
-.badge-v {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(42,92,69,0.15);
-  border: 1px solid rgba(61,139,104,0.4);
-  border-radius: var(--r-sm);
-  padding: 5px 12px;
-  font-family: var(--font-m);
-  font-size: 10px;
-  letter-spacing: 1px;
-  color: var(--green-l);
-  text-transform: uppercase;
+/* ─── LAYOUT ─────────────────────────────────── */
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 20px}
+
+/* ─── TYPE ───────────────────────────────────── */
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--fd);font-size:10px;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--c);
+  margin-bottom:18px;
+}
+.eyebrow::before{content:'';display:block;width:20px;height:1px;background:var(--c)}
+
+.sec-label{
+  font-family:var(--fd);font-size:10px;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--c);
+  margin-bottom:16px;
 }
 
-/* Botones */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 15px 26px;
-  border-radius: var(--r-md);
-  font-weight: 600;
-  font-size: 15px;
-  transition: var(--trans);
-  white-space: nowrap;
-  cursor: pointer;
+h2.sec-title{
+  font-family:var(--fd);font-size:clamp(26px,4vw,42px);
+  font-weight:800;letter-spacing:-.025em;line-height:1.1;
+  color:var(--cream);margin-bottom:12px;
 }
-.btn-primary {
-  background: var(--cu);
-  color: #000;
-}
-.btn-primary:hover {
-  background: var(--cu-l);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-cu);
-}
-.btn-outline {
-  background: transparent;
-  color: var(--cream);
-  border: 1px solid var(--border);
-}
-.btn-outline:hover {
-  border-color: var(--cu);
-  color: var(--cu);
-  background: var(--cu-dim);
+h2.sec-title em{font-style:normal;color:var(--c)}
+
+.sec-sub{
+  font-size:15px;color:var(--muted);
+  max-width:460px;margin:0 auto;line-height:1.65;
 }
 
-/* Scroll reveal */
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
+/* ─── BADGES ─────────────────────────────────── */
+.badge{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:4px 10px;border-radius:100px;
+  font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
 }
-.reveal.visible { opacity: 1; transform: none; }
-.reveal.d1 { transition-delay: 0.1s; }
-.reveal.d2 { transition-delay: 0.2s; }
-.reveal.d3 { transition-delay: 0.3s; }
-.reveal.d4 { transition-delay: 0.4s; }
+.badge-brand{background:rgba(200,119,58,.1);border:1px solid rgba(200,119,58,.28);color:var(--c-lt)}
+.badge-verified{background:rgba(42,92,69,.15);border:1px solid rgba(42,92,69,.4);color:#5fc990}
 
-/* ============================================================
-   SVG ICONS — definidos una vez, reutilizados con <use>
-   ============================================================ */
+/* ─── BUTTONS ────────────────────────────────── */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:14px 26px;border-radius:100px;
+  font-family:var(--fd);font-weight:700;font-size:14px;letter-spacing:.01em;
+  transition:transform var(--t), box-shadow var(--t), background var(--t);
+  white-space:nowrap;
+}
+.btn svg{flex-shrink:0}
 
-/* ============================================================
-   NAVBAR
-   ============================================================ */
-.navbar {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 1000;
-  height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 24px;
-  background: rgba(17,19,24,0.8);
-  /* Fallback para browsers sin backdrop-filter */
-  background: rgba(17,19,24,0.95);
-  border-bottom: 1px solid var(--border2);
-  transition: background-color 0.25s ease, border-color 0.25s ease;
+.btn-primary{
+  background:linear-gradient(135deg,var(--c),var(--c-lt));
+  color:#fff;box-shadow:0 4px 22px rgba(200,119,58,.32);
 }
-@supports (backdrop-filter: blur(1px)) {
-  .navbar {
-    background: rgba(17,19,24,0.8);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-  }
-}
-.navbar.scrolled { background: rgba(10,11,15,0.97); border-bottom-color: var(--border); }
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(200,119,58,.48)}
+.btn-primary:active{transform:translateY(0)}
 
-.nav-logo {
-  font-family: var(--font-d);
-  font-size: 22px;
-  font-weight: 900;
-  letter-spacing: -0.5px;
-  background: linear-gradient(135deg, var(--cream) 30%, var(--cu-l) 70%, var(--cu));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1;
+.btn-outline{
+  background:transparent;border:1px solid var(--glass-b);
+  color:var(--cream);
 }
-.nav-logo small {
-  display: block;
-  font-family: var(--font-m);
-  font-size: 9px;
-  letter-spacing: 2px;
-  -webkit-text-fill-color: var(--muted);
-  color: var(--muted);
-  margin-top: 2px;
+.btn-outline:hover{background:var(--glass);border-color:rgba(200,119,58,.35);transform:translateY(-2px)}
+
+.btn-green{
+  background:linear-gradient(135deg,var(--g),var(--g-lt));
+  color:#fff;box-shadow:0 4px 22px rgba(42,92,69,.3);
+}
+.btn-green:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(42,92,69,.45)}
+
+.btn-wa{
+  background:#25D366;color:#fff;
+  font-size:13px;padding:10px 16px;
+  box-shadow:0 4px 14px rgba(37,211,102,.28);
+}
+.btn-wa:hover{background:#1ebe5d;transform:translateY(-1px);box-shadow:0 6px 20px rgba(37,211,102,.4)}
+
+/* ─── NAVBAR ─────────────────────────────────── */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  height:64px;display:flex;align-items:center;
+  /* Fallback sin backdrop-filter */
+  background:rgba(17,19,24,.95);
+  border-bottom:1px solid var(--border2);
+  transition:background-color .25s ease, border-color .25s ease;
+}
+@supports(backdrop-filter:blur(1px)){
+  #nav{background:rgba(17,19,24,.8);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+}
+#nav.scrolled{background:rgba(10,11,15,.97);border-bottom-color:var(--border)}
+
+.nav-row{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%}
+
+.nav-logo{
+  font-family:var(--font-d);font-size:22px;font-weight:900;
+  letter-spacing:-.5px;line-height:1;
+  background:linear-gradient(135deg,var(--cream) 30%,var(--c-lt) 70%,var(--c));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  display:flex;flex-direction:column;
+}
+.nav-logo small{
+  display:block;font-family:var(--font-m);font-size:9px;
+  letter-spacing:2px;-webkit-text-fill-color:var(--muted);color:var(--muted);margin-top:2px;
 }
 
-.nav-links {
-  display: none;
-  align-items: center;
-  gap: 28px;
-}
-.nav-links a {
-  font-size: 13px;
-  color: var(--muted);
-  transition: color 0.2s;
-}
-.nav-links a:hover { color: var(--cream); }
-.nav-links .btn-primary { padding: 8px 18px; font-size: 12px; font-weight: 700; }
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{font-size:13px;font-weight:500;color:var(--muted);transition:color .2s}
+.nav-links a:hover{color:var(--cream)}
 
-.hamburger {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  padding: 8px;
-  z-index: 1001;
+.nav-actions{display:flex;gap:10px;align-items:center}
+.nav-actions .btn{padding:8px 18px;font-size:12px;font-weight:700}
+.nav-actions .btn-primary{
+  background:linear-gradient(135deg,var(--c),var(--c-lt));
+  color:#fff;box-shadow:0 4px 16px rgba(200,119,58,.3);
 }
-.hamburger span {
-  display: block;
-  width: 24px; height: 2px;
-  background: var(--cream);
-  border-radius: 2px;
-  transition: transform 0.25s ease, opacity 0.25s ease;
-  transform-origin: center;
-}
-.hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-.hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* Mobile overlay */
-.nav-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 999;
-  background: rgba(10,11,15,0.98);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 36px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
+.nav-ham{
+  display:none;flex-direction:column;gap:5px;
+  padding:8px;z-index:1001;background:none;border:none;cursor:pointer;
 }
-.nav-overlay.open { opacity: 1; pointer-events: auto; }
-.nav-overlay a {
-  font-family: var(--font-d);
-  font-size: 30px;
-  font-weight: 700;
-  color: var(--cream);
-  transition: color 0.2s;
+.nav-ham span{
+  display:block;width:24px;height:2px;
+  background:var(--cream);border-radius:2px;
+  transition:transform .25s ease, opacity .25s ease;
+  transform-origin:center;
 }
-.nav-overlay a:hover { color: var(--cu); }
-.nav-overlay .btn-primary { font-size: 16px; padding: 14px 36px; }
+.nav-ham[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-ham[aria-expanded="true"] span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-ham[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
-/* ============================================================
-   HERO
-   ============================================================ */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding-top: 64px;
-  position: relative;
-  overflow: hidden;
+/* mobile drawer */
+.mob-menu{
+  display:none;position:fixed;inset:0;z-index:999;
+  background:rgba(10,11,15,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  flex-direction:column;align-items:center;justify-content:center;
+  gap:36px;padding:24px;
 }
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
+.mob-menu.open{display:flex}
+.mob-menu a{font-family:var(--font-d);font-size:30px;font-weight:800;color:var(--cream);transition:color var(--t)}
+.mob-menu a:hover{color:var(--c)}
+.mob-ctas{display:flex;flex-direction:column;gap:12px;width:100%;max-width:280px;margin-top:12px}
+.mob-ctas .btn{width:100%;justify-content:center}
+
+/* ─── HERO ───────────────────────────────────── */
+#hero{
+  min-height:100svh;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;text-align:center;
+  padding:120px 0 80px;position:relative;overflow:hidden;
 }
-.hero-bg-glow {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 80% 60% at 60% 40%, rgba(200,119,58,0.07) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 80% at 10% 80%, rgba(200,119,58,0.04) 0%, transparent 50%);
+
+/* Background — orbs only, no floating cards */
+.hero-orb{
+  position:absolute;border-radius:50%;pointer-events:none;
+  animation:orb-drift var(--dur,14s) ease-in-out infinite alternate;
 }
-.hero-grid-bg {
-  position: absolute;
-  inset: 0;
+.hero-orb-1{
+  width:560px;height:560px;right:-140px;top:-140px;
+  background:radial-gradient(circle,rgba(200,119,58,.16) 0%,transparent 68%);
+  filter:blur(60px);--dur:13s;
+}
+.hero-orb-2{
+  width:440px;height:440px;left:-100px;bottom:-80px;
+  background:radial-gradient(circle,rgba(42,92,69,.16) 0%,transparent 68%);
+  filter:blur(60px);--dur:17s;
+}
+@keyframes orb-drift{
+  from{transform:translate(0,0)}
+  to{transform:translate(30px,-30px)}
+}
+
+.hero-grid{
+  position:absolute;inset:0;pointer-events:none;
   background-image:
-    linear-gradient(var(--border2) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border2) 1px, transparent 1px);
-  background-size: 60px 60px;
-  opacity: 0.25;
-  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
-}
-.hero-inner {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 48px;
-  padding: 60px 0 80px;
-  width: 100%;
-}
-.hero-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--cu-dim);
-  border: 1px solid rgba(200,119,58,0.25);
-  border-radius: var(--r-full);
-  padding: 6px 14px;
-  font-family: var(--font-m);
-  font-size: 10px;
-  letter-spacing: 3px;
-  color: var(--cu-l);
-  text-transform: uppercase;
-  margin-bottom: 24px;
-}
-.hero-eyebrow::before { content: '✦'; }
-.hero-title {
-  font-family: var(--font-d);
-  font-size: clamp(38px, 6vw, 68px);
-  font-weight: 900;
-  line-height: 1.05;
-  letter-spacing: -2px;
-  margin-bottom: 18px;
-}
-.hero-title em {
-  font-style: normal;
-  background: linear-gradient(135deg, var(--cu-l), var(--cu));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.hero-sub {
-  font-size: 18px;
-  font-weight: 300;
-  color: var(--muted);
-  line-height: 1.7;
-  margin-bottom: 36px;
-  max-width: 500px;
-}
-.hero-sub strong { color: var(--cream); font-weight: 500; }
-.hero-btns {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-bottom: 40px;
-}
-.hero-trust {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-.trust-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  color: var(--muted);
-}
-.trust-dot {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--green-l);
-  flex-shrink: 0;
-  will-change: transform;
-  animation: pulse 2.4s ease infinite;
-}
-@keyframes pulse {
-  0%, 100% { transform: scale(1); opacity: 0.7; }
-  50%       { transform: scale(1.3); opacity: 0.25; }
+    linear-gradient(var(--line) 1px,transparent 1px),
+    linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,black,transparent);
 }
 
-/* Tarjeta demo hero */
-.hero-card {
-  display: none; /* visible solo en tablet+ */
-  background: var(--surf);
-  border: 1px solid var(--border);
-  border-radius: var(--r-xl);
-  padding: 26px;
-  position: relative;
-  overflow: hidden;
-  box-shadow: var(--shadow);
-  will-change: transform;
-  animation: floatY 4s ease-in-out infinite;
+.hero-content{
+  position:relative;z-index:1;
+  max-width:760px;margin:0 auto;
+  animation:hero-in .9s var(--ease) both;
 }
-.hero-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, var(--cu), var(--cu-l), transparent);
-}
-@keyframes floatY {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-8px); }
-}
-.hc-head { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
-.hc-av {
-  width: 50px; height: 50px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--cu), var(--cu-l));
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-d); font-size: 20px; font-weight: 900; color: #000;
-  flex-shrink: 0;
-  box-shadow: 0 0 0 3px var(--bg-d), 0 0 0 5px var(--cu);
-}
-.hc-name { font-size: 16px; font-weight: 700; color: var(--cream); margin-bottom: 2px; }
-.hc-spec { font-family: var(--font-m); font-size: 11px; color: var(--cu); letter-spacing: 1px; }
-.hc-stats {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 16px;
-}
-.hc-stat {
-  background: var(--bg-d); border-radius: var(--r-md); padding: 10px; text-align: center;
-}
-.hc-stat-n {
-  display: block; font-family: var(--font-m); font-size: 17px; color: var(--cu); margin-bottom: 2px;
-}
-.hc-stat-l { font-size: 9px; color: var(--muted2); text-transform: uppercase; letter-spacing: 1px; }
-.hc-chips { display: flex; gap: 6px; flex-wrap: wrap; }
-.chip {
-  font-family: var(--font-m); font-size: 11px; padding: 4px 10px;
-  border-radius: var(--r-sm); background: var(--bg-d); color: var(--muted); letter-spacing: 0.5px;
+@keyframes hero-in{
+  from{opacity:0;transform:translateY(24px)}
+  to{opacity:1;transform:translateY(0)}
 }
 
-/* ============================================================
-   PROBLEMA
-   ============================================================ */
-.problem-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 40px;
-  align-items: center;
+.hero-h1{
+  font-family:var(--fd);font-size:clamp(42px,7vw,80px);
+  font-weight:800;letter-spacing:-.035em;line-height:1.04;
+  color:var(--cream);margin-bottom:22px;
 }
-.problem-title {
-  font-family: var(--font-d);
-  font-size: clamp(28px, 4vw, 48px);
-  font-weight: 900;
-  line-height: 1.1;
-  letter-spacing: -1px;
-  margin-bottom: 16px;
-}
-.problem-text { font-size: 15px; color: var(--muted); line-height: 1.8; margin-bottom: 12px; }
-.flow-list { display: flex; flex-direction: column; }
-.flow-item {
-  display: flex; align-items: flex-start; gap: 14px;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--border2);
-}
-.flow-item:last-child { border-bottom: none; }
-.flow-icon {
-  width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0; margin-top: 2px;
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-m); font-size: 11px;
-}
-.flow-icon.bad {
-  background: rgba(139,58,58,0.15); border: 1px solid rgba(200,80,80,0.25); color: #E07070;
-}
-.flow-icon.good {
-  background: var(--cu-dim); border: 1px solid rgba(200,119,58,0.3); color: var(--cu);
-}
-.flow-text { font-size: 14px; color: var(--muted); line-height: 1.6; }
-.flow-text strong { color: var(--cream); font-weight: 500; }
+.hero-h1 em{font-style:normal;color:var(--c)}
 
-/* ============================================================
-   CÓMO FUNCIONA
-   ============================================================ */
-.section-alt { background: var(--bg-d); position: relative; }
-.section-alt::before,
-.section-alt::after {
-  content: '';
-  position: absolute;
-  left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg, transparent, var(--border), transparent);
-}
-.section-alt::before { top: 0; }
-.section-alt::after  { bottom: 0; }
-
-.how-header { text-align: center; max-width: 520px; margin: 0 auto 48px; }
-.how-header .eyebrow { justify-content: center; }
-.how-header .eyebrow::before { display: none; }
-
-.how-steps {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2px;
-}
-.how-step {
-  background: var(--surf);
-  padding: 36px 28px;
-  position: relative;
-  overflow: hidden;
-  transition: background-color 0.25s ease;
-}
-.how-step:first-child { border-radius: var(--r-xl) var(--r-xl) 0 0; }
-.how-step:last-child  { border-radius: 0 0 var(--r-xl) var(--r-xl); }
-.how-step:hover { background: var(--surf2); }
-.how-step::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, var(--cu), transparent);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-.how-step:hover::before { opacity: 1; }
-.how-num {
-  font-family: var(--font-d); font-size: 56px; font-weight: 900;
-  color: var(--border); line-height: 1; margin-bottom: 14px;
-  transition: color 0.3s ease;
-}
-.how-step:hover .how-num { color: rgba(200,119,58,0.12); }
-.how-icon { font-size: 28px; margin-bottom: 12px; display: block; }
-.how-step h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
-.how-step p  { font-size: 14px; color: var(--muted); line-height: 1.7; }
-
-/* Guía Instagram */
-.ig-guide {
-  margin-top: 48px;
-  background: var(--surf2);
-  border: 1px solid var(--border);
-  border-radius: var(--r-xl);
-  padding: 32px;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 32px;
-  align-items: center;
-}
-.ig-guide-steps { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
-.ig-step {
-  display: flex; gap: 12px; align-items: flex-start;
-  font-size: 13px; color: var(--cream); line-height: 1.6;
-}
-.ig-step::before {
-  content: '→'; color: var(--cu); font-weight: 700; flex-shrink: 0; margin-top: 1px;
-}
-.ig-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
-  color: white;
-  padding: 16px 24px;
-  border-radius: var(--r-md);
-  font-weight: 700;
-  font-size: 15px;
-  transition: opacity 0.2s, transform 0.2s;
-  text-align: center;
-  justify-content: center;
-}
-.ig-btn:hover { opacity: 0.9; transform: translateY(-2px); }
-
-/* ============================================================
-   CATEGORÍAS
-   ============================================================ */
-.cats-hd {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
-  margin-bottom: 40px;
-}
-.cats-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-}
-.cat-card {
-  background: var(--surf);
-  border: 1px solid var(--border);
-  border-radius: var(--r-lg);
-  padding: 24px 18px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 10px;
-  transition: var(--trans);
-  position: relative;
-  overflow: hidden;
-  color: inherit;
-}
-.cat-card::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, var(--cu-dim), transparent);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-.cat-card:hover {
-  border-color: var(--cu);
-  transform: translateY(-3px);
-  box-shadow: 0 10px 32px rgba(200,119,58,0.14);
-}
-.cat-card:hover::after { opacity: 1; }
-.cat-card > * { position: relative; z-index: 1; }
-.cat-icon  { font-size: 28px; }
-.cat-name  { font-size: 15px; font-weight: 700; color: var(--cream); }
-.cat-desc  { font-size: 12px; color: var(--muted); line-height: 1.5; }
-.cat-link  {
-  display: flex; align-items: center; gap: 5px;
-  font-family: var(--font-m); font-size: 11px; color: var(--cu); letter-spacing: 1px;
-  margin-top: auto;
+.hero-p{
+  font-size:clamp(15px,2vw,18px);color:var(--muted);
+  line-height:1.7;margin-bottom:40px;
+  max-width:520px;margin-left:auto;margin-right:auto;
 }
 
-/* ============================================================
-   MAESTROS
-   ============================================================ */
-.maestros-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
-  margin-top: 40px;
-}
-.maestro-card {
-  background: var(--surf);
-  border: 1px solid var(--border);
-  border-radius: var(--r-xl);
-  padding: 24px;
-  transition: var(--trans);
-  position: relative;
-  overflow: hidden;
-}
-.maestro-card::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg, var(--cu), var(--cu-l), transparent);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-.maestro-card:hover {
-  border-color: var(--cu);
-  transform: translateY(-3px);
-  box-shadow: 0 14px 40px rgba(200,119,58,0.1);
-}
-.maestro-card:hover::after { opacity: 1; }
-.mc-head {
-  display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;
-}
-.mc-av {
-  width: 52px; height: 52px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-d); font-size: 20px; font-weight: 900; color: #000;
-}
-.mc-name { font-size: 16px; font-weight: 700; margin-bottom: 2px; }
-.mc-spec { font-family: var(--font-m); font-size: 11px; color: var(--cu); letter-spacing: 0.5px; }
-.mc-zona {
-  display: flex; align-items: center; gap: 5px;
-  font-size: 12px; color: var(--muted); margin-bottom: 14px;
-}
-.mc-chips { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 18px; }
-.mc-chip {
-  font-family: var(--font-m); font-size: 10px; padding: 3px 8px;
-  border-radius: var(--r-sm); background: var(--bg-d); color: var(--muted); border: 1px solid var(--border2);
-}
-.mc-foot {
-  display: flex; align-items: center; justify-content: space-between;
-  padding-top: 14px; border-top: 1px solid var(--border2);
-}
-.mc-price { font-family: var(--font-m); font-size: 11px; color: var(--muted2); }
-.mc-wa {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: rgba(37,211,102,0.1); border: 1px solid rgba(37,211,102,0.25);
-  border-radius: var(--r-sm); padding: 7px 14px;
-  font-size: 12px; color: var(--wa); font-weight: 600;
-  transition: background-color 0.25s ease, transform 0.25s ease;
-}
-.mc-wa:hover { background: rgba(37,211,102,0.18); transform: translateY(-1px); }
-
-/* ============================================================
-   TESTIMONIOS
-   ============================================================ */
-.testi-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
-  margin-top: 40px;
-}
-.testi-card {
-  background: var(--surf);
-  border: 1px solid var(--border);
-  border-radius: var(--r-xl);
-  padding: 30px;
-  transition: border-color 0.25s ease, transform 0.25s ease;
-}
-.testi-card:hover { border-color: rgba(200,119,58,0.3); transform: translateY(-2px); }
-.testi-q { font-family: var(--font-d); font-size: 44px; color: var(--cu); line-height: 0.8; opacity: 0.35; margin-bottom: 14px; }
-.testi-text { font-size: 15px; font-style: italic; color: var(--cream); line-height: 1.75; margin-bottom: 20px; }
-.testi-author {
-  display: flex; align-items: center; gap: 12px;
-  padding-top: 16px; border-top: 1px solid var(--border2);
-}
-.testi-av {
-  width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0;
-  background: linear-gradient(135deg, var(--cu), var(--cu-l));
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 700; font-size: 14px; color: #000;
-}
-.testi-name { font-size: 13px; font-weight: 600; color: var(--cream); }
-.testi-loc  { font-family: var(--font-m); font-size: 11px; color: var(--muted); }
-.testi-tag  {
-  margin-left: auto; font-family: var(--font-m); font-size: 10px;
-  padding: 3px 10px; border-radius: var(--r-sm); background: var(--cu-dim); color: var(--cu-l); letter-spacing: 1px;
+.hero-ctas{
+  display:flex;gap:12px;justify-content:center;
+  flex-wrap:wrap;margin-bottom:56px;
 }
 
-/* ============================================================
-   CTA PRINCIPAL
-   ============================================================ */
-.cta-wrap {
-  text-align: center;
-  max-width: 640px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
+/* Trust strip — replaces the floating cards */
+.trust-strip{
+  display:flex;align-items:center;justify-content:center;
+  gap:0;border:1px solid var(--line);border-radius:100px;
+  background:var(--glass);backdrop-filter:blur(12px);
+  overflow:hidden;flex-wrap:wrap;
 }
-.cta-wrap .badge-v { margin-bottom: 24px; }
-.cta-title {
-  font-family: var(--font-d);
-  font-size: clamp(32px, 5vw, 60px);
-  font-weight: 900;
-  line-height: 1.05;
-  letter-spacing: -2px;
-  margin-bottom: 18px;
+.trust-item{
+  display:flex;align-items:center;gap:7px;
+  padding:12px 20px;
+  font-size:12px;font-weight:600;color:var(--muted);
+  border-right:1px solid var(--line);
+  transition:color var(--t);
 }
-.cta-title em {
-  font-style: normal;
-  background: linear-gradient(135deg, var(--cu-l), var(--cu));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.trust-item:last-child{border-right:none}
+.trust-item:hover{color:var(--cream)}
+.trust-icon{font-size:16px;line-height:1}
+
+/* Ticker — live maestros */
+.ticker-wrap{
+  width:100%;overflow:hidden;
+  mask-image:linear-gradient(90deg,transparent,black 8%,black 92%,transparent);
+  margin-top:48px;
 }
-.cta-sub { font-size: 16px; color: var(--muted); line-height: 1.7; margin-bottom: 36px; }
-.cta-btns { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
-.cta-checks {
-  display: flex; justify-content: center; flex-wrap: wrap; gap: 20px;
+.ticker{
+  display:flex;gap:10px;width:max-content;
+  animation:ticker-scroll 28s linear infinite;
 }
-.cta-check {
-  display: flex; align-items: center; gap: 7px;
-  font-size: 13px; color: var(--muted);
+.ticker:hover{animation-play-state:paused}
+@keyframes ticker-scroll{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
 }
-.cta-check::before { content: '✓'; color: var(--green-l); font-weight: 700; }
-.cta-glow {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(200,119,58,0.05) 0%, transparent 70%);
-  pointer-events: none;
+.ticker-chip{
+  display:flex;align-items:center;gap:8px;
+  background:var(--bg2);border:1px solid var(--line);
+  border-radius:100px;padding:8px 14px;
+  font-size:12px;font-weight:500;color:var(--muted);
+  white-space:nowrap;flex-shrink:0;
+}
+.ticker-chip-ava{
+  width:24px;height:24px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--fd);font-size:9px;font-weight:800;color:#fff;
+}
+.ticker-chip-dot{
+  width:6px;height:6px;border-radius:50%;background:#5fc990;
+  margin-left:2px;flex-shrink:0;
 }
 
-/* ============================================================
-   FORMULARIO URGENCIA
-   ============================================================ */
-.urgencia-box {
-  border: 1px solid var(--border);
-  border-radius: var(--r-xl);
-  overflow: hidden;
-  position: relative;
-}
-.urgencia-box::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, var(--cu), var(--cu-l), var(--cu));
-}
-.urgencia-top {
-  background: var(--cu);
-  padding: 18px 28px;
-  display: flex; align-items: center; gap: 12px;
-}
-.urgencia-top h2 {
-  font-family: var(--font-m);
-  font-size: 12px; font-weight: 500; letter-spacing: 3px; color: #000; text-transform: uppercase;
-}
-.urgencia-body {
-  background: linear-gradient(135deg, var(--surf), var(--surf2));
-  padding: 28px;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
-}
-.form-field { display: flex; flex-direction: column; gap: 6px; }
-.form-label {
-  font-family: var(--font-m); font-size: 10px; letter-spacing: 2px;
-  color: var(--muted); text-transform: uppercase;
-}
-.form-input, .form-select {
-  background: var(--bg-d);
-  border: 1px solid var(--border);
-  border-radius: var(--r-md);
-  padding: 13px 16px;
-  font-family: var(--font-b); font-size: 14px; color: var(--cream);
-  outline: none; width: 100%;
-  transition: border-color 0.2s ease;
-  /* Select: flecha personalizada */
-  appearance: none;
-  -webkit-appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238B909C' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 14px center;
-}
-.form-input:focus, .form-select:focus { border-color: var(--cu); }
-.form-input::placeholder { color: var(--muted2); }
-.form-input.error, .form-select.error { border-color: #E07070; }
-.form-btn {
-  background: var(--cu); color: #000;
-  padding: 14px 24px; border-radius: var(--r-md);
-  font-family: var(--font-b); font-weight: 700; font-size: 14px;
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-  transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
-  border: none; cursor: pointer; width: 100%;
-}
-.form-btn:hover { background: var(--cu-l); transform: translateY(-2px); box-shadow: var(--shadow-cu); }
-
-/* ============================================================
-   PARA MAESTROS
-   ============================================================ */
-.join-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 40px;
-  align-items: center;
-}
-.join-benefits { display: flex; flex-direction: column; gap: 18px; margin: 24px 0 36px; }
-.join-benefit { display: flex; align-items: flex-start; gap: 14px; }
-.jb-icon {
-  width: 38px; height: 38px; border-radius: var(--r-md);
-  background: var(--cu-dim); border: 1px solid rgba(200,119,58,0.2);
-  display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0;
-}
-.jb-title { font-size: 14px; font-weight: 600; margin-bottom: 3px; }
-.jb-text  { font-size: 13px; color: var(--muted); line-height: 1.6; }
-
-.join-card {
-  background: var(--surf);
-  border: 1px solid var(--border);
-  border-radius: var(--r-xl);
-  padding: 32px;
-  position: relative;
-  overflow: hidden;
-}
-.join-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, var(--cu), var(--cu-l));
-}
-.join-card h3 { font-family: var(--font-d); font-size: 22px; font-weight: 900; margin-bottom: 6px; }
-.join-card p  { font-size: 13px; color: var(--muted); margin-bottom: 24px; line-height: 1.6; }
-.join-steps { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
-.join-step {
-  display: flex; align-items: center; gap: 12px;
-  padding: 12px 14px; background: var(--bg-d);
-  border-radius: var(--r-md); border: 1px solid var(--border2);
-}
-.js-n {
-  width: 26px; height: 26px; border-radius: 50%; background: var(--cu); color: #000;
-  font-family: var(--font-m); font-size: 11px; font-weight: 700;
-  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-}
-.join-step span { font-size: 13px; color: var(--cream); }
-.join-free {
-  display: flex; align-items: center; gap: 8px;
-  background: rgba(42,92,69,0.15); border: 1px solid rgba(61,139,104,0.3);
-  border-radius: var(--r-md); padding: 12px 16px; margin-bottom: 18px;
-  font-size: 13px; color: var(--cream); line-height: 1.5;
-}
-.join-free strong { color: var(--green-l); }
-.join-note {
-  text-align: center; margin-top: 12px; font-family: var(--font-m); font-size: 11px; color: var(--muted2);
-}
-.join-note a { color: var(--cu); }
-
-/* ============================================================
-   CANALES
-   ============================================================ */
-.canales-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-  margin-top: 40px;
-}
-.canal-card {
-  background: var(--surf);
-  border: 1px solid var(--border);
-  border-radius: var(--r-xl);
-  padding: 24px 18px;
-  display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px;
-  transition: var(--trans); color: inherit;
-}
-.canal-card:hover {
-  border-color: var(--c-color, var(--cu));
-  transform: translateY(-3px);
-  box-shadow: 0 10px 32px rgba(0,0,0,0.25);
-}
-.canal-ico {
-  width: 48px; height: 48px; border-radius: var(--r-md);
-  display: flex; align-items: center; justify-content: center; font-size: 24px;
-  background: var(--c-bg, var(--cu-dim));
-}
-.canal-name   { font-size: 14px; font-weight: 700; }
-.canal-handle { font-family: var(--font-m); font-size: 11px; color: var(--muted); }
-.canal-desc   { font-size: 12px; color: var(--muted2); line-height: 1.5; }
-
-/* ============================================================
-   CARRUSEL
-   ============================================================ */
-.carousel-hd {
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 16px; flex-wrap: wrap; margin-bottom: 32px;
-}
-.carousel-controls { display: flex; gap: 8px; }
-.car-btn {
-  width: 42px; height: 42px; border-radius: 50%;
-  background: var(--surf); border: 1px solid var(--border); color: var(--cream);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 16px; transition: var(--trans); cursor: pointer;
-}
-.car-btn:hover { background: var(--cu); border-color: var(--cu); color: #000; }
-.car-btn:disabled { opacity: 0.35; cursor: default; }
-.car-btn:disabled:hover { background: var(--surf); border-color: var(--border); color: var(--cream); }
-.car-overflow { overflow: hidden; }
-.car-track {
-  display: flex;
-  gap: 14px;
-  transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
-}
-.car-item {
-  flex-shrink: 0;
-  width: 200px;
-  background: var(--surf);
-  border: 1px solid var(--border);
-  border-radius: var(--r-xl);
-  padding: 28px 18px;
-  display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px;
-  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
-}
-.car-item:hover {
-  border-color: var(--cu);
-  transform: translateY(-3px);
-  box-shadow: 0 10px 28px rgba(200,119,58,0.1);
-}
-.car-item-icon { font-size: 36px; }
-.car-item-name { font-size: 15px; font-weight: 700; }
-.car-item-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
-
-/* ============================================================
-   FOOTER
-   ============================================================ */
-.footer { background: var(--bg-d); border-top: 1px solid var(--border2); padding: 52px 0 28px; }
-.footer-top {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 36px;
-  padding-bottom: 40px;
-  border-bottom: 1px solid var(--border2);
-  margin-bottom: 24px;
-}
-.footer-brand-logo {
-  font-family: var(--font-d); font-size: 26px; font-weight: 900; margin-bottom: 6px;
-  background: linear-gradient(135deg, var(--cream), var(--cu-l), var(--cu));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-}
-.footer-brand-tag { font-family: var(--font-m); font-size: 10px; color: var(--muted2); letter-spacing: 2px; margin-bottom: 14px; }
-.footer-brand-desc { font-size: 13px; color: var(--muted); line-height: 1.7; max-width: 280px; }
-.footer-social { display: flex; gap: 8px; margin-top: 18px; }
-.f-social-btn {
-  width: 36px; height: 36px; border-radius: var(--r-md);
-  background: var(--surf); border: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: center; font-size: 15px;
-  transition: var(--trans);
-}
-.f-social-btn:hover { background: var(--cu); border-color: var(--cu); }
-.footer-col-title {
-  font-family: var(--font-m); font-size: 11px; font-weight: 700;
-  letter-spacing: 2px; color: var(--cream); text-transform: uppercase; margin-bottom: 16px;
-}
-.footer-links { display: flex; flex-direction: column; gap: 10px; }
-.footer-links a { font-size: 13px; color: var(--muted); transition: color 0.2s; }
-.footer-links a:hover { color: var(--cu); }
-.footer-bottom {
-  display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
-}
-.footer-copy { font-family: var(--font-m); font-size: 11px; color: var(--muted2); }
-.footer-seal { font-family: var(--font-m); font-size: 11px; color: var(--cu); letter-spacing: 1px; }
-
-/* ============================================================
-   BOTÓN FLOTANTE WA
-   ============================================================ */
-.wa-float {
-  position: fixed;
-  bottom: 24px; right: 24px;
-  z-index: 900;
-  display: flex; flex-direction: column; align-items: flex-end; gap: 10px;
-}
-.wa-tooltip {
-  background: var(--surf); border: 1px solid var(--border);
-  border-radius: var(--r-md); padding: 9px 14px;
-  font-size: 12px; color: var(--cream); white-space: nowrap; box-shadow: var(--shadow);
-  opacity: 0; transform: translateX(8px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
-  pointer-events: none;
-}
-.wa-float:hover .wa-tooltip { opacity: 1; transform: none; }
-.wa-btn {
-  width: 58px; height: 58px; border-radius: 50%;
-  background: var(--wa);
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 4px 18px rgba(37,211,102,0.4);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  position: relative;
-}
-.wa-btn:hover { transform: scale(1.1); box-shadow: 0 8px 28px rgba(37,211,102,0.5); }
-.wa-ring {
-  position: absolute; inset: -5px; border-radius: 50%;
-  border: 2px solid var(--wa);
-  animation: pulse 2.8s ease infinite;
-  will-change: transform;
-}
-.wa-btn svg { width: 28px; height: 28px; fill: white; }
-
-/* ============================================================
-   RESPONSIVE — TABLET 768px+
-   ============================================================ */
-@media (min-width: 768px) {
-  .section-pad { padding: 96px 0; }
-  .nav-links   { display: flex; }
-  .hamburger   { display: none; }
-
-  .hero-inner          { grid-template-columns: 1fr 1fr; align-items: center; }
-  .hero-card           { display: block; }
-  .how-steps           { grid-template-columns: repeat(3, 1fr); }
-  .how-step:first-child { border-radius: var(--r-xl) 0 0 var(--r-xl); }
-  .how-step:last-child  { border-radius: 0 var(--r-xl) var(--r-xl) 0; }
-  .ig-guide            { grid-template-columns: 1fr 1fr; }
-  .cats-grid           { grid-template-columns: repeat(4, 1fr); }
-  .maestros-grid       { grid-template-columns: repeat(3, 1fr); }
-  .testi-grid          { grid-template-columns: repeat(2, 1fr); }
-  .urgencia-body       { grid-template-columns: 1fr 1fr 1fr; }
-  .form-btn            { width: auto; }
-  .join-grid           { grid-template-columns: 1fr 1fr; gap: 60px; }
-  .canales-grid        { grid-template-columns: repeat(4, 1fr); }
-  .footer-top          { grid-template-columns: 2fr 1fr 1fr; }
-  .problem-grid        { grid-template-columns: 1fr 1fr; gap: 64px; }
+/* ─── SECTION: DIRECTORIO ────────────────────── */
+#directorio{padding:96px 0;position:relative}
+#directorio::before,#registro::before,#catalogo::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(200,119,58,.2),transparent);
 }
 
-/* DESKTOP 1024px+ */
-@media (min-width: 1024px) {
-  .cats-grid   { grid-template-columns: repeat(4, 1fr); }
-  .urgencia-body { grid-template-columns: 1fr 1fr 1fr auto; align-items: end; }
-  .form-btn    { width: auto; align-self: flex-end; }
+.sec-head{text-align:center;margin-bottom:52px}
+
+/* Carousel — scroll-snap, no JS drag needed */
+.car-outer{
+  overflow-x:auto;overflow-y:visible;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  padding:4px 20px 20px;
+  mask-image:linear-gradient(90deg,transparent,black 4%,black 96%,transparent);
+}
+.car-outer::-webkit-scrollbar{display:none}
+
+.car-track{
+  display:flex;gap:16px;
+  width:max-content;
+}
+
+/* Dir card */
+.dir-card{
+  width:256px;flex-shrink:0;
+  scroll-snap-align:start;
+  background:var(--bg2);border:1px solid var(--line);
+  border-radius:var(--r-lg);padding:22px;
+  transition:border-color var(--t),transform var(--t),box-shadow var(--t);
+  cursor:pointer;
+}
+.dir-card:hover{
+  border-color:rgba(200,119,58,.3);
+  transform:translateY(-5px);
+  box-shadow:0 16px 40px rgba(0,0,0,.4),var(--shadow-glow,0 0 30px rgba(200,119,58,.1));
+}
+.dir-card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px}
+.dir-ava{
+  width:50px;height:50px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--fd);font-weight:800;font-size:17px;color:#fff;
+}
+.dir-name{font-family:var(--fd);font-size:15px;font-weight:700;color:var(--cream);margin-bottom:2px}
+.dir-spec{font-size:12px;color:var(--c-lt);font-weight:600;margin-bottom:3px}
+.dir-zone{font-size:11px;color:var(--muted2);display:flex;align-items:center;gap:3px}
+.dir-tags{display:flex;flex-wrap:wrap;gap:5px;margin:12px 0}
+.dir-tag{
+  font-size:10px;color:var(--muted);
+  background:rgba(255,255,255,.04);border:1px solid var(--line);
+  padding:3px 9px;border-radius:100px;
+}
+.dir-foot{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-top:12px;border-top:1px solid var(--line);margin-top:4px;
+}
+.dir-rating{display:flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--cream)}
+.stars{color:var(--c);letter-spacing:1px;font-size:11px}
+
+/* Carousel controls */
+.car-controls{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:28px}
+.car-btn{
+  width:40px;height:40px;border-radius:50%;
+  background:var(--bg2);border:1px solid var(--line);
+  color:var(--cream);font-size:16px;
+  display:flex;align-items:center;justify-content:center;
+  transition:var(--t);
+}
+.car-btn:hover{border-color:rgba(200,119,58,.4);color:var(--c-lt)}
+.car-dots{display:flex;gap:5px;align-items:center}
+.car-dot{width:5px;height:5px;border-radius:3px;background:var(--muted2);transition:var(--t);cursor:pointer}
+.car-dot.on{background:var(--c);width:18px}
+
+/* ─── SECTION: REGISTRO ──────────────────────── */
+#registro{padding:96px 0;position:relative}
+
+.reg-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+
+/* Left */
+.reg-h2{
+  font-family:var(--fd);font-size:clamp(22px,3.5vw,36px);
+  font-weight:800;letter-spacing:-.025em;line-height:1.15;
+  color:var(--cream);margin-bottom:18px;
+}
+.reg-h2 span{color:var(--c)}
+
+.reg-p{font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:32px}
+
+.benefits{display:flex;flex-direction:column;gap:14px;margin-bottom:32px}
+.benefit{display:flex;gap:12px;align-items:flex-start}
+.benefit-ico{
+  width:34px;height:34px;border-radius:10px;flex-shrink:0;
+  background:rgba(200,119,58,.08);border:1px solid rgba(200,119,58,.18);
+  display:flex;align-items:center;justify-content:center;font-size:15px;margin-top:1px;
+}
+.benefit-body strong{display:block;font-size:13px;font-weight:600;color:var(--cream);margin-bottom:1px}
+.benefit-body span{font-size:11px;color:var(--muted2)}
+
+.trust-pills{display:flex;flex-wrap:wrap;gap:8px}
+.trust-pill{
+  display:flex;align-items:center;gap:6px;
+  font-size:11px;font-weight:500;color:var(--muted);
+  background:rgba(255,255,255,.03);border:1px solid var(--line);
+  padding:5px 12px;border-radius:100px;
+}
+.trust-pill::before{content:'✓';color:#5fc990;font-weight:700;font-size:10px}
+
+/* Form card */
+.form-card{
+  background:var(--bg2);border:1px solid var(--line);
+  border-radius:var(--r-lg);padding:32px;
+  position:relative;overflow:hidden;
+}
+.form-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--g),var(--c));
+}
+.form-card-title{font-family:var(--fd);font-size:18px;font-weight:700;margin-bottom:4px}
+.form-card-sub{font-size:12px;color:var(--muted2);margin-bottom:24px}
+
+.f-group{margin-bottom:16px}
+.f-label{
+  display:block;font-size:11px;font-weight:600;
+  letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:7px;
+}
+.f-input,.f-select{
+  width:100%;padding:12px 15px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.09);border-radius:10px;
+  font-size:14px;color:var(--cream);
+  transition:border-color var(--t),background var(--t),box-shadow var(--t);
+  -webkit-appearance:none;appearance:none;
+}
+.f-input::placeholder{color:var(--muted2)}
+.f-input:focus,.f-select:focus{
+  outline:none;border-color:rgba(200,119,58,.45);
+  background:rgba(200,119,58,.04);
+  box-shadow:0 0 0 3px rgba(200,119,58,.1);
+}
+/* Error state */
+.f-input.error,.f-select.error{border-color:rgba(220,60,60,.5);box-shadow:0 0 0 3px rgba(220,60,60,.08)}
+
+.f-select{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23C8773A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 13px center;
+  padding-right:36px;cursor:pointer;
+}
+.f-select option{background:var(--bg2)}
+
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+.f-submit{width:100%;padding:15px;font-size:14px;margin-top:6px}
+
+.f-msg{
+  display:none;border-radius:10px;padding:12px 16px;
+  font-size:13px;margin-top:12px;align-items:flex-start;gap:10px;line-height:1.5;
+}
+.f-msg.ok{display:flex;background:rgba(42,92,69,.15);border:1px solid rgba(42,92,69,.35);color:#5fc990}
+.f-msg.err{display:flex;background:rgba(220,60,60,.1);border:1px solid rgba(220,60,60,.3);color:#e07a7a}
+
+/* ─── SECTION: CATÁLOGO ──────────────────────── */
+#catalogo{padding:96px 0;position:relative}
+
+.filters{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:36px}
+.f-btn{
+  padding:8px 16px;border-radius:100px;font-size:12px;font-weight:600;
+  background:rgba(255,255,255,.03);border:1px solid var(--line);
+  color:var(--muted);transition:var(--t);letter-spacing:.01em;
+}
+.f-btn:hover,.f-btn.on{
+  background:rgba(200,119,58,.1);border-color:rgba(200,119,58,.3);color:var(--c-lt)
+}
+.f-search{position:relative;margin-left:auto}
+.f-search input{
+  background:rgba(255,255,255,.03);border:1px solid var(--line);
+  border-radius:100px;padding:8px 16px 8px 36px;
+  font-size:13px;color:var(--cream);width:190px;
+  transition:border-color var(--t),width var(--t);
+}
+.f-search input::placeholder{color:var(--muted2)}
+.f-search input:focus{outline:none;border-color:rgba(200,119,58,.4);width:230px}
+.f-search::before{
+  content:'';position:absolute;left:13px;top:50%;transform:translateY(-50%);
+  width:13px;height:13px;pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgba(242,237,228,.3)' stroke-width='2.5' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='M21 21l-4.35-4.35'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+
+/* Profile card */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:16px}
+
+.p-card{
+  background:var(--bg2);border:1px solid var(--line);
+  border-radius:var(--r-lg);overflow:hidden;
+  transition:border-color var(--t),transform var(--t),box-shadow var(--t);
+  cursor:pointer;
+  animation:card-in .35s var(--ease) both;
+}
+@keyframes card-in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.p-card:hover{border-color:rgba(200,119,58,.28);transform:translateY(-4px);box-shadow:0 14px 36px rgba(0,0,0,.38)}
+
+.p-banner{height:6px}
+.p-body{padding:20px}
+.p-head{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px}
+.p-ava{
+  width:52px;height:52px;border-radius:13px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--fd);font-weight:800;font-size:18px;color:#fff;
+}
+.p-name{font-family:var(--fd);font-size:15px;font-weight:700;color:var(--cream);margin-bottom:2px}
+.p-spec{font-size:12px;color:var(--c-lt);font-weight:600;margin-bottom:3px}
+.p-zone{font-size:11px;color:var(--muted2);display:flex;align-items:center;gap:3px}
+.p-srvs{font-size:12px;color:var(--muted);line-height:1.55;margin-bottom:14px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.p-foot{display:flex;align-items:center;justify-content:space-between;padding-top:12px;border-top:1px solid var(--line)}
+.p-rating{display:flex;align-items:center;gap:4px;font-size:12px;font-weight:600;color:var(--cream)}
+.p-wa{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:11px;font-weight:600;color:#25D366;
+  background:rgba(37,211,102,.08);border:1px solid rgba(37,211,102,.2);
+  padding:6px 12px;border-radius:100px;transition:var(--t);
+}
+.p-wa:hover{background:rgba(37,211,102,.15);transform:translateY(-1px)}
+
+.no-res{
+  grid-column:1/-1;text-align:center;padding:64px 20px;
+  color:var(--muted2);font-size:14px;
+}
+
+/* ─── MODAL ──────────────────────────────────── */
+.modal-bg{
+  display:none;position:fixed;inset:0;z-index:900;
+  background:rgba(8,10,14,.8);backdrop-filter:blur(10px);
+  align-items:center;justify-content:center;padding:20px;
+}
+.modal-bg.open{display:flex}
+.modal{
+  background:var(--bg2);border:1px solid rgba(200,119,58,.22);
+  border-radius:var(--r-lg);width:100%;max-width:460px;
+  padding:28px;position:relative;
+  max-height:90svh;overflow-y:auto;
+  animation:modal-in .28s var(--ease) both;
+}
+.modal::-webkit-scrollbar{width:4px}
+.modal::-webkit-scrollbar-thumb{background:var(--line);border-radius:2px}
+@keyframes modal-in{from{opacity:0;transform:scale(.94) translateY(8px)}to{opacity:1;transform:scale(1) translateY(0)}}
+
+.modal::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--c),var(--c-lt));border-radius:var(--r-lg) var(--r-lg) 0 0;
+}
+.modal-close{
+  position:absolute;top:14px;right:14px;
+  width:30px;height:30px;border-radius:50%;
+  background:rgba(255,255,255,.06);border:1px solid var(--line);
+  color:var(--cream);font-size:14px;
+  display:flex;align-items:center;justify-content:center;
+  transition:var(--t);
+}
+.modal-close:hover{background:rgba(220,60,60,.12);border-color:rgba(220,60,60,.3)}
+
+.modal-top{display:flex;gap:16px;margin-bottom:22px;align-items:flex-start}
+.modal-ava{
+  width:64px;height:64px;border-radius:16px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--fd);font-weight:800;font-size:22px;color:#fff;
+  box-shadow:0 8px 22px rgba(0,0,0,.3);
+}
+.modal-name{font-family:var(--fd);font-size:20px;font-weight:800;margin-bottom:3px}
+.modal-spec{font-size:13px;color:var(--c-lt);margin-bottom:8px}
+
+.modal-section{
+  font-size:10px;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--muted2);margin:18px 0 7px;font-weight:700;
+}
+.modal-text{font-size:14px;color:rgba(242,237,228,.65);line-height:1.65}
+.modal-rating{
+  display:flex;align-items:center;gap:8px;
+  padding:12px 16px;background:var(--glass);border:1px solid var(--line);
+  border-radius:10px;margin-top:18px;
+}
+.modal-r-num{font-family:var(--fd);font-size:17px;font-weight:800;color:var(--cream)}
+.modal-r-label{font-size:12px;color:var(--muted2)}
+
+.modal-foot{display:flex;gap:10px;margin-top:22px}
+.modal-foot .btn{flex:1;justify-content:center}
+
+/* ─── FOOTER ─────────────────────────────────── */
+footer{background:var(--bg2);border-top:1px solid var(--border2);padding:52px 0 28px}
+
+.foot-top{
+  display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;
+  padding-bottom:40px;border-bottom:1px solid var(--border2);margin-bottom:24px;
+}
+.foot-brand-logo{
+  font-family:var(--font-d);font-size:26px;font-weight:900;margin-bottom:5px;
+  background:linear-gradient(135deg,var(--cream),var(--c-lt),var(--c));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.foot-brand-tag{
+  font-family:var(--font-m);font-size:9px;color:var(--muted2);
+  letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;
+}
+.foot-brand-desc{font-size:13px;color:var(--muted);line-height:1.7;max-width:280px}
+
+.foot-social{display:flex;gap:8px;margin-top:18px}
+.f-social-btn{
+  width:36px;height:36px;border-radius:var(--r);
+  background:var(--surf);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;font-size:15px;
+  transition:background var(--t),border-color var(--t),transform var(--t);
+  color:var(--cream);
+}
+.f-social-btn:hover{background:var(--c);border-color:var(--c);transform:translateY(-2px)}
+
+.foot-col-title{
+  font-family:var(--font-m);font-size:11px;font-weight:700;
+  letter-spacing:2px;color:var(--cream);text-transform:uppercase;margin-bottom:16px;
+}
+.foot-links{display:flex;flex-direction:column;gap:10px}
+.foot-links a{font-size:13px;color:var(--muted);transition:color .2s}
+.foot-links a:hover{color:var(--c)}
+
+.foot-bottom{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+}
+.foot-copy{font-family:var(--font-m);font-size:11px;color:var(--muted2)}
+.foot-seal{font-family:var(--font-m);font-size:11px;color:var(--c);letter-spacing:1px}
+
+/* ─── FLOATING WA ────────────────────────────── */
+.wa-float{
+  position:fixed;bottom:24px;right:24px;z-index:900;
+  display:flex;flex-direction:column;align-items:flex-end;gap:10px;
+}
+.wa-tooltip{
+  background:var(--bg3);border:1px solid var(--border);
+  border-radius:var(--r);padding:9px 14px;
+  font-size:12px;font-family:var(--font-m);color:var(--cream);
+  white-space:nowrap;box-shadow:var(--shadow);
+  opacity:0;transform:translateX(8px);
+  transition:opacity .25s ease, transform .25s ease;
+  pointer-events:none;
+}
+.wa-float:hover .wa-tooltip{opacity:1;transform:none}
+.wa-btn{
+  width:58px;height:58px;border-radius:50%;background:var(--wa);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 18px rgba(37,211,102,.4);
+  transition:transform .25s ease, box-shadow .25s ease;
+  position:relative;
+}
+.wa-btn:hover{transform:scale(1.1);box-shadow:0 8px 28px rgba(37,211,102,.5)}
+.wa-ring{
+  position:absolute;inset:-5px;border-radius:50%;
+  border:2px solid var(--wa);
+  animation:wa-ring-pulse 2.8s ease infinite;
+  will-change:transform,opacity;
+}
+@keyframes wa-ring-pulse{
+  0%{opacity:.6;transform:scale(1)}
+  70%{opacity:0;transform:scale(1.35)}
+  100%{opacity:0;transform:scale(1.35)}
+}
+.wa-btn svg{width:28px;height:28px;fill:#fff}
+
+/* ─── SCROLL REVEAL ──────────────────────────── */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.reveal.v{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}
+.reveal.d2{transition-delay:.16s}
+.reveal.d3{transition-delay:.24s}
+
+/* ─── ADMIN BUTTON — en navbar ───────────────── */
+
+/* ─── PASSWORD MODAL ─────────────────────────── */
+#pwOverlay{
+  display:none;position:fixed;inset:0;z-index:1100;
+  background:rgba(8,10,14,.85);backdrop-filter:blur(12px);
+  align-items:center;justify-content:center;padding:20px;
+}
+#pwOverlay.open{display:flex}
+.pw-box{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:var(--r-lg);padding:32px;width:100%;max-width:360px;
+  animation:modal-in .25s var(--ease) both;
+  position:relative;
+}
+.pw-box::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--c),var(--c-lt));
+  border-radius:var(--r-lg) var(--r-lg) 0 0;
+}
+.pw-title{
+  font-family:var(--font-d);font-size:20px;font-weight:800;
+  margin-bottom:6px;
+}
+.pw-sub{font-size:12px;color:var(--muted2);margin-bottom:24px;font-family:var(--font-m)}
+.pw-input{
+  width:100%;padding:12px 15px;background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.09);border-radius:10px;
+  font-size:14px;color:var(--cream);margin-bottom:12px;
+  transition:border-color var(--t),box-shadow var(--t);
+  letter-spacing:.1em;
+}
+.pw-input:focus{outline:none;border-color:rgba(200,119,58,.45);box-shadow:0 0 0 3px rgba(200,119,58,.1)}
+.pw-input.shake{animation:shake .35s ease}
+@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+.pw-err{font-size:11px;color:#e07a7a;margin-bottom:12px;display:none;font-family:var(--font-m)}
+.pw-err.show{display:block}
+.pw-row{display:flex;gap:10px}
+.pw-row .btn{flex:1;justify-content:center;padding:12px}
+
+/* ─── ADMIN PANEL ────────────────────────────── */
+#adminPanel{
+  display:none;position:fixed;inset:0;z-index:1050;
+  background:rgba(8,10,14,.92);backdrop-filter:blur(16px);
+  flex-direction:column;
+}
+#adminPanel.open{display:flex}
+
+.adm-header{
+  height:56px;flex-shrink:0;
+  display:flex;align-items:center;gap:12px;
+  padding:0 20px;
+  background:var(--bg2);border-bottom:1px solid var(--border2);
+}
+.adm-logo{
+  font-family:var(--font-d);font-size:17px;font-weight:900;
+  background:linear-gradient(135deg,var(--cream),var(--c-lt),var(--c));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-right:6px;
+}
+.adm-tag{font-family:var(--font-m);font-size:9px;letter-spacing:2px;color:var(--muted2);text-transform:uppercase}
+.adm-header-actions{display:flex;gap:8px;margin-left:auto;align-items:center}
+.adm-hbtn{
+  display:flex;align-items:center;gap:6px;
+  padding:7px 14px;border-radius:100px;font-size:12px;font-weight:600;
+  background:var(--surf);border:1px solid var(--border);color:var(--muted);
+  transition:var(--t);font-family:var(--font-m);
+}
+.adm-hbtn:hover{color:var(--cream);border-color:var(--border);background:var(--bg3)}
+.adm-hbtn.danger:hover{color:#e07a7a;border-color:rgba(220,60,60,.3);background:rgba(220,60,60,.08)}
+.adm-close{
+  width:32px;height:32px;border-radius:50%;
+  background:rgba(255,255,255,.05);border:1px solid var(--border);
+  color:var(--cream);font-size:16px;
+  display:flex;align-items:center;justify-content:center;
+  transition:var(--t);margin-left:4px;
+}
+.adm-close:hover{background:rgba(220,60,60,.12);border-color:rgba(220,60,60,.3)}
+
+.adm-body{
+  flex:1;display:grid;grid-template-columns:340px 1fr;
+  overflow:hidden;
+}
+
+/* Left list */
+.adm-list-col{
+  display:flex;flex-direction:column;
+  border-right:1px solid var(--border2);
+  background:var(--bg2);overflow:hidden;
+}
+.adm-list-head{
+  padding:14px 16px;border-bottom:1px solid var(--border2);
+  display:flex;flex-direction:column;gap:10px;flex-shrink:0;
+}
+.adm-count{font-family:var(--font-m);font-size:10px;color:var(--muted2);letter-spacing:1px;text-transform:uppercase}
+.adm-search-wrap{position:relative}
+.adm-search{
+  width:100%;padding:9px 12px 9px 34px;
+  background:rgba(255,255,255,.04);border:1px solid var(--border2);
+  border-radius:10px;font-size:13px;color:var(--cream);
+  transition:border-color var(--t);
+}
+.adm-search:focus{outline:none;border-color:rgba(200,119,58,.4)}
+.adm-search-wrap::before{
+  content:'';position:absolute;left:11px;top:50%;transform:translateY(-50%);
+  width:13px;height:13px;pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgba(242,237,228,.25)' stroke-width='2.5' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='M21 21l-4.35-4.35'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+.adm-cat-filter{
+  display:flex;gap:5px;flex-wrap:nowrap;overflow-x:auto;
+  scrollbar-width:none;padding-bottom:2px;
+}
+.adm-cat-filter::-webkit-scrollbar{display:none}
+.adm-cf-btn{
+  flex-shrink:0;padding:5px 10px;border-radius:100px;font-size:10px;font-weight:700;
+  background:rgba(255,255,255,.03);border:1px solid var(--border2);color:var(--muted2);
+  transition:var(--t);font-family:var(--font-m);letter-spacing:.5px;
+}
+.adm-cf-btn:hover,.adm-cf-btn.on{background:rgba(200,119,58,.1);border-color:rgba(200,119,58,.3);color:var(--c-lt)}
+
+.adm-list-items{flex:1;overflow-y:auto;padding:8px}
+.adm-list-items::-webkit-scrollbar{width:4px}
+.adm-list-items::-webkit-scrollbar-thumb{background:var(--line);border-radius:2px}
+
+.adm-item{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 12px;border-radius:10px;cursor:pointer;
+  border:1px solid transparent;
+  transition:background var(--t),border-color var(--t);
+  margin-bottom:4px;
+}
+.adm-item:hover{background:rgba(255,255,255,.04)}
+.adm-item.active{background:rgba(200,119,58,.08);border-color:rgba(200,119,58,.2)}
+.adm-item-ava{
+  width:38px;height:38px;border-radius:10px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-d);font-weight:700;font-size:13px;color:#fff;
+}
+.adm-item-name{font-size:13px;font-weight:600;color:var(--cream);margin-bottom:1px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:180px;}
+.adm-item-cat{font-size:10px;color:var(--muted2);font-family:var(--font-m)}
+.adm-item-badges{display:flex;gap:4px;margin-left:auto;flex-shrink:0}
+.adm-star{
+  font-size:10px;color:var(--c);background:rgba(200,119,58,.1);
+  padding:2px 5px;border-radius:5px;font-family:var(--font-m);font-weight:700;
+}
+.adm-star.dest{color:#f59e0b;background:rgba(245,158,11,.12)}
+.adm-add-btn{
+  margin:8px;padding:11px;border-radius:10px;
+  background:rgba(200,119,58,.08);border:1px dashed rgba(200,119,58,.3);
+  color:var(--c-lt);font-size:13px;font-weight:600;
+  display:flex;align-items:center;justify-content:center;gap:6px;
+  transition:var(--t);flex-shrink:0;
+}
+.adm-add-btn:hover{background:rgba(200,119,58,.14);border-style:solid}
+
+/* Right form */
+.adm-form-col{
+  overflow-y:auto;padding:28px 32px;background:var(--bg);
+}
+.adm-form-col::-webkit-scrollbar{width:5px}
+.adm-form-col::-webkit-scrollbar-thumb{background:var(--line);border-radius:2px}
+.adm-form-title{
+  font-family:var(--font-d);font-size:22px;font-weight:800;
+  margin-bottom:4px;
+}
+.adm-form-sub{font-size:12px;color:var(--muted2);margin-bottom:24px;font-family:var(--font-m)}
+
+.adm-form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.adm-form .full{grid-column:1/-1}
+.adm-f-label{
+  display:block;font-size:10px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted2);margin-bottom:6px;font-family:var(--font-m);
+}
+.adm-f-input,.adm-f-select,.adm-f-textarea{
+  width:100%;padding:11px 14px;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);
+  border-radius:10px;font-size:13px;color:var(--cream);
+  transition:border-color var(--t),box-shadow var(--t);
+  -webkit-appearance:none;
+}
+.adm-f-textarea{height:80px;resize:vertical;font-size:13px;line-height:1.5}
+.adm-f-input::placeholder,.adm-f-textarea::placeholder{color:var(--muted2)}
+.adm-f-input:focus,.adm-f-select:focus,.adm-f-textarea:focus{
+  outline:none;border-color:rgba(200,119,58,.45);box-shadow:0 0 0 3px rgba(200,119,58,.1)
+}
+.adm-f-input.err,.adm-f-select.err{border-color:rgba(220,60,60,.5)}
+.adm-f-select{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23C8773A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 12px center;
+  padding-right:34px;cursor:pointer;
+}
+.adm-f-select option{background:var(--bg2)}
+
+.adm-toggle-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 14px;background:rgba(255,255,255,.03);
+  border:1px solid var(--border2);border-radius:10px;
+}
+.adm-toggle-label{font-size:13px;font-weight:500;color:var(--cream)}
+.adm-toggle-sub{font-size:11px;color:var(--muted2)}
+.adm-toggle{position:relative;width:40px;height:22px;flex-shrink:0}
+.adm-toggle input{opacity:0;width:0;height:0}
+.adm-toggle-slider{
+  position:absolute;inset:0;border-radius:11px;
+  background:rgba(255,255,255,.1);border:1px solid var(--border);
+  cursor:pointer;transition:background var(--t),border-color var(--t);
+}
+.adm-toggle-slider::before{
+  content:'';position:absolute;width:16px;height:16px;border-radius:50%;
+  top:2px;left:2px;background:#fff;transition:transform var(--t),opacity var(--t);
+  opacity:.5;
+}
+.adm-toggle input:checked+.adm-toggle-slider{background:rgba(200,119,58,.5);border-color:rgba(200,119,58,.6)}
+.adm-toggle input:checked+.adm-toggle-slider::before{transform:translateX(18px);opacity:1}
+
+.adm-form-actions{
+  grid-column:1/-1;display:flex;gap:10px;
+  padding-top:18px;border-top:1px solid var(--border2);margin-top:4px;
+}
+.adm-form-actions .btn{padding:12px 24px;font-size:13px}
+.adm-del-btn{
+  margin-left:auto;padding:12px 18px;border-radius:100px;
+  font-size:12px;font-weight:700;font-family:var(--fd);
+  color:#e07a7a;background:rgba(220,60,60,.08);border:1px solid rgba(220,60,60,.2);
+  transition:var(--t);display:flex;align-items:center;gap:6px;
+}
+.adm-del-btn:hover{background:rgba(220,60,60,.16);border-color:rgba(220,60,60,.4)}
+
+.adm-empty{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  height:100%;gap:12px;color:var(--muted2);text-align:center;padding:40px;
+}
+.adm-empty-icon{font-size:40px;opacity:.4}
+.adm-empty p{font-size:13px;line-height:1.6;max-width:260px}
+
+/* ─── TOAST ──────────────────────────────────── */
+#toastContainer{
+  position:fixed;top:72px;right:20px;z-index:2000;
+  display:flex;flex-direction:column;gap:8px;pointer-events:none;
+}
+.toast{
+  display:flex;align-items:center;gap:10px;
+  padding:12px 16px;border-radius:10px;
+  font-size:13px;font-weight:500;
+  background:var(--bg3);border:1px solid var(--border);
+  box-shadow:0 8px 28px rgba(0,0,0,.4);
+  pointer-events:auto;
+  animation:toast-in .3s var(--ease) both;
+  max-width:280px;
+}
+@keyframes toast-in{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:none}}
+.toast-out{animation:toast-out .25s var(--ease) both}
+@keyframes toast-out{to{opacity:0;transform:translateX(20px)}}
+.toast.ok{border-color:rgba(42,92,69,.4);color:#5fc990}
+.toast.err{border-color:rgba(220,60,60,.3);color:#e07a7a}
+.toast.info{border-color:rgba(200,119,58,.3);color:var(--c-lt)}
+
+/* Admin responsive */
+@media(max-width:780px){
+  .adm-body{grid-template-columns:1fr}
+  .adm-list-col{max-height:220px;border-right:none;border-bottom:1px solid var(--border2)}
+  .adm-form{grid-template-columns:1fr}
+  .adm-form .full{grid-column:1}
+  .adm-form-col{padding:20px 16px}
+}
+
+/* ─── RESPONSIVE ─────────────────────────────── */
+@media(max-width:900px){
+  .nav-links,.nav-actions{display:none}
+  .nav-ham{display:flex}
+
+  .reg-grid{grid-template-columns:1fr;gap:40px}
+  .foot-top{grid-template-columns:1fr 1fr}
+  .foot-top>.foot-brand-wrap{grid-column:1/-1}
+}
+
+@media(max-width:640px){
+  .trust-strip{border-radius:var(--r-lg);justify-content:flex-start}
+  .trust-item{border-right:none;border-bottom:1px solid var(--line);width:100%;padding:10px 16px}
+  .trust-item:last-child{border-bottom:none}
+  .hero-ctas .btn{width:100%;max-width:320px}
+  .hero-ctas{flex-direction:column;align-items:center}
+  .f-row{grid-template-columns:1fr}
+  .filters{flex-direction:column;align-items:flex-start}
+  .f-search{margin-left:0;width:100%}
+  .f-search input,.f-search input:focus{width:100%}
+  .cat-grid{grid-template-columns:1fr}
+  .modal-foot{flex-direction:column}
+  .foot-top{grid-template-columns:1fr}
+  .foot-bottom{flex-direction:column;gap:14px;text-align:center}
 }
 </style>
 </head>
 <body>
 
-<!-- SVG Sprite — definidos una vez -->
-<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
-  <symbol id="ico-wa" viewBox="0 0 24 24">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
-  </symbol>
-  <symbol id="ico-pin" viewBox="0 0 24 24">
-    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
-  </symbol>
-  <symbol id="ico-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-    <path d="M5 12h14M12 5l7 7-7 7"/>
-  </symbol>
-  <symbol id="ico-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-    <path d="M20 6L9 17l-5-5"/>
-  </symbol>
-</svg>
-
-
-<!-- ============================================================
-     NAVBAR
-     ============================================================ -->
-<nav class="navbar" id="navbar" aria-label="Navegación principal">
-  <a href="#inicio" class="nav-logo" aria-label="MAESTO - ir al inicio">
-    MAESTO
-    <small>Servicios del Hogar</small>
-  </a>
-
-  <ul class="nav-links" role="list">
-    <li><a href="#servicios">Servicios</a></li>
-    <li><a href="#maestros">Maestros</a></li>
-    <li><a href="#urgencia">Urgencia</a></li>
-    <li><a href="#canales">Canales</a></li>
-    <li><a href="#unete">¿Eres maestro?</a></li>
-    <li>
-      <a href="https://wa.me/56950147783?text=Hola%20MAESTO%2C%20necesito%20un%20maestro"
-         target="_blank" rel="noopener"
-         class="btn btn-primary">
-        <svg width="16" height="16" aria-hidden="true"><use href="#ico-wa"/></svg>
-        Buscar maestro
+<!-- ─── NAV ─── -->
+<nav id="nav">
+  <div class="wrap">
+    <div class="nav-row">
+      <a href="#hero" class="nav-logo">
+        MAESTO
+        <small>Servicios verificados</small>
       </a>
-    </li>
-  </ul>
-
-  <button class="hamburger" id="hamburger" aria-expanded="false" aria-label="Abrir menú">
-    <span></span><span></span><span></span>
-  </button>
+      <ul class="nav-links">
+        <li><a href="#directorio">Maestros</a></li>
+        <li><a href="#registro">Registrarse</a></li>
+        <li><a href="#catalogo">Catálogo</a></li>
+      </ul>
+      <div style="flex:1"></div>
+      <button id="adminBtn" title="Administración" aria-label="Acceso administración" style="position:static;width:auto;height:auto;border-radius:100px;background:transparent;border:1px solid var(--border2);color:var(--muted2);font-size:13px;padding:7px 14px;display:flex;align-items:center;gap:6px;transition:color var(--t),border-color var(--t),background var(--t);font-family:var(--font-m);letter-spacing:.5px;margin-right:10px;">👤 Admin</button>
+      <div class="nav-actions">
+        <a href="#directorio" class="btn btn-outline">Ver maestros</a>
+        <a href="#registro" class="btn btn-primary">Soy maestro</a>
+      </div>
+      <button class="nav-ham" id="navHam" aria-label="Menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
 </nav>
 
-<!-- Mobile overlay -->
-<div class="nav-overlay" id="navOverlay" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Menú de navegación">
-  <a href="#inicio"    class="nav-link">Inicio</a>
-  <a href="#servicios" class="nav-link">Servicios</a>
-  <a href="#maestros"  class="nav-link">Maestros</a>
-  <a href="#urgencia"  class="nav-link">Urgencia</a>
-  <a href="#canales"   class="nav-link">Canales</a>
-  <a href="#unete"     class="nav-link">¿Eres maestro?</a>
-  <a href="https://wa.me/56950147783?text=Hola%20MAESTO%2C%20necesito%20un%20maestro"
-     target="_blank" rel="noopener"
-     class="btn btn-primary">
-    <svg width="18" height="18" aria-hidden="true"><use href="#ico-wa"/></svg>
-    Buscar maestro
-  </a>
+<div class="mob-menu" id="mobMenu">
+  <a href="#directorio" class="mob-link">Maestros</a>
+  <a href="#registro" class="mob-link">Registrarse</a>
+  <a href="#catalogo" class="mob-link">Catálogo</a>
+  <div class="mob-ctas">
+    <a href="#directorio" class="btn btn-outline mob-link">Buscar maestros</a>
+    <a href="#registro" class="btn btn-primary mob-link">Soy maestro, regístrate</a>
+  </div>
 </div>
 
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-grid"></div>
 
-<!-- ============================================================
-     MAIN
-     ============================================================ -->
-<main>
+  <div class="wrap" style="width:100%">
+    <div class="hero-content">
+      <div class="eyebrow">Servicios verificados · Chile</div>
 
-  <!-- HERO -->
-  <section class="hero section-pad" id="inicio" aria-label="Inicio">
-    <div class="hero-bg" aria-hidden="true">
-      <div class="hero-bg-glow"></div>
-      <div class="hero-grid-bg"></div>
-    </div>
-    <div class="container">
-      <div class="hero-inner">
+      <h1 class="hero-h1">
+        El maestro que<br>necesitas, <em>cerca</em><br>y de confianza.
+      </h1>
 
-        <!-- Texto -->
-        <div class="hero-left">
-          <div class="hero-eyebrow anim-fade-up">Especialistas Certificados</div>
-          <h1 class="hero-title anim-fade-up" style="animation-delay:.1s">
-            El maestro que<br>buscabas <em>sí existe.</em>
-          </h1>
-          <p class="hero-sub anim-fade-up" style="animation-delay:.2s">
-            Busca a tu especialista <strong>a solo unos clicks.</strong> Gasfitería, electricidad, jardinería y más — con referencias reales.
-          </p>
-          <div class="hero-btns anim-fade-up" style="animation-delay:.3s">
-            <a href="https://wa.me/56950147783?text=Hola%20MAESTO%2C%20necesito%20un%20maestro%20en%20mi%20comuna."
-               target="_blank" rel="noopener"
-               class="btn btn-primary">
-              <svg width="18" height="18" aria-hidden="true"><use href="#ico-wa"/></svg>
-              Buscar un maestro
-            </a>
-            <a href="#unete" class="btn btn-outline">Soy maestro, me uno →</a>
-          </div>
-          <div class="hero-trust anim-fade-up" style="animation-delay:.4s">
-            <br><div class="trust-item"><span class="trust-dot" aria-hidden="true"></span>Gratis para clientes</div>
-            <br><div class="trust-item"><span class="trust-dot" aria-hidden="true"></span>Solo maestros verificados</div>
-            <br><div class="trust-item"><span class="trust-dot" aria-hidden="true"></span>Respuesta inmediata</div>
-          </div>
-        </div>
+      <p class="hero-p">
+        Conectamos familias con maestros verificados en gasfitería, electricidad, pintura y más. Contacto directo por WhatsApp, sin intermediarios.
+      </p>
 
-        <!-- Tarjeta demo -->
-        <div class="hero-right" aria-hidden="true">
-          <div class="hero-card">
-            <div class="hc-head">
-              <div class="hc-av">C</div>
-              <div>
-                <div class="hc-name">Carlos Medina</div>
-                <div class="hc-spec">GASFITERÍA · MAESTRO</div>
-              </div>
-            </div>
-            <div class="hc-stats">
-              <div class="hc-stat"><span class="hc-stat-n">8+</span><span class="hc-stat-l">Años</span></div>
-              <div class="hc-stat"><span class="hc-stat-n">47</span><span class="hc-stat-l">Trabajos</span></div>
-              <div class="hc-stat"><span class="hc-stat-n">5.0</span><span class="hc-stat-l">Rating</span></div>
-            </div>
-            <div class="badge-v" style="margin-bottom:14px">✦ MAESTO VERIFICADO</div>
-            <div class="hc-chips">
-              <span class="chip">Pudahuel</span>
-              <span class="chip">Maipú</span>
-              <span class="chip">Cerrillos</span>
-            </div>
-          </div>
-        </div>
+      <div class="hero-ctas">
+        <a href="#directorio" class="btn btn-primary">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          Buscar maestros
+        </a>
+        <a href="#registro" class="btn btn-outline">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Soy maestro, regístrate
+        </a>
+      </div>
 
+      <!-- Trust strip — limpio, sin animaciones flotantes -->
+      <div class="trust-strip">
+        <div class="trust-item"><span class="trust-icon">✦</span> Maestros verificados</div>
+        <div class="trust-item"><span class="trust-icon">📲</span> Contacto por WhatsApp</div>
+        <div class="trust-item"><span class="trust-icon">🔒</span> Sin intermediarios</div>
+        <div class="trust-item"><span class="trust-icon">🆓</span> Primer mes gratis</div>
       </div>
     </div>
-  </section>
 
-  <!-- PROBLEMA -->
-  <section class="section-pad" id="problema" aria-label="El problema">
-    <div class="container">
-      <div class="problem-grid">
-        <div class="reveal">
-          <div class="eyebrow">El problema</div>
-          <h2 class="problem-title">Encontrar un técnico confiable en Chile es una <span style="color:var(--cu)">pesadilla.</span></h2>
-          <p class="problem-text">No es que no existan buenos maestros. El problema es que nadie los organiza.</p>
-          <p class="problem-text"><strong style="color:var(--cream)">MAESTO cambia eso.</strong> Un solo lugar, maestros verificados, contacto directo.</p>
-        </div>
-        <div class="reveal d2">
-          <ol class="flow-list" aria-label="Proceso actual sin MAESTO">
-            <li class="flow-item">
-              <span class="flow-icon bad" aria-hidden="true">✕</span>
-              <span class="flow-text"><strong>Preguntas en WhatsApp familiar</strong> — 4 números distintos, nadie garantiza nada</span>
-            </li>
-            <li class="flow-item">
-              <span class="flow-icon good" aria-hidden="true">✓</span>
-              <span class="flow-text"><strong style="color:var(--cream)">Con MAESTO:</strong> un solo mensaje y te conectamos con el maestro correcto en tu zona.</span>
-            </li>
-            <li class="flow-item">
-              <span class="flow-icon bad" aria-hidden="true">✕</span>
-              <span class="flow-text"><strong>Llamas al número pegado en una pared</strong> — no responde o no va a tu sector.</span>
-            </li>
-            <li class="flow-item">
-              <span class="flow-icon good" aria-hidden="true">✓</span>
-              <span class="flow-text"><strong style="color:var(--cream)">Con MAESTO:</strong> te garantizamos maestros disponibles en tu comuna.</span>
-            </li>
-            </li>
-            <li class="flow-item">
-              <span class="flow-icon bad" aria-hidden="true">✕</span>
-              <span class="flow-text"><strong>Buscas en Facebook</strong> — publicaciones antiguas, comentarios confusos.</span>
-            </li>
-            <li class="flow-item">
-              <span class="flow-icon good" aria-hidden="true">✓</span>
-              <span class="flow-text"><strong style="color:var(--cream)">Con MAESTO:</strong> fichas claras, actualizadas y con referencias reales verificadas.</span>
-            </li>
-          </ol>
-        </div>
-      </div>
+    <!-- Ticker de maestros activos -->
+    <div class="ticker-wrap" id="tickerWrap" style="margin-top:48px">
+      <div class="ticker" id="ticker"></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CÓMO FUNCIONA -->
-  <section class="section-alt section-pad" id="servicios" aria-label="Cómo funciona MAESTO">
-    <div class="container">
-      <div class="how-header reveal">
-        <div class="eyebrow" style="justify-content:center">Cómo funciona</div>
-        <h2 class="section-title">Simple, rápido<br>y sin sorpresas</h2>
-        <p class="section-sub" style="margin:0 auto">Desde que nos escribes hasta que tienes al maestro puede tomar minutos.</p>
-      </div>
-
-      <div class="how-steps" role="list">
-        <div class="how-step reveal d1" role="listitem">
-          <div class="how-num" aria-hidden="true">01</div>
-          <span class="how-icon" aria-hidden="true">💬</span>
-          <h3>Cuéntanos qué necesitas</h3>
-          <p>Escríbenos por WhatsApp con el servicio y tu zona. Sin formularios, sin esperas. Respuesta inmediata.</p>
-        </div>
-        <div class="how-step reveal d2" role="listitem">
-          <div class="how-num" aria-hidden="true">02</div>
-          <span class="how-icon" aria-hidden="true">✅</span>
-          <h3>Te conectamos con el maestro</h3>
-          <p>Buscamos al maestro verificado para tu zona y especialidad. Solo profesionales con referencias reales.</p>
-        </div>
-        <div class="how-step reveal d3" role="listitem">
-          <div class="how-num" aria-hidden="true">03</div>
-          <span class="how-icon" aria-hidden="true">🛠</span>
-          <h3>El maestro va a tu casa</h3>
-          <p>Coordinas directo con él. El precio y el trabajo son entre tú y el maestro. MAESTO garantiza la confianza.</p>
-        </div>
-      </div>
-
-      <!-- Guía Instagram -->
-      <div class="ig-guide reveal">
-        <div>
-          <div class="eyebrow">Perfil de nuestro Instagram</div>
-          <h3 class="section-title" style="font-size:clamp(22px,3vw,30px)">Usuario : @maesto.cl</h3>
-          <div class="ig-guide-steps">
-            <div class="ig-step"><strong>Highlights:</strong>&nbsp;Busca la categoría que necesitas. Ahí encontrarás a los maestros según el trabajo que buscas.</div>
-            <div class="ig-step"><strong>Publicaciones:</strong>&nbsp;Cada post muestra el nombre, la zona y el tipo de servicio. Lee la descripción para ver su experiencia y referencias.</div>
-            <div class="ig-step"><strong>Link en la bio:</strong>&nbsp;Te lleva directo a WhatsApp para pedir el servicio que necesitas, rápido y sin complicaciones.</div>
-          </div>
-        </div>
-        <div style="text-align:center">
-          <a href="https://instagram.com/maesto.cl" target="_blank" rel="noopener" class="ig-btn" aria-label="Ver perfil Instagram MAESTO">
-            Perfil de Instagram
-          </a>
-          <p style="margin-top:12px;font-family:var(--font-m);font-size:11px;color:var(--muted2)">Fichas reales · Trabajos reales</p>
-        </div>
-      </div>
+<!-- ─── DIRECTORIO ─── -->
+<section id="directorio">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-label">Directorio en vivo</div>
+      <h2 class="sec-title">Maestros disponibles <em>ahora</em></h2>
+      <p class="sec-sub">Todos verificados por MAESTO. Toca cualquier tarjeta para ver el perfil completo.</p>
     </div>
-  </section>
+  </div>
 
-  <!-- CATEGORÍAS -->
-  <section class="section-pad" id="categorias" aria-label="Categorías de servicio">
-    <div class="container">
-      <div class="cats-hd">
-        <div class="reveal">
-          <div class="eyebrow">Nuestros servicios</div>
-          <h2 class="section-title" style="margin-bottom:0">¿Qué necesitas hoy?</h2>
-        </div>
-        <a href="https://wa.me/56950147783?text=Hola%20MAESTO%2C%20necesito%20un%20maestro"
-           target="_blank" rel="noopener"
-           class="btn btn-outline reveal d2">Ver todos →</a>
-      </div>
-      <div class="cats-grid" role="list">
-        <a href="https://wa.me/56950147783?text=Hola%20MAESTO%2C%20necesito%20un%20gasfiter" target="_blank" rel="noopener" class="cat-card reveal d1" role="listitem" aria-label="Buscar gasfiter">
-          <span class="cat-icon" aria-hidden="true">🔧</span>
-          <div class="cat-name">Gasfitería</div>
-          <p class="cat-desc">Filtraciones, calefont, cañerías, baños y duchas.</p>
-          <div class="cat-link">Buscar <svg width="12" height="12" aria-hidden="true"><use href="#ico-arrow"/></svg></div>
-        </a>
-        <a href="https://wa.me/56950147783?text=Hola%20MAESTO%2C%20necesito%20un%20electricista" target="_blank" rel="noopener" class="cat-card reveal d2" role="listitem" aria-label="Buscar electricista">
-          <span class="cat-icon" aria-hidden="true">⚡</span>
-          <div class="cat-name">Electricidad</div>
-          <p class="cat-desc">Tableros, enchufes, empalmes e instalaciones.</p>
-          <div class="cat-link">Buscar <svg width="12" height="12" aria-hidden="true"><use href="#ico-arrow"/></svg></div>
-        </a>
-        <a href="https://wa.me/56950147783?text=Hola%20MAESTO%2C%20necesito%20un%20jardinero" target="_blank" rel="noopener" class="cat-card reveal d3" role="listitem" aria-label="Buscar jardinero">
-          <span class="cat-icon" aria-hidden="true">🌿</span>
-          <div class="cat-name">Jardinería</div>
-          <p class="cat-desc">Mantención, diseño, poda y sistemas de riego.</p>
-          <div class="cat-link">Buscar <svg width="12" height="12" aria-hidden="true"><use href="#ico-arrow"/></svg></div>
-        </a>
-        <a href="https://wa.me/56950147783?text=Hola%20MAESTO%2C%20necesito%20un%20pintor" target="_blank" rel="noopener" class="cat-card reveal d4" role="listitem" aria-label="Buscar pintor">
-          <span class="cat-icon" aria-hidden="true">🎨</span>
-          <div class="cat-name">Pintura</div>
-          <p class="cat-desc">Interior, exterior, barnizado y revestimientos.</p>
-          <div class="cat-link">Buscar <svg width="12" height="12" aria-hidden="true"><use href="#ico-arrow"/></svg></div>
-        </a>
-        <a href="https://wa.me/56950147783?text=Hola%20MAESTO%2C%20necesito%20un%20cerrajero" target="_blank" rel="noopener" class="cat-card reveal d1" role="listitem" aria-label="Buscar cerrajero">
-          <span class="cat-icon" aria-hidden="true">🔒</span>
-          <div class="cat-name">Cerrajería</div>
-          <p class="cat-desc">Apertura de emergencia y cambio de chapas.</p>
-          <div class="cat-link">Buscar <svg width="12" height="12" aria-hidden="true"><use href="#ico-arrow"/></svg></div>
-        </a>
-        <a href="https://wa.me/56950147783?text=Hola%20MAESTO%2C%20necesito%20un%20carpintero" target="_blank" rel="noopener" class="cat-card reveal d2" role="listitem" aria-label="Buscar carpintero">
-          <span class="cat-icon" aria-hidden="true">🪛</span>
-          <div class="cat-name">Carpintería</div>
-          <p class="cat-desc">Muebles, puertas, marcos y pisos flotantes.</p>
-          <div class="cat-link">Buscar <svg width="12" height="12" aria-hidden="true"><use href="#ico-arrow"/></svg></div>
-        </a>
-        <a href="https://wa.me/56950147783?text=Hola%20MAESTO%2C%20necesito%20limpieza" target="_blank" rel="noopener" class="cat-card reveal d3" role="listitem" aria-label="Buscar limpieza">
-          <span class="cat-icon" aria-hidden="true">🧹</span>
-          <div class="cat-name">Limpieza</div>
-          <p class="cat-desc">Profunda, post-construcción y alfombras.</p>
-          <div class="cat-link">Buscar <svg width="12" height="12" aria-hidden="true"><use href="#ico-arrow"/></svg></div>
-        </a>
-        <a href="https://wa.me/56950147783?text=Hola%20MAESTO%2C%20necesito%20climatizaci%C3%B3n" target="_blank" rel="noopener" class="cat-card reveal d4" role="listitem" aria-label="Buscar climatización">
-          <span class="cat-icon" aria-hidden="true">❄️</span>
-          <div class="cat-name">Climatización</div>
-          <p class="cat-desc">Instalación y mantención de A/A y calefacción.</p>
-          <div class="cat-link">Buscar <svg width="12" height="12" aria-hidden="true"><use href="#ico-arrow"/></svg></div>
-        </a>
-      </div>
+  <div class="car-outer reveal d1" id="carOuter">
+    <div class="car-track" id="carTrack"></div>
+  </div>
+
+  <div class="wrap">
+    <div class="car-controls">
+      <button class="car-btn" id="carPrev">←</button>
+      <div class="car-dots" id="carDots"></div>
+      <button class="car-btn" id="carNext">→</button>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- MAESTROS VERIFICADOS -->
-  <section class="section-alt section-pad" id="maestros" aria-label="Maestros verificados">
-    <div class="container">
+<!-- ─── REGISTRO ─── -->
+<section id="registro">
+  <div class="wrap">
+    <div class="reg-grid">
+
+      <!-- Left -->
       <div class="reveal">
-        <div class="eyebrow">Quiénes trabajan con nosotros</div>
-        <h2 class="section-title">Maestros reales,<br>con referencias comprobadas</h2>
-        <p class="section-sub">Cada maestro pasa por nuestro proceso de verificación. Nada de nombres al azar.</p>
-      </div>
-      <div class="maestros-grid" role="list">
+        <div class="sec-label">Para maestros</div>
+        <h2 class="reg-h2">Llega a clientes que<br>ya te están <span>buscando.</span></h2>
+        <p class="reg-p">Publica tu perfil en 5 minutos. Verificamos tus datos y apareces en el directorio. Sin contrato, sin comisiones, sin letra chica.</p>
 
-        <article class="maestro-card reveal d1" role="listitem">
-          <div class="mc-head">
-            <div>
-              <div class="mc-av" style="background:linear-gradient(135deg,#C8773A,#E09B5C)">C</div>
+        <div class="benefits">
+          <div class="benefit">
+            <div class="benefit-ico">📲</div>
+            <div class="benefit-body">
+              <strong>Clientes te contactan directo</strong>
+              <span>Sin plataforma intermedia. Llegan a tu WhatsApp.</span>
             </div>
-            <div class="badge-v">✦ VERIFICADO</div>
           </div>
-          <div class="mc-name">Juan Astorga</div>
-          <div class="mc-spec">🔧 Flete y Mudanza</div>
-          <div class="mc-zona">
-            <svg width="12" height="12" aria-hidden="true" style="color:var(--cu)"><use href="#ico-pin"/></svg>
-            Santiago de Chile... (toda la RM)
-          </div>
-          <div class="mc-chips">
-            <span class="mc-chip">2 años exp.</span>
-            <span class="mc-chip">Cargas</span>
-            <span class="mc-chip">Vehículos</span>
-            <span class="mc-chip">Paletizados</span>
-          </div>
-          <div class="mc-foot">
-            <span class="mc-price">Cotización según el servicio.</span>
-            <a href="https://wa.me/56961822888?text=Hola%20maestro%2C%20vi%20su%20contacto%20en%20@MAESTO.CL%20y%20me%20interesa%20su%20servicio%20de%20fletes%20y%20mudanzas"
-               class="mc-wa" target="_blank" rel="noopener" aria-label="Contactar a Juan Astorga  ">
-              <svg width="14" height="14" aria-hidden="true"><use href="#ico-wa"/></svg>
-              Contactar
-            </a>
-          </div>
-        </article>
-
-        <article class="maestro-card reveal d2" role="listitem">
-          <div class="mc-head">
-            <div>
-              <div class="mc-av" style="background:linear-gradient(135deg,#4A9EFF,#1A5C9E)">P</div>
+          <div class="benefit">
+            <div class="benefit-ico">✅</div>
+            <div class="benefit-body">
+              <strong>Badge de verificación MAESTO</strong>
+              <span>Tu perfil genera confianza automáticamente.</span>
             </div>
-            <div class="badge-v">✦ VERIFICADO</div>
           </div>
-          <div class="mc-name">Pedro Saavedra</div>
-          <div class="mc-spec">⚡ Electricidad</div>
-          <div class="mc-zona">
-            <svg width="12" height="12" aria-hidden="true" style="color:var(--cu)"><use href="#ico-pin"/></svg>
-            Lo Prado · Quinta Normal · Est. Central
-          </div>
-          <div class="mc-chips">
-            <span class="mc-chip">12 años exp.</span>
-            <span class="mc-chip">Tableros</span>
-            <span class="mc-chip">Empalmes</span>
-          </div>
-          <div class="mc-foot">
-            <span class="mc-price">Desde $18.000 la visita</span>
-            <a href="https://wa.me/56950147783?text=Hola%20MAESTO%2C%20vi%20a%20Pedro%20Saavedra%20(electricista)%20y%20me%20interesa"
-               class="mc-wa" target="_blank" rel="noopener" aria-label="Contactar a Pedro Saavedra">
-              <svg width="14" height="14" aria-hidden="true"><use href="#ico-wa"/></svg>
-              Contactar
-            </a>
-          </div>
-        </article>
-
-        <article class="maestro-card reveal d3" role="listitem">
-          <div class="mc-head">
-            <div>
-              <div class="mc-av" style="background:linear-gradient(135deg,#3DBF8A,#1A6B4A)">R</div>
+          <div class="benefit">
+            <div class="benefit-ico">📍</div>
+            <div class="benefit-body">
+              <strong>Apareces en tu zona</strong>
+              <span>Los clientes del mismo sector te ven primero.</span>
             </div>
-            <div class="badge-v">✦ VERIFICADO</div>
           </div>
-          <div class="mc-name">Roberto Fuentes</div>
-          <div class="mc-spec">🌿 Jardinería</div>
-          <div class="mc-zona">
-            <svg width="12" height="12" aria-hidden="true" style="color:var(--cu)"><use href="#ico-pin"/></svg>
-            Las Condes · Vitacura · La Reina
-          </div>
-          <div class="mc-chips">
-            <span class="mc-chip">6 años exp.</span>
-            <span class="mc-chip">Diseño</span>
-            <span class="mc-chip">Poda</span>
-          </div>
-          <div class="mc-foot">
-            <span class="mc-price">Desde $20.000 la visita</span>
-            <a href="https://wa.me/56950147783?text=Hola%20MAESTO%2C%20vi%20a%20Roberto%20Fuentes%20(jardinero)%20y%20me%20interesa"
-               class="mc-wa" target="_blank" rel="noopener" aria-label="Contactar a Roberto Fuentes">
-              <svg width="14" height="14" aria-hidden="true"><use href="#ico-wa"/></svg>
-              Contactar
-            </a>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIOS -->
-  <section class="section-pad" id="testimonios" aria-label="Testimonios">
-    <div class="container">
-      <div class="reveal">
-        <div class="eyebrow">Lo que dicen nuestros clientes</div>
-        <h2 class="section-title">La confianza que<br>buscabas, comprobada</h2>
-      </div>
-      <div class="testi-grid" role="list">
-        <article class="testi-card reveal d1" role="listitem">
-          <div class="testi-q" aria-hidden="true">"</div>
-          <blockquote class="testi-text">
-            "Llevaba semanas buscando un gasfiter que llegara a Pudahuel sin cobrarme el doble por la distancia. Carlos llegó puntual, diagnosticó la filtración en 10 minutos y la dejó resuelta. Con MAESTO lo encontré en menos de una hora."
-          </blockquote>
-          <div class="testi-author">
-            <div class="testi-av" aria-hidden="true">M</div>
-            <div>
-              <div class="testi-name">María Contreras</div>
-              <div class="testi-loc">Pudahuel, Santiago</div>
+          <div class="benefit">
+            <div class="benefit-ico">🆓</div>
+            <div class="benefit-body">
+              <strong>Primer mes 100% gratis</strong>
+              <span>Sin tarjeta. Sin compromiso. Sin sorpresas.</span>
             </div>
-            <span class="testi-tag">Gasfitería</span>
           </div>
-        </article>
-        <article class="testi-card reveal d2" role="listitem">
-          <div class="testi-q" aria-hidden="true">"</div>
-          <blockquote class="testi-text">
-            "Tenía miedo de contratar a alguien sin conocerlo para que entrara a mi departamento. Las referencias verificadas de MAESTO me dieron la confianza que necesitaba. El electricista fue profesional y cumplió todo lo que dijo."
-          </blockquote>
-          <div class="testi-author">
-            <div class="testi-av" aria-hidden="true">F</div>
-            <div>
-              <div class="testi-name">Felipe Muñoz</div>
-              <div class="testi-loc">Estación Central, Santiago</div>
-            </div>
-            <span class="testi-tag">Electricidad</span>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA PRINCIPAL -->
-  <section class="section-alt section-pad" aria-label="Encuentra tu maestro">
-    <div class="container">
-      <div class="cta-wrap reveal">
-        <div class="cta-glow" aria-hidden="true"></div>
-        <div class="badge-v" style="margin-bottom:24px">✦ Santiago, Chile ✦</div>
-        <h2 class="cta-title">Encuentra tu maestro<br><em>ahora mismo</em></h2>
-        <p class="cta-sub">Sin costo para ti. Escríbenos por WhatsApp y te conectamos con el técnico verificado más cercano.</p>
-        <div class="cta-btns">
-          <a href="https://wa.me/56950147783?text=Hola%20MAESTO%2C%20necesito%20un%20maestro"
-             target="_blank" rel="noopener"
-             class="btn btn-primary">
-            <svg width="20" height="20" aria-hidden="true"><use href="#ico-wa"/></svg>
-            Buscar maestro ahora
-          </a>
-          <a href="https://instagram.com/maesto.cl" target="_blank" rel="noopener" class="btn btn-outline">
-            Ver @maesto.cl →
-          </a>
         </div>
-        <div class="cta-checks">
-          <span class="cta-check">Completamente gratis para clientes</span>
-          <span class="cta-check">Solo maestros verificados</span>
-          <span class="cta-check">Respuesta inmediata por WhatsApp</span>
+
+        <div class="trust-pills">
+          <span class="trust-pill">Sin contrato</span>
+          <span class="trust-pill">Sin comisiones</span>
+          <span class="trust-pill">Sin app que descargar</span>
+          <span class="trust-pill">5 minutos para publicar</span>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- FORMULARIO URGENCIA -->
-  <section class="section-pad" id="urgencia" aria-label="Servicio de urgencia">
-    <div class="container">
-      <div class="urgencia-box reveal">
-        <div class="urgencia-top">
-          <span aria-hidden="true" style="font-size:22px">🚨</span>
-          <h2>¿Necesitas un servicio con urgencia? Rellena estos datos</h2>
-        </div>
-        <div class="urgencia-body">
-          <div class="form-field">
-            <label class="form-label" for="u-comuna">Tu comuna</label>
-            <input class="form-input" type="text" id="u-comuna" placeholder="Ej: Pudahuel, Maipú..." autocomplete="address-level2" aria-required="true">
-          </div>
-          <div class="form-field">
-            <label class="form-label" for="u-servicio">Tipo de servicio</label>
-            <select class="form-select" id="u-servicio" aria-required="true">
-              <option value="">Seleccionar...</option>
-              <option>Gasfitería</option>
-              <option>Electricidad</option>
-              <option>Jardinería</option>
-              <option>Pintura</option>
-              <option>Cerrajería</option>
-              <option>Carpintería</option>
-              <option>Limpieza</option>
-              <option>Climatización</option>
-              <option>Otro</option>
-            </select>
-          </div>
-          <div class="form-field">
-            <label class="form-label" for="u-contacto">Tu WhatsApp o Instagram</label>
-            <input class="form-input" type="text" id="u-contacto" placeholder="+56 9 xxxx xxxx / @usuario" aria-required="true">
-          </div>
-          <button class="form-btn" id="urgencia-submit" type="button">
-            Consultar
-            <svg width="16" height="16" aria-hidden="true"><use href="#ico-arrow"/></svg>
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
+      <!-- Right: form -->
+      <div class="reveal d2">
+        <div class="form-card">
+          <div class="form-card-title">Publica tu servicio gratis</div>
+          <div class="form-card-sub">Verificamos tus datos y te publicamos en 24 horas hábiles.</div>
 
-  <!-- PARA MAESTROS -->
-  <section class="section-alt section-pad" id="unete" aria-label="Únete como maestro">
-    <div class="container">
-      <div class="join-grid">
-        <div class="reveal">
-          <div class="eyebrow">Para maestros</div>
-          <h2 class="section-title">¿Ofreces un servicio<br> y quieres mas clientes?<br>Únete.</h2>
-          <p style="font-size:15px;color:var(--muted);line-height:1.7">
-            Si trabajas de forma independiente (hogar, fletes u otros servicios), MAESTO te ayuda a conseguir clientes reales en tu zona.          </p>
-          <div class="join-benefits" role="list">
-            <div class="join-benefit" role="listitem">
-              <div class="jb-icon" aria-hidden="true">📲</div>
-              <div>
-                <div class="jb-title">Clientes en tu zona</div>
-                <div class="jb-text">Te conectamos con personas que buscan exactamente lo que haces, cerca de donde trabajas.</div>
+          <form id="regForm" novalidate>
+            <div class="f-group">
+              <label class="f-label" for="fNombre">Nombre completo</label>
+              <input class="f-input" type="text" id="fNombre" placeholder="Juan Pérez González" autocomplete="name">
+            </div>
+            <div class="f-group">
+              <label class="f-label" for="fCat">Categoría principal</label>
+              <select class="f-select" id="fCat">
+                <option value="" disabled selected>Selecciona tu especialidad</option>
+                <option>Gasfitería</option>
+                <option>Electricidad</option>
+                <option>Pintura</option>
+                <option>Albañilería</option>
+                <option>Carpintería</option>
+                <option>Cerrajería</option>
+                <option>Climatización</option>
+                <option>Aseo y limpieza</option>
+                <option>Jardinería</option>
+                <option>Fumigación</option>
+                <option>Mudanzas</option>
+                <option>Instalaciones</option>
+                <option>Otro</option>
+              </select>
+            </div>
+            <div class="f-group">
+              <label class="f-label" for="fSrv">Servicios que ofreces</label>
+              <input class="f-input" type="text" id="fSrv" placeholder="Filtraciones, cañerías, duchas, WC...">
+            </div>
+            <div class="f-row">
+              <div class="f-group">
+                <label class="f-label" for="fZona">Zonas donde trabajas</label>
+                <input class="f-input" type="text" id="fZona" placeholder="Maipú, Cerrillos...">
+              </div>
+              <div class="f-group">
+                <label class="f-label" for="fTel">Teléfono</label>
+                <input class="f-input" type="tel" id="fTel" placeholder="+569..." autocomplete="tel">
               </div>
             </div>
-            <div class="join-benefit" role="listitem">
-              <div class="jb-icon" aria-hidden="true">✦</div>
-              <div>
-                <div class="jb-title">Nuestro sello "MAESTO CERTIFICADO"</div>
-                <div class="jb-text">Tus clientes sabrán que eres un servicio confiable.</div>
-              </div>
-            </div>
-            <div class="join-benefit" role="listitem">
-              <div class="jb-icon" aria-hidden="true">💰</div>
-              <div>
-                <div class="jb-title">No tocamos tu dinero.</div>
-                <div class="jb-text">El pago es directo entre tú y el cliente.</div>
-              </div>
-            </div>
-          </div>
+            <button type="submit" class="btn btn-green f-submit">Publicar mi servicio gratis →</button>
+            <div class="f-msg" id="fMsg"></div>
+          </form>
         </div>
+      </div>
 
-        <div class="join-card reveal d2">
-          <h3>Cómo ingresar</h3>
-          <p>El proceso toma menos de 5 minutos.<br>Solo necesitas tener referencias comprobables de trabajos anteriores.</p>
-          <div class="join-steps" role="list">
-            <div class="join-step" role="listitem"><span class="js-n" aria-hidden="true">1</span><span>Llena el registro de nuevos maestros.</span></div>
-            <div class="join-step" role="listitem"><span class="js-n" aria-hidden="true">2</span><span>Verificamos tus datos lo antes posible.</span></div>
-            <div class="join-step" role="listitem"><span class="js-n" aria-hidden="true">3</span><span>Te publicamos en nuestros canales de difusión para que te contacten</span></div>
-          </div>
-          <div class="join-free">
-            <span style="font-size:20px" aria-hidden="true">🎁</span>
-            <span><strong>Primer mes completamente gratis.</strong> La oferta expira: 30 de abril de 2023.</span>
-          </div>
-          <a href="https://wa.me/56950147783?text=Hola%20MAESTO%2C%20quiero%20unirme%20como%20maestro"
-             target="_blank" rel="noopener"
-             class="btn btn-primary"
-             style="width:100%;justify-content:center">
-            Quiero unirme como maestro →
+    </div>
+  </div>
+</section>
+
+<!-- ─── CATÁLOGO ─── -->
+<section id="catalogo">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-label">Catálogo completo</div>
+      <h2 class="sec-title">Explora todos los <em>perfiles</em></h2>
+      <p class="sec-sub">Filtra por categoría, busca por nombre o zona, y contacta directo.</p>
+    </div>
+
+    <div class="filters reveal d1" id="filtersBar">
+      <button class="f-btn on" data-f="all">Todos</button>
+      <button class="f-btn" data-f="Gasfitería">Gasfitería</button>
+      <button class="f-btn" data-f="Electricidad">Electricidad</button>
+      <button class="f-btn" data-f="Pintura">Pintura</button>
+      <button class="f-btn" data-f="Albañilería">Albañilería</button>
+      <button class="f-btn" data-f="Carpintería">Carpintería</button>
+      <button class="f-btn" data-f="__otros">Más</button>
+      <div class="f-search">
+        <input type="text" id="searchInput" placeholder="Buscar maestro o zona...">
+      </div>
+    </div>
+
+    <div class="cat-grid" id="catGrid"></div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <!-- Brand -->
+      <div class="foot-brand-wrap">
+        <div class="foot-brand-logo">MAESTO</div>
+        <div class="foot-brand-tag">Servicios del hogar verificados</div>
+        <p class="foot-brand-desc">Conectamos familias con maestros verificados en la Región Metropolitana. Rápido, confiable y sin letra chica.</p>
+        <div class="foot-social">
+          <a href="https://instagram.com/maesto.cl" target="_blank" rel="noopener" class="f-social-btn" title="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg>
           </a>
-          <p class="join-note">
-            Instagram:
-            <a href="https://instagram.com/maesto.cl" target="_blank" rel="noopener">@maesto.cl</a>
-          </p>
+          <a href="https://wa.me/56900000000?text=Hola+MAESTO" target="_blank" rel="noopener" class="f-social-btn" title="WhatsApp">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- CANALES -->
-  <section class="section-pad" id="canales" aria-label="Canales de MAESTO">
-    <div class="container">
-      <div class="reveal">
-        <div class="eyebrow">Nuestros canales</div>
-        <h2 class="section-title">Plataformas de Difusión</h2>
-      </div>
-      <div class="canales-grid" role="list">
-        <a href="https://instagram.com/maesto.cl" target="_blank" rel="noopener"
-           class="canal-card reveal d1" role="listitem"
-           style="--c-color:#E1306C;--c-bg:rgba(225,48,108,0.1)"
-           aria-label="Instagram de MAESTO">
-          <div class="canal-ico" aria-hidden="true">📸</div>
-          <div class="canal-name">Instagram</div>
-          <div class="canal-handle">@maesto.cl</div>
-          <p class="canal-desc">Feedback de servicios y clientes satisfechos.</p>
-        </a>
-        <a href="https://wa.me/56950147783" target="_blank" rel="noopener"
-           class="canal-card reveal d2" role="listitem"
-           style="--c-color:#25D366;--c-bg:rgba(37,211,102,0.1)"
-           aria-label="WhatsApp Business de MAESTO">
-          <div class="canal-ico" aria-hidden="true">💬</div>
-          <div class="canal-name">WhatsApp Business</div>
-          <div class="canal-handle">+56 9 5014 7783</div>
-          <p class="canal-desc">Respondemos en horario laboral.</p>
-        </a>
-        <a href="https://linktr.ee/maesto.cl" target="_blank" rel="noopener"
-           class="canal-card reveal d3" role="listitem"
-           style="--c-color:#43E55E;--c-bg:rgba(67,229,94,0.08)"
-           aria-label="Linktree de MAESTO">
-          <div class="canal-ico" aria-hidden="true">🔗</div>
-          <div class="canal-name">Linktree</div>
-          <div class="canal-handle">linktr.ee/maesto.cl</div>
-          <p class="canal-desc">Acceso a todas las categorías.</p>
-        </a>
-        <a href="https://AQUI-GOOGLE-FORMS.CL" target="_blank" rel="noopener"
-           class="canal-card reveal d4" role="listitem"
-           style="--c-color:#C8773A;--c-bg:rgba(200,119,58,0.1)"
-           aria-label="Formulario de registro para maestros">
-          <div class="canal-ico" aria-hidden="true">📋</div>
-          <div class="canal-name">Formulario</div>
-          <div class="canal-handle">Registro de maestros</div>
-          <p class="canal-desc">¿Especialista? Registrate mediante el formulario.</p>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CARRUSEL DE SERVICIOS -->
-  <section class="section-alt section-pad" aria-label="Todos nuestros servicios">
-    <div class="container">
-      <div class="carousel-hd reveal">
-        <div>
-          <div class="eyebrow">Nuestros servicios</div>
-          <h2 class="section-title" style="margin-bottom:0">Todo lo que tu hogar necesita</h2>
-        </div>
-        <div class="carousel-controls" role="group" aria-label="Controles del carrusel">
-          <button class="car-btn" id="carPrev" aria-label="Anterior" disabled>←</button>
-          <button class="car-btn" id="carNext" aria-label="Siguiente">→</button>
-        </div>
-      </div>
-      <div class="car-overflow" role="region" aria-label="Carrusel de servicios">
-        <div class="car-track" id="carTrack" role="list">
-          <div class="car-item" role="listitem"><span class="car-item-icon" aria-hidden="true">🔧</span><div class="car-item-name">Gasfitería</div><p class="car-item-desc">Filtraciones, calefont, cañerías y duchas</p></div>
-          <div class="car-item" role="listitem"><span class="car-item-icon" aria-hidden="true">🌿</span><div class="car-item-name">Jardinería</div><p class="car-item-desc">Mantención, diseño, poda y riego</p></div>
-          <div class="car-item" role="listitem"><span class="car-item-icon" aria-hidden="true">⚡</span><div class="car-item-name">Electricidad</div><p class="car-item-desc">Tableros, enchufes, empalmes</p></div>
-          <div class="car-item" role="listitem"><span class="car-item-icon" aria-hidden="true">🎨</span><div class="car-item-name">Pintura</div><p class="car-item-desc">Interior, exterior, barnizado</p></div>
-          <div class="car-item" role="listitem"><span class="car-item-icon" aria-hidden="true">🪛</span><div class="car-item-name">Carpintería</div><p class="car-item-desc">Muebles, puertas, marcos</p></div>
-          <div class="car-item" role="listitem"><span class="car-item-icon" aria-hidden="true">❄️</span><div class="car-item-name">Climatización</div><p class="car-item-desc">A/A, calefacción, ventilación</p></div>
-          <div class="car-item" role="listitem"><span class="car-item-icon" aria-hidden="true">🔒</span><div class="car-item-name">Cerrajería</div><p class="car-item-desc">Apertura urgente, cambio de chapas</p></div>
-          <div class="car-item" role="listitem"><span class="car-item-icon" aria-hidden="true">🧹</span><div class="car-item-name">Limpieza</div><p class="car-item-desc">Profunda, post-obra, alfombras</p></div>
-          <div class="car-item" role="listitem"><span class="car-item-icon" aria-hidden="true">🚛</span><div class="car-item-name">Mudanzas</div><p class="car-item-desc">Traslado de muebles, empacado y desempacado.</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-</main><!-- /main -->
-
-
-<!-- ============================================================
-     FOOTER
-     ============================================================ -->
-<footer class="footer" role="contentinfo">
-  <div class="container">
-    <div class="footer-top">
+      <!-- Nav col -->
       <div>
-        <div class="footer-brand-logo">MAESTO</div>
-        <div class="footer-brand-tag">Servicios del Hogar Verificados · Chile</div>
-        <p class="footer-brand-desc">Encuentra servicios confiables en Santiago.<br>Gasfitería, electricidad, jardinería y más.</p>
-        <div class="footer-social" role="list">
-          <a href="https://instagram.com/maesto.cl" target="_blank" rel="noopener" class="f-social-btn" role="listitem" aria-label="Instagram">📸</a>
-          <a href="https://linktr.ee/maesto.cl" target="_blank" rel="noopener" class="f-social-btn" role="listitem" aria-label="Linktree">🔗</a>
+        <div class="foot-col-title">Navegación</div>
+        <div class="foot-links">
+          <a href="#directorio">Directorio</a>
+          <a href="#registro">Registrarme</a>
+          <a href="#catalogo">Catálogo</a>
         </div>
       </div>
+      <!-- Contact col -->
       <div>
-        <div class="footer-col-title">Servicios</div>
-        <nav class="footer-links" aria-label="Servicios">
-          <a href="https://wa.me/56950147783?text=Necesito%20un%20gasfiter">Gasfitería</a>
-          <a href="https://wa.me/56950147783?text=Necesito%20un%20electricista">Electricidad</a>
-          <a href="https://wa.me/56950147783?text=Necesito%20un%20jardinero">Jardinería</a>
-          <a href="https://wa.me/56950147783?text=Necesito%20un%20pintor">Pintura</a>
-          <a href="https://wa.me/56950147783?text=Necesito%20un%20cerrajero">Cerrajería</a>
-        </nav>
-      </div>
-      <div>
-        <div class="footer-col-title">Navegación</div>
-        <nav class="footer-links" aria-label="Navegación MAESTO">
-          <a href="#inicio">Inicio</a>
-          <a href="#servicios">Cómo funciona</a>
-          <a href="#maestros">Maestros verificados</a>
-          <a href="#urgencia">Servicio urgente</a>
-          <a href="#unete">Soy maestro</a>
-        </nav>
+        <div class="foot-col-title">Contacto</div>
+        <div class="foot-links">
+          <a href="https://instagram.com/maesto.cl" target="_blank" rel="noopener">@maesto.cl</a>
+          <a href="https://wa.me/56900000000?text=Hola+MAESTO,+necesito+información" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <div class="footer-copy">© 2025 MAESTO · Todos los derechos reservados<br>Santiago, Chile · Servicios del Hogar y más.</div>
-      <div class="footer-seal" aria-label="Sello MAESTO Verificado">✦ Web Diseñada por MAESTO</div>
+    <div class="foot-bottom">
+      <span class="foot-copy">© 2025 MAESTO · Chile</span>
+      <span class="foot-seal">✦ SERVICIOS VERIFICADOS</span>
     </div>
   </div>
 </footer>
 
-
-<!-- ============================================================
-     BOTÓN FLOTANTE WHATSAPP
-     ============================================================ -->
-<div class="wa-float" role="complementary" aria-label="Contacto rápido">
-  <div class="wa-tooltip" aria-hidden="true">¿Necesitas un maestro? 💬</div>
-  <a href="https://wa.me/56950147783?text=Hola%20MAESTO%2C%20necesito%20ayuda%20con%20un%20servicio%20del%20hogar"
-     target="_blank" rel="noopener"
-     class="wa-btn"
-     aria-label="Hablar con MAESTO por WhatsApp">
-    <div class="wa-ring" aria-hidden="true"></div>
-    <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-wa"/></svg>
+<!-- Floating WA -->
+<div class="wa-float">
+  <div class="wa-tooltip">¿Necesitas un servicio? 💬</div>
+  <a href="https://wa.me/56900000000?text=Hola+MAESTO,+necesito+un+servicio+del+hogar" target="_blank" rel="noopener" class="wa-btn" title="Contactar por WhatsApp">
+    <div class="wa-ring"></div>
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
   </a>
 </div>
 
+<!-- Toast container -->
+<div id="toastContainer"></div>
 
-<!-- ============================================================
-     JAVASCRIPT — mínimo necesario
-     ============================================================ -->
+<!-- Password modal -->
+<div id="pwOverlay">
+  <div class="pw-box">
+    <div class="pw-title">Acceso restringido</div>
+    <div class="pw-sub">MAESTO · PANEL ADMIN</div>
+    <input class="pw-input" type="password" id="pwInput" placeholder="Contraseña" autocomplete="off">
+    <div class="pw-err" id="pwErr">Contraseña incorrecta. Intenta de nuevo.</div>
+    <div class="pw-row">
+      <button class="btn btn-outline" id="pwCancel" style="padding:12px">Cancelar</button>
+      <button class="btn btn-primary" id="pwSubmit" style="padding:12px">Entrar →</button>
+    </div>
+  </div>
+</div>
+
+<!-- Admin panel -->
+<div id="adminPanel">
+  <div class="adm-header">
+    <span class="adm-logo">MAESTO</span>
+    <span class="adm-tag">Admin Panel</span>
+    <div class="adm-header-actions">
+      <button class="adm-hbtn" id="admExport">↑ Exportar JSON</button>
+      <label class="adm-hbtn" style="cursor:pointer">↓ Importar JSON<input type="file" accept=".json" id="admImport" style="display:none"></label>
+      <button class="adm-hbtn danger" id="admLogout">Salir</button>
+      <button class="adm-close" id="admClose">✕</button>
+    </div>
+  </div>
+
+  <div class="adm-body">
+    <!-- LIST -->
+    <div class="adm-list-col">
+      <div class="adm-list-head">
+        <div class="adm-count" id="admCount">0 maestros</div>
+        <div class="adm-search-wrap">
+          <input class="adm-search" type="text" id="admSearch" placeholder="Buscar maestro...">
+        </div>
+        <div class="adm-cat-filter" id="admCatFilter">
+          <button class="adm-cf-btn on" data-cf="all">Todos</button>
+          <button class="adm-cf-btn" data-cf="Gasfitería">Gasfitería</button>
+          <button class="adm-cf-btn" data-cf="Electricidad">Electricidad</button>
+          <button class="adm-cf-btn" data-cf="Pintura">Pintura</button>
+          <button class="adm-cf-btn" data-cf="Albañilería">Albañilería</button>
+          <button class="adm-cf-btn" data-cf="Carpintería">Carpintería</button>
+          <button class="adm-cf-btn" data-cf="Otro">Otros</button>
+        </div>
+      </div>
+      <div class="adm-list-items" id="admListItems"></div>
+      <button class="adm-add-btn" id="admAddBtn">+ Agregar maestro</button>
+    </div>
+
+    <!-- FORM -->
+    <div class="adm-form-col" id="admFormCol">
+      <div class="adm-empty">
+        <div class="adm-empty-icon">🔧</div>
+        <p>Selecciona un maestro para editar, o presiona "Agregar maestro" para crear uno nuevo.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal-bg" id="modalBg">
+  <div class="modal" id="modal">
+    <button class="modal-close" id="modalClose">✕</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
 <script>
-/* Inline animations en hero — se definen aquí para no depender del observer */
-document.querySelectorAll('.anim-fade-up').forEach(el => {
-  el.style.animation = el.style.animation || 'fadeUp 0.7s ease forwards';
-});
-</script>
+'use strict';
 
-<script>
-/* ---- Declaraciones únicas ---- */
-const navbar    = document.getElementById('navbar');
-const hamburger = document.getElementById('hamburger');
-const overlay   = document.getElementById('navOverlay');
+/* ═══════════════════════════════════════════════
+   CONSTANTES
+   ═══════════════════════════════════════════════ */
+const STORAGE_KEY = 'maesto_maestros_v1';
+const ADMIN_PASS  = 'd4l3r0s1';
 
-/* NAVBAR scroll */
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 40);
-}, { passive: true });
+const CAT_COLORS = {
+  'Gasfitería':'#3b82f6','Electricidad':'#f59e0b','Pintura':'#8b5cf6',
+  'Albañilería':'#ef4444','Carpintería':'#10b981','Cerrajería':'#6366f1',
+  'Climatización':'#06b6d4','Jardinería':'#22c55e','Aseo y limpieza':'#ec4899',
+  'Fumigación':'#84cc16','Mudanzas':'#f97316','Instalaciones':'#a78bfa','Otro':'#C8773A'
+};
 
-/* HAMBURGER */
-function toggleNav(open) {
-  hamburger.setAttribute('aria-expanded', open);
-  overlay.classList.toggle('open', open);
-  overlay.setAttribute('aria-hidden', !open);
-  document.body.style.overflow = open ? 'hidden' : '';
+const CATEGORIAS = Object.keys(CAT_COLORS);
+const MAIN_CATS  = ['Gasfitería','Electricidad','Pintura','Albañilería','Carpintería'];
+
+/* ═══════════════════════════════════════════════
+   SEED DATA — normalizado al schema completo
+   ═══════════════════════════════════════════════ */
+const SEED_DATA = [
+  {id:'m1',nombre:'Jorge Ramírez',    categoria:'Gasfitería',    servicios:'Filtraciones, cañerías, duchas, WC, llaves de paso',      zonas:'Maipú · Pudahuel · Cerrillos',           telefono:'56912345678',descripcion:'Maestro gasfiter con más de 10 años de experiencia. Atención de emergencias 24 hrs.',verificado:true,destacado:true, rating:4.9,rev:38,createdAt:1700000001000},
+  {id:'m2',nombre:'María Pedraza',    categoria:'Electricidad',  servicios:'Instalaciones eléctricas, tableros, certificaciones SEC', zonas:'Santiago · Ñuñoa · Providencia',          telefono:'56923456789',descripcion:'Electricista certificada SEC. Proyectos residenciales y comerciales.',               verificado:true,destacado:true, rating:5.0,rev:21,createdAt:1700000002000},
+  {id:'m3',nombre:'Carlos Araya',     categoria:'Pintura',       servicios:'Pintura interior/exterior, estuco, cielo, molduras',      zonas:'La Florida · Peñalolén · Macul',          telefono:'56934567890',descripcion:'Pintor con experiencia en proyectos residenciales grandes. Acabados impecables.',   verificado:true,destacado:false,rating:4.7,rev:53,createdAt:1700000003000},
+  {id:'m4',nombre:'Pedro Soto',       categoria:'Albañilería',   servicios:'Tabiques, porcelanatos, terrazo, construcción en seco',   zonas:'Puente Alto · La Pintana · San Bernardo', telefono:'56945678901',descripcion:'Maestro albanil con especialidad en construcción en seco y revestimientos.',        verificado:true,destacado:false,rating:4.8,rev:44,createdAt:1700000004000},
+  {id:'m5',nombre:'Ana González',     categoria:'Cerrajería',    servicios:'Cambio de chapas, duplicado de llaves, cierres de seguridad',zonas:'Vitacura · Las Condes · Lo Barnechea',  telefono:'56956789012',descripcion:'Cerrajera profesional, atención rápida en emergencias.',                            verificado:true,destacado:false,rating:4.9,rev:29,createdAt:1700000005000},
+  {id:'m6',nombre:'Luis Flores',      categoria:'Carpintería',   servicios:'Muebles a medida, closets, puertas, reparaciones',        zonas:'Estación Central · Quinta Normal',         telefono:'56967890123',descripcion:'Carpintero artesanal, trabajos a medida con maderas nobles.',                    verificado:true,destacado:false,rating:4.6,rev:67,createdAt:1700000006000},
+  {id:'m7',nombre:'Rodrigo Mora',     categoria:'Climatización', servicios:'Instalación y mantención de aires acondicionados, splits',zonas:'Maipú · Pudahuel · Padre Hurtado',         telefono:'56978901234',descripcion:'Técnico en climatización certificado. Instalación y mantención de equipos.',      verificado:true,destacado:false,rating:4.8,rev:31,createdAt:1700000007000},
+  {id:'m8',nombre:'Claudia Vega',     categoria:'Jardinería',    servicios:'Diseño de jardines, poda, riego automático, mantención',  zonas:'Providencia · Ñuñoa · La Reina',          telefono:'56989012345',descripcion:'Paisajista y jardinera certificada. Diseño y mantención de espacios verdes.',    verificado:true,destacado:false,rating:5.0,rev:18,createdAt:1700000008000},
+  {id:'m9',nombre:'Héctor Muñoz',     categoria:'Gasfitería',    servicios:'Calefont, termos, radiadores, red de gas, calefacción',   zonas:'Renca · Conchalí · Huechuraba',           telefono:'56990123456',descripcion:'Gasfiter especialista en sistemas de calefacción y gas.',                         verificado:true,destacado:false,rating:4.7,rev:42,createdAt:1700000009000},
+  {id:'m10',nombre:'Sandra Rojas',    categoria:'Aseo y limpieza',servicios:'Limpieza profunda, alfombras, tapizados, post obra',     zonas:'Santiago · Providencia · Ñuñoa',          telefono:'56901234567',descripcion:'Especialista en limpieza profunda y post construcción.',                           verificado:true,destacado:false,rating:4.9,rev:76,createdAt:1700000010000},
+  {id:'m11',nombre:'Óscar Castro',    categoria:'Pintura',       servicios:'Pintura al agua, óleo, barnices, restauración de muebles',zonas:'Puente Alto · Pirque',                     telefono:'56912348765',descripcion:'Pintor especialista en restauración y acabados decorativos.',                    verificado:true,destacado:false,rating:4.5,rev:39,createdAt:1700000011000},
+  {id:'m12',nombre:'Patricia Díaz',   categoria:'Instalaciones', servicios:'Alarmas, cámaras, domótica, intercomunicadores',         zonas:'Las Condes · Vitacura · Providencia',     telefono:'56923457654',descripcion:'Técnica en seguridad electrónica y domótica residencial.',                      verificado:true,destacado:false,rating:4.8,rev:25,createdAt:1700000012000},
+];
+
+/* ═══════════════════════════════════════════════
+   ESTADO GLOBAL
+   ═══════════════════════════════════════════════ */
+let state = {
+  maestros:        [],
+  selectedId:      null,
+  isAdminOpen:     false,
+  adminFilter:     'all',
+  adminSearch:     '',
+  /* UI pública */
+  activeFilter:    'all',
+  searchQuery:     '',
+};
+
+/* ═══════════════════════════════════════════════
+   CAPA DE DATOS
+   ═══════════════════════════════════════════════ */
+function loadData() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (parsed.version === 1 && Array.isArray(parsed.maestros)) {
+        state.maestros = parsed.maestros;
+        return;
+      }
+    }
+  } catch (_) {}
+  // Primera vez: cargar seed
+  state.maestros = SEED_DATA.map(m => ({ ...m }));
+  saveData();
 }
-hamburger.addEventListener('click', () => {
-  toggleNav(hamburger.getAttribute('aria-expanded') !== 'true');
-});
-overlay.addEventListener('click', e => { if (e.target === overlay) toggleNav(false); });
-overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleNav(false)));
 
-/* SMOOTH SCROLL */
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const target = document.querySelector(a.getAttribute('href'));
-    if (!target) return;
-    e.preventDefault();
-    window.scrollTo({ top: target.getBoundingClientRect().top + scrollY - 68, behavior: 'smooth' });
+function saveData() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({
+      version: 1,
+      lastUpdate: Date.now(),
+      maestros: state.maestros,
+    }));
+  } catch (_) {}
+}
+
+function setState(partial) {
+  Object.assign(state, partial);
+}
+
+/* ═══════════════════════════════════════════════
+   MOTOR CENTRAL
+   ═══════════════════════════════════════════════ */
+function sync() {
+  saveData();
+  renderAll();
+}
+
+function renderAll() {
+  renderCarousel();
+  renderCatalogo();
+  renderTicker();
+  if (state.isAdminOpen) renderAdminList();
+}
+
+/* ═══════════════════════════════════════════════
+   UTILS
+   ═══════════════════════════════════════════════ */
+function generarId() {
+  return (typeof crypto !== 'undefined' && crypto.randomUUID)
+    ? crypto.randomUUID()
+    : 'u_' + Date.now() + '_' + Math.random().toString(36).slice(2, 9);
+}
+
+function getIni(nombre) {
+  return nombre.trim().split(/\s+/).slice(0, 2).map(p => (p[0] || '').toUpperCase()).join('');
+}
+
+function renderStars(r) {
+  const f = Math.floor(r), h = r - f >= .5 ? 1 : 0;
+  return '★'.repeat(f) + (h ? '½' : '') + '☆'.repeat(5 - f - h);
+}
+
+function enc(s) { return encodeURIComponent(s); }
+
+function esc(s) {
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
+function validTel(t) { return /^(\+?56)?9\d{8}$/.test(t.replace(/[\s+\-]/g, '')); }
+
+function normTel(t) {
+  const s = t.replace(/[\s+\-]/g, '');
+  if (s.startsWith('56')) return s;
+  if (s.startsWith('9'))  return '56' + s;
+  return '569' + s;
+}
+
+function validarFormulario(v) {
+  const errs = [];
+  if (!v.nombre || v.nombre.length < 4) errs.push({ field: 'nombre', msg: 'Nombre muy corto.' });
+  if (!v.categoria) errs.push({ field: 'categoria', msg: 'Selecciona categoría.' });
+  if (!v.servicios || v.servicios.length < 5) errs.push({ field: 'servicios', msg: 'Describe los servicios.' });
+  if (!v.zonas || v.zonas.length < 3) errs.push({ field: 'zonas', msg: 'Indica la zona.' });
+  if (!validTel(v.telefono)) errs.push({ field: 'telefono', msg: 'Teléfono inválido (+569XXXXXXXX).' });
+  return errs;
+}
+
+/* ═══════════════════════════════════════════════
+   CRUD
+   ═══════════════════════════════════════════════ */
+async function createMaestro(data) {
+  const nuevo = {
+    id:          generarId(),
+    nombre:      data.nombre.trim(),
+    categoria:   data.categoria,
+    servicios:   data.servicios.trim(),
+    zonas:       data.zonas.trim(),
+    telefono:    normTel(data.telefono),
+    descripcion: (data.descripcion || '').trim(),
+    verificado:  data.verificado !== false,
+    destacado:   data.destacado === true,
+    rating:      parseFloat(data.rating) || 5.0,
+    rev:         0,
+    createdAt:   Date.now(),
+  };
+  state.maestros.unshift(nuevo);
+  sync();
+  return nuevo;
+}
+
+async function updateMaestro(id, data) {
+  const idx = state.maestros.findIndex(m => m.id === id);
+  if (idx === -1) return null;
+  state.maestros[idx] = {
+    ...state.maestros[idx],
+    nombre:      data.nombre.trim(),
+    categoria:   data.categoria,
+    servicios:   data.servicios.trim(),
+    zonas:       data.zonas.trim(),
+    telefono:    normTel(data.telefono),
+    descripcion: (data.descripcion || '').trim(),
+    verificado:  data.verificado !== false,
+    destacado:   data.destacado === true,
+    rating:      parseFloat(data.rating) || state.maestros[idx].rating,
+  };
+  sync();
+  return state.maestros[idx];
+}
+
+async function deleteMaestro(id) {
+  state.maestros = state.maestros.filter(m => m.id !== id);
+  if (state.selectedId === id) setState({ selectedId: null });
+  sync();
+}
+
+/* ═══════════════════════════════════════════════
+   TOAST
+   ═══════════════════════════════════════════════ */
+function toast(msg, type = 'info') {
+  const c = document.getElementById('toastContainer');
+  const t = document.createElement('div');
+  t.className = `toast ${type}`;
+  t.textContent = msg;
+  c.appendChild(t);
+  setTimeout(() => {
+    t.classList.add('toast-out');
+    setTimeout(() => t.remove(), 280);
+  }, 2800);
+}
+
+/* ═══════════════════════════════════════════════
+   ORDENAMIENTO
+   ═══════════════════════════════════════════════ */
+function sortedMaestros(list) {
+  return [...list].sort((a, b) => {
+    if (b.destacado !== a.destacado) return b.destacado ? 1 : -1;
+    return (b.createdAt || 0) - (a.createdAt || 0);
   });
-});
+}
 
-/* SCROLL REVEAL */
-const revealObs = new IntersectionObserver(entries => {
-  entries.forEach(({ isIntersecting, target }) => {
-    if (isIntersecting) { target.classList.add('visible'); revealObs.unobserve(target); }
-  });
-}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+/* ═══════════════════════════════════════════════
+   RENDER — TICKER
+   ═══════════════════════════════════════════════ */
+function renderTicker() {
+  const ticker = document.getElementById('ticker');
+  const list = sortedMaestros(state.maestros);
+  const chips = list.map(m => `
+    <div class="ticker-chip">
+      <div class="ticker-chip-ava" style="background:${CAT_COLORS[m.categoria] || '#C8773A'}">${getIni(m.nombre)}</div>
+      <span>${esc(m.nombre)} · ${esc(m.categoria)}</span>
+      <div class="ticker-chip-dot"></div>
+    </div>`).join('');
+  ticker.innerHTML = chips + chips;
+}
 
-/* ACTIVE NAV */
-const navAs = document.querySelectorAll('.nav-links a[href^="#"]');
-const secObs = new IntersectionObserver(entries => {
-  entries.forEach(({ isIntersecting, target }) => {
-    if (!isIntersecting) return;
-    navAs.forEach(a => {
-      const active = a.getAttribute('href') === '#' + target.id;
-      a.style.color = active ? 'var(--cream)' : '';
+/* ═══════════════════════════════════════════════
+   RENDER — CAROUSEL (Sección 2)
+   ═══════════════════════════════════════════════ */
+function renderCarousel() {
+  const track = document.getElementById('carTrack');
+  const list  = sortedMaestros(state.maestros);
+
+  track.innerHTML = list.map(m => `
+    <div class="dir-card" data-id="${esc(m.id)}">
+      <div class="dir-card-top">
+        <div class="dir-ava" style="background:linear-gradient(135deg,${CAT_COLORS[m.categoria] || '#C8773A'},#E09B5C)">${getIni(m.nombre)}</div>
+        <span class="badge badge-verified">✦ VERIFICADO</span>
+      </div>
+      <div class="dir-name">${esc(m.nombre)}</div>
+      <div class="dir-spec">${esc(m.categoria)}</div>
+      <div class="dir-zone">📍 ${esc(m.zonas.split('·')[0].trim())}</div>
+      <div class="dir-tags">${m.servicios.split(',').slice(0, 3).map(s => `<span class="dir-tag">${esc(s.trim())}</span>`).join('')}</div>
+      <div class="dir-foot">
+        <div class="dir-rating"><span class="stars">${renderStars(m.rating)}</span> ${m.rating} <span style="font-size:10px;color:var(--muted2)">(${m.rev})</span></div>
+        <a href="https://wa.me/${m.telefono}?text=Hola+${enc(m.nombre)}%2C+te+vi+en+MAESTO.+¿Podemos+hablar+sobre+un+servicio%3F"
+           target="_blank" rel="noopener" class="btn btn-wa" onclick="event.stopPropagation()">WhatsApp</a>
+      </div>
+    </div>`).join('');
+
+  track.querySelectorAll('.dir-card').forEach(card => {
+    card.addEventListener('click', e => {
+      if (e.target.closest('a, button')) return;
+      const m = state.maestros.find(x => x.id === card.dataset.id);
+      if (m) openModal(m);
     });
   });
-}, { threshold: 0.45 });
-document.querySelectorAll('section[id]').forEach(s => secObs.observe(s));
 
-/* CARRUSEL */
-(function() {
-  const track  = document.getElementById('carTrack');
-  const btnP   = document.getElementById('carPrev');
-  const btnN   = document.getElementById('carNext');
-  let idx      = 0;
+  buildDots(list.length);
+}
 
-  function getConfig() {
-    const w = window.innerWidth;
-    const visible = w < 480 ? 1 : w < 768 ? 2 : w < 1024 ? 3 : 4;
-    const itemEl  = track.firstElementChild;
-    const itemW   = itemEl.getBoundingClientRect().width + 14; /* 14 = gap */
-    return { visible, itemW, max: Math.max(0, track.children.length - visible) };
-  }
+function buildDots(total) {
+  const dots  = document.getElementById('carDots');
+  const outer = document.getElementById('carOuter');
+  const cardW = 256 + 16;
+  const perPage = Math.max(1, Math.floor(outer.offsetWidth / cardW));
+  const pages   = Math.ceil(total / perPage);
+  dots.innerHTML = Array.from({ length: Math.min(pages, 8) }, (_, i) =>
+    `<div class="car-dot${i === 0 ? ' on' : ''}" data-p="${i}"></div>`
+  ).join('');
+  dots.querySelectorAll('.car-dot').forEach(d => d.addEventListener('click', () => scrollPage(+d.dataset.p)));
+}
 
-  function render() {
-    const { itemW, max } = getConfig();
-    idx = Math.min(Math.max(idx, 0), max);
-    track.style.transform = `translateX(-${idx * itemW}px)`;
-    btnP.disabled = idx === 0;
-    btnN.disabled = idx >= max;
-  }
+function scrollPage(p) {
+  const outer  = document.getElementById('carOuter');
+  const cardW  = 256 + 16;
+  const perPage = Math.max(1, Math.floor(outer.offsetWidth / cardW));
+  outer.scrollTo({ left: p * perPage * cardW, behavior: 'smooth' });
+  document.querySelectorAll('.car-dot').forEach((d, i) => d.classList.toggle('on', i === p));
+}
 
-  btnP.addEventListener('click', () => { idx--; render(); });
-  btnN.addEventListener('click', () => { idx++; render(); });
+document.getElementById('carOuter').addEventListener('scroll', function () {
+  const cardW   = 256 + 16;
+  const perPage = Math.max(1, Math.floor(this.offsetWidth / cardW));
+  const p = Math.round(this.scrollLeft / (cardW * perPage));
+  document.querySelectorAll('.car-dot').forEach((d, i) => d.classList.toggle('on', i === p));
+}, { passive: true });
 
-  let resizeTimer;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => { idx = 0; render(); }, 150);
-  }, { passive: true });
+document.getElementById('carPrev').addEventListener('click', () =>
+  document.getElementById('carOuter').scrollBy({ left: -300, behavior: 'smooth' }));
+document.getElementById('carNext').addEventListener('click', () =>
+  document.getElementById('carOuter').scrollBy({ left: 300, behavior: 'smooth' }));
 
-  /* Swipe táctil */
-  let tx = 0;
-  track.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
-  track.addEventListener('touchend', e => {
-    const d = tx - e.changedTouches[0].clientX;
-    if (Math.abs(d) > 48) { d > 0 ? idx++ : idx--; render(); }
-  }, { passive: true });
+/* ═══════════════════════════════════════════════
+   RENDER — CATÁLOGO (Sección 4)
+   ═══════════════════════════════════════════════ */
+function renderCatalogo() {
+  const grid = document.getElementById('catGrid');
 
-  render();
-})();
-
-/* FORMULARIO URGENCIA */
-document.getElementById('urgencia-submit').addEventListener('click', () => {
-  const fields = ['u-comuna', 'u-servicio', 'u-contacto'];
-  const vals   = fields.map(id => ({ el: document.getElementById(id), val: document.getElementById(id).value.trim() }));
-  let valid    = true;
-
-  vals.forEach(({ el, val }) => {
-    el.classList.toggle('error', !val);
-    if (!val) {
-      valid = false;
-      el.addEventListener('input', () => el.classList.remove('error'), { once: true });
-    }
+  const list = sortedMaestros(state.maestros).filter(m => {
+    const fOk = state.activeFilter === 'all'
+      || m.categoria === state.activeFilter
+      || (state.activeFilter === '__otros' && !MAIN_CATS.includes(m.categoria));
+    const q   = state.searchQuery.toLowerCase();
+    const sOk = !q || [m.nombre, m.categoria, m.zonas, m.servicios].some(x => x.toLowerCase().includes(q));
+    return fOk && sOk;
   });
-  if (!valid) return;
 
-  const [comuna, servicio, contacto] = vals.map(v => v.val);
-  const msg = encodeURIComponent(
-    `Hola MAESTO 🚨 Necesito servicio URGENTE.\n\n📍 Comuna: ${comuna}\n🔧 Servicio: ${servicio}\n📱 Contacto: ${contacto}\n\nPor favor contáctenme lo antes posible.`
-  );
-  window.open(`https://wa.me/56950147783?text=${msg}`, '_blank', 'noopener,noreferrer');
+  if (!list.length) {
+    grid.innerHTML = `<div class="no-res">🔍<p>Sin resultados. Prueba otra categoría o zona.</p></div>`;
+    return;
+  }
+
+  grid.innerHTML = list.map((m, i) => `
+    <div class="p-card" data-id="${esc(m.id)}" style="animation-delay:${i * 0.04}s">
+      <div class="p-banner" style="background:linear-gradient(90deg,${CAT_COLORS[m.categoria] || '#C8773A'},#E09B5C)"></div>
+      <div class="p-body">
+        <div class="p-head">
+          <div class="p-ava" style="background:linear-gradient(135deg,${CAT_COLORS[m.categoria] || '#C8773A'},#E09B5C)">${getIni(m.nombre)}</div>
+          <div>
+            <div class="p-name">${esc(m.nombre)}</div>
+            <div class="p-spec">${esc(m.categoria)}</div>
+            <div class="p-zone">📍 ${esc(m.zonas.split('·')[0].trim())}</div>
+          </div>
+        </div>
+        <div class="p-srvs">${esc(m.servicios)}</div>
+        <div class="p-foot">
+          <div class="p-rating">
+            <span class="stars">${renderStars(m.rating)}</span>
+            ${m.rating}
+            <span style="font-size:10px;color:var(--muted2)">(${m.rev})</span>
+          </div>
+          <span class="badge badge-verified">✦ VERIFICADO</span>
+        </div>
+        <button class="p-wa" style="width:100%;justify-content:center;margin-top:12px"
+          data-wa="${m.telefono}" data-nombre="${esc(m.nombre)}">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Contactar por WhatsApp
+        </button>
+      </div>
+    </div>`).join('');
+
+  grid.querySelectorAll('.p-card').forEach(card => {
+    card.addEventListener('click', e => {
+      const waBtn = e.target.closest('[data-wa]');
+      if (waBtn) {
+        e.stopPropagation();
+        window.open(`https://wa.me/${waBtn.dataset.wa}?text=Hola+${enc(waBtn.dataset.nombre)}%2C+te+vi+en+MAESTO.+¿Podemos+hablar+sobre+un+servicio%3F`, '_blank');
+        return;
+      }
+      const m = state.maestros.find(x => x.id === card.dataset.id);
+      if (m) openModal(m);
+    });
+  });
+}
+
+/* ═══════════════════════════════════════════════
+   MODAL PERFIL PÚBLICO
+   ═══════════════════════════════════════════════ */
+function openModal(m) {
+  document.getElementById('modalBody').innerHTML = `
+    <div class="modal-top">
+      <div class="modal-ava" style="background:linear-gradient(135deg,${CAT_COLORS[m.categoria] || '#C8773A'},#E09B5C)">${getIni(m.nombre)}</div>
+      <div>
+        <div class="modal-name">${esc(m.nombre)}</div>
+        <div class="modal-spec">${esc(m.categoria)}</div>
+        <span class="badge badge-verified">✦ MAESTO VERIFICADO</span>
+      </div>
+    </div>
+    <div class="modal-section">Zona de trabajo</div>
+    <div class="modal-text">📍 ${esc(m.zonas)}</div>
+    ${m.descripcion ? `<div class="modal-section">Sobre el maestro</div><div class="modal-text">${esc(m.descripcion)}</div>` : ''}
+    <div class="modal-section">Servicios que ofrece</div>
+    <div class="modal-text">${esc(m.servicios)}</div>
+    <div class="modal-rating">
+      <span class="stars" style="font-size:15px">${renderStars(m.rating)}</span>
+      <span class="modal-r-num">${m.rating}</span>
+      <span class="modal-r-label">${m.rev} evaluaciones</span>
+    </div>
+    <div class="modal-foot">
+      <a href="https://wa.me/${m.telefono}?text=Hola+${enc(m.nombre)}%2C+te+vi+en+MAESTO.+¿Podemos+hablar+sobre+un+servicio%3F"
+         target="_blank" rel="noopener" class="btn btn-green">Contactar por WhatsApp</a>
+    </div>`;
+  document.getElementById('modalBg').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modalBg').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('modalClose').addEventListener('click', closeModal);
+document.getElementById('modalBg').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); closeAdmin(); } });
+
+/* ═══════════════════════════════════════════════
+   FILTROS PÚBLICOS
+   ═══════════════════════════════════════════════ */
+document.getElementById('filtersBar').addEventListener('click', e => {
+  const btn = e.target.closest('.f-btn');
+  if (!btn) return;
+  document.querySelectorAll('.f-btn').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  setState({ activeFilter: btn.dataset.f });
+  renderCatalogo();
+});
+
+let sTimer;
+document.getElementById('searchInput').addEventListener('input', e => {
+  clearTimeout(sTimer);
+  sTimer = setTimeout(() => { setState({ searchQuery: e.target.value }); renderCatalogo(); }, 260);
+});
+
+/* ═══════════════════════════════════════════════
+   FORM PÚBLICO — Registro maestro
+   ═══════════════════════════════════════════════ */
+document.getElementById('regForm').addEventListener('submit', async function (e) {
+  e.preventDefault();
+  const msg = document.getElementById('fMsg');
+  msg.className = 'f-msg';
+
+  const fields = {
+    nombre:   document.getElementById('fNombre'),
+    cat:      document.getElementById('fCat'),
+    srv:      document.getElementById('fSrv'),
+    zona:     document.getElementById('fZona'),
+    tel:      document.getElementById('fTel'),
+  };
+  Object.values(fields).forEach(f => f.classList.remove('error'));
+
+  const v = {
+    nombre:    fields.nombre.value.trim(),
+    categoria: fields.cat.value,
+    servicios: fields.srv.value.trim(),
+    zonas:     fields.zona.value.trim(),
+    telefono:  fields.tel.value.trim(),
+  };
+
+  const errs = validarFormulario(v);
+  if (errs.length) {
+    const first = errs[0];
+    const fieldMap = { nombre: 'nombre', categoria: 'cat', servicios: 'srv', zonas: 'zona', telefono: 'tel' };
+    if (fields[fieldMap[first.field]]) fields[fieldMap[first.field]].classList.add('error');
+    msg.className = 'f-msg err';
+    msg.textContent = '⚠️ ' + first.msg;
+    return;
+  }
+
+  const nuevo = await createMaestro(v);
+  msg.className = 'f-msg ok';
+  msg.textContent = `✅ ¡Listo, ${v.nombre.split(' ')[0]}! Recibirás confirmación en 24 horas hábiles.`;
+  this.reset();
+
+  const waAdmin = enc(`🆕 Nuevo maestro MAESTO:\n*${v.nombre}* | ${v.categoria}\nZonas: ${v.zonas}\nTel: ${nuevo.telefono}`);
+  setTimeout(() => window.open(`https://wa.me/56900000000?text=${waAdmin}`, '_blank'), 1200);
+});
+
+/* ═══════════════════════════════════════════════
+   ADMIN — ACCESO
+   ═══════════════════════════════════════════════ */
+function openAdmin() {
+  setState({ isAdminOpen: true });
+  document.getElementById('adminPanel').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  renderAdminList();
+}
+
+function closeAdmin() {
+  setState({ isAdminOpen: false, selectedId: null });
+  document.getElementById('adminPanel').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('adminBtn').addEventListener('click', () => {
+  document.getElementById('pwOverlay').classList.add('open');
+  setTimeout(() => document.getElementById('pwInput').focus(), 100);
+});
+
+document.getElementById('pwCancel').addEventListener('click', () => {
+  document.getElementById('pwOverlay').classList.remove('open');
+  document.getElementById('pwInput').value = '';
+  document.getElementById('pwErr').classList.remove('show');
+});
+
+function submitPassword() {
+  const pw = document.getElementById('pwInput').value;
+  if (pw === ADMIN_PASS) {
+    document.getElementById('pwOverlay').classList.remove('open');
+    document.getElementById('pwInput').value = '';
+    document.getElementById('pwErr').classList.remove('show');
+    openAdmin();
+  } else {
+    const inp = document.getElementById('pwInput');
+    inp.classList.add('shake');
+    document.getElementById('pwErr').classList.add('show');
+    inp.value = '';
+    inp.focus();
+    setTimeout(() => inp.classList.remove('shake'), 360);
+  }
+}
+
+document.getElementById('pwSubmit').addEventListener('click', submitPassword);
+document.getElementById('pwInput').addEventListener('keydown', e => { if (e.key === 'Enter') submitPassword(); });
+document.getElementById('pwOverlay').addEventListener('click', e => {
+  if (e.target === e.currentTarget) {
+    e.currentTarget.classList.remove('open');
+    document.getElementById('pwInput').value = '';
+    document.getElementById('pwErr').classList.remove('show');
+  }
+});
+
+document.getElementById('admClose').addEventListener('click', closeAdmin);
+document.getElementById('admLogout').addEventListener('click', closeAdmin);
+
+/* ═══════════════════════════════════════════════
+   ADMIN — RENDER LIST
+   ═══════════════════════════════════════════════ */
+function renderAdminList() {
+  const list = sortedMaestros(state.maestros).filter(m => {
+    const fOk = state.adminFilter === 'all'
+      || m.categoria === state.adminFilter
+      || (state.adminFilter === 'Otro' && !CATEGORIAS.filter(c => c !== 'Otro').includes(m.categoria));
+    const q   = state.adminSearch.toLowerCase();
+    const sOk = !q || m.nombre.toLowerCase().includes(q) || m.categoria.toLowerCase().includes(q);
+    return fOk && sOk;
+  });
+
+  document.getElementById('admCount').textContent = `${list.length} / ${state.maestros.length} maestros`;
+
+  const items = document.getElementById('admListItems');
+  items.innerHTML = list.map(m => `
+    <div class="adm-item${state.selectedId === m.id ? ' active' : ''}" data-id="${esc(m.id)}">
+      <div class="adm-item-ava" style="background:linear-gradient(135deg,${CAT_COLORS[m.categoria] || '#C8773A'},#E09B5C)">${getIni(m.nombre)}</div>
+      <div style="flex:1;min-width:0">
+        <div class="adm-item-name">${esc(m.nombre)}</div>
+        <div class="adm-item-cat">${esc(m.categoria)}</div>
+      </div>
+      <div class="adm-item-badges">
+        ${m.destacado ? '<span class="adm-star dest">★</span>' : ''}
+        <span class="adm-star">${m.rating}</span>
+      </div>
+    </div>`).join('');
+
+  items.querySelectorAll('.adm-item').forEach(el => {
+    el.addEventListener('click', () => {
+      const m = state.maestros.find(x => x.id === el.dataset.id);
+      if (m) { setState({ selectedId: m.id }); renderAdminList(); renderAdminForm(m); }
+    });
+  });
+}
+
+/* ═══════════════════════════════════════════════
+   ADMIN — RENDER FORM
+   ═══════════════════════════════════════════════ */
+function catOptions(selected = '') {
+  return CATEGORIAS.map(c =>
+    `<option value="${c}"${c === selected ? ' selected' : ''}>${c}</option>`
+  ).join('');
+}
+
+function renderAdminForm(m = null) {
+  const isNew = !m;
+  const col = document.getElementById('admFormCol');
+
+  col.innerHTML = `
+    <div class="adm-form-title">${isNew ? 'Agregar maestro' : 'Editar maestro'}</div>
+    <div class="adm-form-sub">${isNew ? 'Completa todos los campos obligatorios.' : `ID: ${m.id}`}</div>
+    <form id="admForm" class="adm-form" novalidate>
+      <div>
+        <label class="adm-f-label">Nombre completo *</label>
+        <input class="adm-f-input" name="nombre" value="${esc(m?.nombre || '')}" placeholder="Juan Pérez González" required>
+      </div>
+      <div>
+        <label class="adm-f-label">Categoría *</label>
+        <select class="adm-f-select" name="categoria">
+          <option value="" disabled ${!m ? 'selected' : ''}>Seleccionar...</option>
+          ${catOptions(m?.categoria)}
+        </select>
+      </div>
+      <div class="full">
+        <label class="adm-f-label">Servicios *</label>
+        <input class="adm-f-input" name="servicios" value="${esc(m?.servicios || '')}" placeholder="Filtraciones, cañerías, duchas...">
+      </div>
+      <div>
+        <label class="adm-f-label">Zonas *</label>
+        <input class="adm-f-input" name="zonas" value="${esc(m?.zonas || '')}" placeholder="Maipú · Cerrillos">
+      </div>
+      <div>
+        <label class="adm-f-label">Teléfono *</label>
+        <input class="adm-f-input" name="telefono" value="${esc(m?.telefono || '')}" placeholder="+56912345678">
+      </div>
+      <div class="full">
+        <label class="adm-f-label">Descripción breve</label>
+        <textarea class="adm-f-textarea" name="descripcion" placeholder="Breve presentación del maestro...">${esc(m?.descripcion || '')}</textarea>
+      </div>
+      <div>
+        <label class="adm-f-label">Rating (1–5)</label>
+        <input class="adm-f-input" name="rating" type="number" min="1" max="5" step="0.1" value="${m?.rating || 5.0}">
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div class="adm-toggle-row">
+          <div><div class="adm-toggle-label">Verificado</div><div style="font-size:11px;color:var(--muted2)">Muestra badge oficial</div></div>
+          <label class="adm-toggle"><input type="checkbox" name="verificado" ${(m?.verificado !== false) ? 'checked' : ''}><span class="adm-toggle-slider"></span></label>
+        </div>
+        <div class="adm-toggle-row">
+          <div><div class="adm-toggle-label">Destacado</div><div style="font-size:11px;color:var(--muted2)">Aparece primero siempre</div></div>
+          <label class="adm-toggle"><input type="checkbox" name="destacado" ${m?.destacado ? 'checked' : ''}><span class="adm-toggle-slider"></span></label>
+        </div>
+      </div>
+      <div class="adm-form-actions">
+        <button type="submit" class="btn btn-primary">${isNew ? '+ Crear maestro' : '✓ Guardar cambios'}</button>
+        <button type="button" class="btn btn-outline" id="admFormCancel">Cancelar</button>
+        ${!isNew ? `<button type="button" class="adm-del-btn" id="admDelBtn">🗑 Eliminar</button>` : ''}
+      </div>
+    </form>`;
+
+  document.getElementById('admFormCancel').addEventListener('click', () => {
+    setState({ selectedId: null });
+    renderAdminList();
+    col.innerHTML = `<div class="adm-empty"><div class="adm-empty-icon">🔧</div><p>Selecciona un maestro para editar, o presiona "Agregar maestro".</p></div>`;
+  });
+
+  if (!isNew) {
+    document.getElementById('admDelBtn').addEventListener('click', () => {
+      if (confirm(`¿Eliminar a ${m.nombre}? Esta acción no se puede deshacer.`)) {
+        deleteMaestro(m.id);
+        toast(`🗑 ${m.nombre} eliminado.`, 'err');
+        col.innerHTML = `<div class="adm-empty"><div class="adm-empty-icon">🔧</div><p>Maestro eliminado correctamente.</p></div>`;
+      }
+    });
+  }
+
+  document.getElementById('admForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const fd = new FormData(this);
+    const data = {
+      nombre:      fd.get('nombre').trim(),
+      categoria:   fd.get('categoria'),
+      servicios:   fd.get('servicios').trim(),
+      zonas:       fd.get('zonas').trim(),
+      telefono:    fd.get('telefono').trim(),
+      descripcion: fd.get('descripcion').trim(),
+      rating:      parseFloat(fd.get('rating')) || 5.0,
+      verificado:  fd.get('verificado') === 'on',
+      destacado:   fd.get('destacado') === 'on',
+    };
+
+    // Limpiar errores previos
+    this.querySelectorAll('.adm-f-input.err,.adm-f-select.err').forEach(f => f.classList.remove('err'));
+
+    const errs = validarFormulario(data);
+    if (errs.length) {
+      errs.forEach(er => {
+        const f = this.querySelector(`[name="${er.field}"]`);
+        if (f) f.classList.add('err');
+      });
+      toast('⚠️ ' + errs[0].msg, 'err');
+      return;
+    }
+
+    if (isNew) {
+      await createMaestro(data);
+      toast(`✔ ${data.nombre} creado correctamente.`, 'ok');
+    } else {
+      await updateMaestro(m.id, data);
+      toast(`✔ ${data.nombre} actualizado.`, 'ok');
+    }
+
+    setState({ selectedId: null });
+    renderAdminList();
+    col.innerHTML = `<div class="adm-empty"><div class="adm-empty-icon">🔧</div><p>Cambios guardados. Selecciona otro maestro o agrega uno nuevo.</p></div>`;
+  });
+}
+
+/* ═══════════════════════════════════════════════
+   ADMIN — CONTROLES
+   ═══════════════════════════════════════════════ */
+document.getElementById('admAddBtn').addEventListener('click', () => {
+  setState({ selectedId: null });
+  renderAdminList();
+  renderAdminForm(null);
+});
+
+// Search admin
+document.getElementById('admSearch').addEventListener('input', e => {
+  setState({ adminSearch: e.target.value });
+  renderAdminList();
+});
+
+// Cat filter admin
+document.getElementById('admCatFilter').addEventListener('click', e => {
+  const btn = e.target.closest('.adm-cf-btn');
+  if (!btn) return;
+  document.querySelectorAll('.adm-cf-btn').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  setState({ adminFilter: btn.dataset.cf });
+  renderAdminList();
+});
+
+/* ═══════════════════════════════════════════════
+   EXPORT / IMPORT JSON
+   ═══════════════════════════════════════════════ */
+document.getElementById('admExport').addEventListener('click', () => {
+  const payload = JSON.stringify({ version: 1, lastUpdate: Date.now(), maestros: state.maestros }, null, 2);
+  const blob = new Blob([payload], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `maesto_backup_${new Date().toISOString().slice(0, 10)}.json`;
+  a.click();
+  URL.revokeObjectURL(a.href);
+  toast('↑ Backup exportado correctamente.', 'info');
+});
+
+document.getElementById('admImport').addEventListener('change', function () {
+  const file = this.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    try {
+      const data = JSON.parse(ev.target.result);
+      if (!Array.isArray(data.maestros)) throw new Error('Formato inválido');
+      if (!confirm(`Importar ${data.maestros.length} maestros? Se reemplazará el contenido actual.`)) return;
+      state.maestros = data.maestros;
+      sync();
+      renderAdminList();
+      toast(`↓ ${data.maestros.length} maestros importados.`, 'ok');
+    } catch (_) {
+      toast('✖ Error al importar. Verifica el archivo JSON.', 'err');
+    }
+    this.value = '';
+  };
+  reader.readAsText(file);
+});
+
+/* ═══════════════════════════════════════════════
+   NAV SCROLL
+   ═══════════════════════════════════════════════ */
+const navEl = document.getElementById('nav');
+window.addEventListener('scroll', () => navEl.classList.toggle('scrolled', scrollY > 50), { passive: true });
+
+const ham = document.getElementById('navHam');
+const mob = document.getElementById('mobMenu');
+ham.addEventListener('click', () => {
+  const o = !(ham.getAttribute('aria-expanded') === 'true');
+  ham.setAttribute('aria-expanded', o);
+  mob.classList.toggle('open', o);
+  document.body.style.overflow = o ? 'hidden' : '';
+});
+document.querySelectorAll('.mob-link').forEach(l => l.addEventListener('click', () => {
+  ham.setAttribute('aria-expanded', 'false');
+  mob.classList.remove('open');
+  document.body.style.overflow = '';
+}));
+
+/* ═══════════════════════════════════════════════
+   SCROLL REVEAL
+   ═══════════════════════════════════════════════ */
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('v'); revObs.unobserve(e.target); } });
+}, { threshold: .1 });
+document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+
+/* ═══════════════════════════════════════════════
+   INIT
+   ═══════════════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', () => {
+  loadData();
+  renderAll();
 });
 </script>
 
-<style>
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(22px); }
-  to   { opacity: 1; transform: none; }
-}
-.anim-fade-up { opacity: 0; animation: fadeUp 0.7s ease forwards; }
-</style>
 
 </body>
 </html>
