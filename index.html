@@ -1042,6 +1042,85 @@ footer{background:var(--bg2);border-top:1px solid var(--border2);padding:52px 0 
   .foot-top{grid-template-columns:1fr}
   .foot-bottom{flex-direction:column;gap:14px;text-align:center}
 }
+
+/* ─── SKELETON LOADER ────────────────────────── */
+@keyframes shimmer{
+  0%{background-position:200% 0}
+  100%{background-position:-200% 0}
+}
+.skel{
+  background:linear-gradient(90deg,var(--bg2) 25%,var(--bg3) 50%,var(--bg2) 75%);
+  background-size:200% 100%;
+  animation:shimmer 1.5s infinite;
+  border-radius:var(--r);
+}
+.skel-card{
+  width:256px;flex-shrink:0;
+  background:var(--bg2);border:1px solid var(--line);
+  border-radius:var(--r-lg);padding:22px;
+  display:flex;flex-direction:column;gap:10px;
+}
+.skel-card .skel-ava{width:50px;height:50px;border-radius:14px}
+.skel-card .skel-ln{height:10px;border-radius:5px}
+.skel-card .skel-ln.w80{width:80%}
+.skel-card .skel-ln.w55{width:55%}
+.skel-card .skel-ln.w65{width:65%}
+.skel-pgrid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:16px;
+}
+.skel-pcard{
+  background:var(--bg2);border:1px solid var(--line);
+  border-radius:var(--r-lg);padding:20px;
+  display:flex;flex-direction:column;gap:10px;
+}
+.skel-pcard .skel-ava{width:52px;height:52px;border-radius:13px}
+.skel-pcard .skel-banner{width:100%;height:6px;border-radius:3px;margin-bottom:4px}
+
+/* ─── BADGE PENDIENTE ────────────────────────── */
+.badge-pending{
+  background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.32);
+  color:#f59e0b;font-size:9px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;padding:3px 8px;border-radius:100px;
+  display:inline-flex;align-items:center;gap:4px;
+}
+.layer-pending-dot{
+  width:6px;height:6px;border-radius:50%;background:#f59e0b;flex-shrink:0;
+}
+
+/* ─── HERO CTA HIERARCHY ─────────────────────── */
+.btn-hero-primary{
+  background:linear-gradient(135deg,var(--c),var(--c-lt));
+  color:#fff;box-shadow:0 6px 28px rgba(200,119,58,.38);
+  padding:16px 32px;font-size:15px;
+}
+.btn-hero-primary:hover{transform:translateY(-2px);box-shadow:0 10px 38px rgba(200,119,58,.52)}
+.btn-hero-secondary{
+  background:rgba(42,92,69,.12);border:1px solid rgba(42,92,69,.4);
+  color:#5fc990;padding:16px 28px;font-size:14px;
+}
+.btn-hero-secondary:hover{background:rgba(42,92,69,.2);border-color:rgba(42,92,69,.6);transform:translateY(-2px)}
+.btn-hero-secondary .badge-free{
+  background:rgba(42,92,69,.25);border:1px solid rgba(95,201,144,.3);
+  color:#5fc990;font-size:9px;font-weight:800;letter-spacing:.12em;
+  text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-left:4px;
+}
+
+/* ─── TRUST STRIP LIVE COUNT ─────────────────── */
+.trust-live{
+  font-family:var(--font-m);font-weight:700;color:var(--c-lt);
+  font-size:13px;
+}
+
+/* ─── SECTION REGISTRO CALLOUT ───────────────── */
+.reg-callout{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(42,92,69,.1);border:1px solid rgba(42,92,69,.3);
+  border-radius:100px;padding:8px 16px;
+  font-size:12px;font-weight:600;color:#5fc990;
+  margin-bottom:22px;font-family:var(--font-m);letter-spacing:.03em;
+}
+.reg-callout-dot{width:7px;height:7px;border-radius:50%;background:#5fc990;animation:pulse-dot 2s ease infinite}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
 </style>
 </head>
 <body>
@@ -1056,14 +1135,14 @@ footer{background:var(--bg2);border-top:1px solid var(--border2);padding:52px 0 
       </a>
       <ul class="nav-links">
         <li><a href="#directorio">Especialistas</a></li>
-        <li><a href="#registro">Registrarse</a></li>
-        <li><a href="#catalogo">Catálogo</a></li>
+        <li><a href="#catalogo">Ver catálogo</a></li>
+        <li><a href="#registro">Soy maestro</a></li>
       </ul>
       <div style="flex:1"></div>
       <button id="cfgBtn" title="Configuración" aria-label="Configuración" style="position:static;width:auto;height:auto;border-radius:100px;background:transparent;border:1px solid var(--border2);color:var(--muted2);font-size:13px;padding:7px 14px;display:flex;align-items:center;gap:6px;transition:color var(--t),border-color var(--t),background var(--t);font-family:var(--font-m);letter-spacing:.5px;margin-right:10px;">⚙</button>
       <div class="nav-actions">
-        <a href="#directorio" class="btn btn-outline">Especialistas</a>
-        <a href="#registro" class="btn btn-primary">Soy maestro</a>
+        <a href="#catalogo" class="btn btn-outline">Buscar maestro</a>
+        <a href="#registro" class="btn btn-primary">Soy maestro — gratis</a>
       </div>
       <button class="nav-ham" id="navHam" aria-label="Menú" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -1074,11 +1153,11 @@ footer{background:var(--bg2);border-top:1px solid var(--border2);padding:52px 0 
 
 <div class="mob-menu" id="mobMenu">
   <a href="#directorio" class="mob-link">Especialistas</a>
-  <a href="#registro" class="mob-link">Registrarse</a>
-  <a href="#catalogo" class="mob-link">Catálogo</a>
+  <a href="#catalogo" class="mob-link">Ver catálogo</a>
+  <a href="#registro" class="mob-link">Soy maestro</a>
   <div class="mob-ctas">
-    <a href="#directorio" class="btn btn-outline mob-link">Buscar ahora</a>
-    <a href="#registro" class="btn btn-primary mob-link">Publicar Servicios</a>
+    <a href="#catalogo" class="btn btn-primary mob-link">Buscar un maestro ahora</a>
+    <a href="#registro" class="btn btn-outline mob-link">Soy maestro — 3 meses gratis</a>
   </div>
 </div>
 
@@ -1090,29 +1169,39 @@ footer{background:var(--bg2);border-top:1px solid var(--border2);padding:52px 0 
 
   <div class="wrap" style="width:100%">
     <div class="hero-content">
-      <div>· <em>Santiago de Chile</em> ·</div>
+      <div class="eyebrow">Santiago de Chile · Servicios verificados</div>
 
       <h1 class="hero-h1">
-        Encuentra especialistas y <em>contáctalos al instante.</em>
+        ¿Necesitas un maestro <em>hoy?</em>
       </h1>
 
+      <p class="hero-p">
+        Gasfiter, electricista, pintor y más.<br>
+        Verificados. Con historial. Directo a su WhatsApp.<br>
+        Sin app, sin registro, sin intermediarios.
+      </p>
 
       <div class="hero-ctas">
-        <a href="#directorio" class="btn btn-primary">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-          Buscar ahora
+        <a href="#catalogo" class="btn btn-hero-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          Buscar un maestro ahora
         </a>
-        <a href="#registro" class="btn btn-outline">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          Publicar mi servicio
+        <a href="#registro" class="btn btn-hero-secondary">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          Soy maestro
+          <span class="badge-free">3 meses gratis</span>
         </a>
       </div>
 
-      <!-- Trust strip — limpio, sin animaciones flotantes -->
+      <!-- Trust strip con conteo dinámico desde Firestore -->
       <div class="trust-strip">
-        <div class="trust-item"><span class="trust-icon">✦</span> Rápido y sencillo</div>
+        <div class="trust-item">
+          <span class="trust-icon">✦</span>
+          <span class="trust-live" id="trustCount">—</span>
+          <span>maestros activos</span>
+        </div>
         <div class="trust-item"><span class="trust-icon">📲</span> Contacto directo</div>
-        <div class="trust-item"><span class="trust-icon">🔒</span> Perfiles verificados</div>
+        <div class="trust-item"><span class="trust-icon">🔒</span> Gratis para el cliente</div>
       </div>
     </div>
 
@@ -1127,13 +1216,19 @@ footer{background:var(--bg2);border-top:1px solid var(--border2);padding:52px 0 
 <section id="directorio">
   <div class="wrap">
     <div class="sec-head reveal">
-      <h2 class="sec-title">Especialistas <em>disponibles</em></h2>
-      <p class="sec-sub">Haz clic en cualquier perfil para ver su ficha completa.</p>
+      <h2 class="sec-title">Especialistas <em>verificados</em></h2>
+      <p class="sec-sub">Haz clic en cualquier perfil para ver su ficha completa y contactarlo directo.</p>
     </div>
   </div>
 
   <div class="car-outer reveal d1" id="carOuter">
-    <div class="car-track" id="carTrack"></div>
+    <div class="car-track" id="carTrack">
+      <!-- Skeletons mientras carga Firestore -->
+      <div class="skel-card"><div class="skel skel-ava"></div><div class="skel skel-ln w80"></div><div class="skel skel-ln w55"></div><div class="skel skel-ln w65"></div></div>
+      <div class="skel-card"><div class="skel skel-ava"></div><div class="skel skel-ln w80"></div><div class="skel skel-ln w55"></div><div class="skel skel-ln w65"></div></div>
+      <div class="skel-card"><div class="skel skel-ava"></div><div class="skel skel-ln w80"></div><div class="skel skel-ln w55"></div><div class="skel skel-ln w65"></div></div>
+      <div class="skel-card"><div class="skel skel-ava"></div><div class="skel skel-ln w80"></div><div class="skel skel-ln w55"></div><div class="skel skel-ln w65"></div></div>
+    </div>
   </div>
 
   <div class="wrap">
@@ -1145,6 +1240,37 @@ footer{background:var(--bg2);border-top:1px solid var(--border2);padding:52px 0 
   </div>
 </section>
 
+<!-- ─── CATÁLOGO ─── -->
+<section id="catalogo">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-label">Directorio completo</div>
+      <h2 class="sec-title">Encuentra tu <em>especialista</em></h2>
+      <p class="sec-sub">Filtra por especialidad, busca por nombre o zona. Contacto directo, sin intermediarios.</p>
+    </div>
+
+    <div class="filters reveal d1" id="filtersBar">
+      <button class="f-btn on" data-f="all">Todos</button>
+      <button class="f-btn" data-f="Gasfitería">Gasfitería</button>
+      <button class="f-btn" data-f="Electricidad">Electricidad</button>
+      <button class="f-btn" data-f="Pintura">Pintura</button>
+      <button class="f-btn" data-f="Albañilería">Albañilería</button>
+      <button class="f-btn" data-f="Carpintería">Carpintería</button>
+      <button class="f-btn" data-f="__otros">Más servicios</button>
+      <div class="f-search">
+        <input type="text" id="searchInput" placeholder="Buscar maestro, zona o servicio...">
+      </div>
+    </div>
+
+    <!-- Skeleton grid mientras carga -->
+    <div class="cat-grid" id="catGrid">
+      <div class="skel-pcard"><div class="skel skel-banner"></div><div style="display:flex;gap:12px;align-items:flex-start"><div class="skel skel-ava"></div><div style="flex:1;display:flex;flex-direction:column;gap:8px"><div class="skel skel-ln w80"></div><div class="skel skel-ln w55"></div></div></div><div class="skel skel-ln w65"></div><div class="skel skel-ln w80" style="height:28px;border-radius:100px;margin-top:6px"></div></div>
+      <div class="skel-pcard"><div class="skel skel-banner"></div><div style="display:flex;gap:12px;align-items:flex-start"><div class="skel skel-ava"></div><div style="flex:1;display:flex;flex-direction:column;gap:8px"><div class="skel skel-ln w80"></div><div class="skel skel-ln w55"></div></div></div><div class="skel skel-ln w65"></div><div class="skel skel-ln w80" style="height:28px;border-radius:100px;margin-top:6px"></div></div>
+      <div class="skel-pcard"><div class="skel skel-banner"></div><div style="display:flex;gap:12px;align-items:flex-start"><div class="skel skel-ava"></div><div style="flex:1;display:flex;flex-direction:column;gap:8px"><div class="skel skel-ln w80"></div><div class="skel skel-ln w55"></div></div></div><div class="skel skel-ln w65"></div><div class="skel skel-ln w80" style="height:28px;border-radius:100px;margin-top:6px"></div></div>
+    </div>
+  </div>
+</section>
+
 <!-- ─── REGISTRO ─── -->
 <section id="registro">
   <div class="wrap">
@@ -1152,36 +1278,37 @@ footer{background:var(--bg2);border-top:1px solid var(--border2);padding:52px 0 
 
       <!-- Left -->
       <div class="reveal">
-        <h2 class="reg-h2">Consigue clientes reales <br>sin pagar <span>publicidad.</span></h2>
-        <p class="reg-p">Si eres especialista en servicios del hogar, te ayudamos a conseguir clientes reales en tu zona.</p>
+        <div class="reg-callout"><span class="reg-callout-dot"></span> Cupos disponibles esta semana</div>
+        <h2 class="reg-h2">¿Eres maestro?<br>Llega a más clientes en <span>Santiago.</span></h2>
+        <p class="reg-p">La mayoría de los maestros siguen dependiendo solo del boca a boca. MAESTO te da un perfil verificado donde los clientes llegan a ti, directo por WhatsApp.</p>
 
         <div class="benefits">
           <div class="benefit">
             <div class="benefit-ico">📲</div>
             <div class="benefit-body">
               <strong>Contacto directo por WhatsApp</strong>
-              <span>Hablas directo con el cliente, sin intermediarios.</span>
-            </div>
-          </div>
-          <div class="benefit">
-            <div class="benefit-ico">📢</div>
-            <div class="benefit-body">
-              <strong>Publicaciones semanales</strong>
-              <span>Te mostramos constantemente.</span>
-            </div>
-          </div>
-          <div class="benefit">
-            <div class="benefit-ico">📍</div>
-            <div class="benefit-body">
-              <strong>Tú defines el área de cobertura</strong>
-              <span>Define tus comunas y controla tu alcance.</span>
+              <span>Sin intermediarios. Los clientes te escriben a ti.</span>
             </div>
           </div>
           <div class="benefit">
             <div class="benefit-ico">✅</div>
             <div class="benefit-body">
-              <strong>3 meses GRATIS (cupos limitados)</strong>
-              <span>Sin tarjeta, sin compromiso, sin letra chica.</span>
+              <strong>Badge de verificación MAESTO</strong>
+              <span>Diferénciate con un respaldo real visible para el cliente.</span>
+            </div>
+          </div>
+          <div class="benefit">
+            <div class="benefit-ico">📍</div>
+            <div class="benefit-body">
+              <strong>Tú defines tu zona de cobertura</strong>
+              <span>Atiendes donde quieres. Sin desplazamientos innecesarios.</span>
+            </div>
+          </div>
+          <div class="benefit">
+            <div class="benefit-ico">🆓</div>
+            <div class="benefit-body">
+              <strong>Primeros 3 meses 100% gratis</strong>
+              <span>Sin tarjeta. Sin contrato. Sin sorpresas. Entra ahora.</span>
             </div>
           </div>
         </div>
@@ -1189,15 +1316,16 @@ footer{background:var(--bg2);border-top:1px solid var(--border2);padding:52px 0 
         <div class="trust-pills">
           <span class="trust-pill">Sin contrato</span>
           <span class="trust-pill">Sin comisiones</span>
-          <span class="trust-pill">Sin Apps</span>
+          <span class="trust-pill">Sin app que descargar</span>
+          <span class="trust-pill">Sin tarjeta de crédito</span>
         </div>
       </div>
 
       <!-- Right: form -->
       <div class="reveal d2">
         <div class="form-card">
-          <div class="form-card-title">Publica tu servicio - GRATIS</div>
-          <div class="form-card-sub">Revisamos tu información y publicamos tu perfil en 24–48 horas.</div>
+          <div class="form-card-title">Publica tu servicio — GRATIS</div>
+          <div class="form-card-sub">Te verificamos y publicamos en 24-48 horas. <strong style="color:var(--c-lt)">3 meses sin costo.</strong></div>
 
           <form id="regForm" novalidate>
             <div class="f-group">
@@ -1205,7 +1333,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border2);padding:52px 0 
               <input class="f-input" type="text" id="fNombre" placeholder="Juan Pérez González" autocomplete="name">
             </div>
             <div class="f-group">
-              <label class="f-label" for="fCat">Categoría principal</label>
+              <label class="f-label" for="fCat">Tu especialidad principal</label>
               <select class="f-select" id="fCat">
                 <option value="" disabled selected>Selecciona tu especialidad</option>
                 <option>Gasfitería</option>
@@ -1224,52 +1352,26 @@ footer{background:var(--bg2);border-top:1px solid var(--border2);padding:52px 0 
               </select>
             </div>
             <div class="f-group">
-              <label class="f-label" for="fSrv">Servicios que ofreces</label>
-              <input class="f-input" type="text" id="fSrv" placeholder="Ej: Reparación, instalación de cañerías" autocomplete="off">
+              <label class="f-label" for="fSrv">¿Qué servicios ofreces?</label>
+              <input class="f-input" type="text" id="fSrv" placeholder="Ej: Reparación de cañerías, instalación de llaves" autocomplete="off">
             </div>
             <div class="f-row">
               <div class="f-group">
-                <label class="f-label" for="fZona">Zonas donde trabajas</label>
-                <input class="f-input" type="text" id="fZona" placeholder="Ej: Providencia, Ñuñoa, Estación Central" autocomplete="off">
+                <label class="f-label" for="fZona">¿Dónde atiendes?</label>
+                <input class="f-input" type="text" id="fZona" placeholder="Ej: Maipú, Pudahuel, Cerrillos" autocomplete="off">
               </div>
               <div class="f-group">
-                <label class="f-label" for="fTel">Teléfono</label>
-                <input class="f-input" type="tel" id="fTel" placeholder="+569..." autocomplete="tel">
+                <label class="f-label" for="fTel">WhatsApp</label>
+                <input class="f-input" type="tel" id="fTel" placeholder="+56 9..." autocomplete="tel">
               </div>
             </div>
-            <button type="submit" class="btn btn-green f-submit">Publicar mi servicio →</button>
+            <button type="submit" class="btn btn-green f-submit">Registrarme gratis — 3 meses sin costo →</button>
             <div class="f-msg" id="fMsg"></div>
           </form>
         </div>
       </div>
 
     </div>
-  </div>
-</section>
-
-<!-- ─── CATÁLOGO ─── -->
-<section id="catalogo">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="sec-label">Catálogo completo</div>
-      <h2 class="sec-title">Explora perfiles reales, filtra por zona y <em>contacta directamente.</em></h2>
-      <p class="sec-sub">Filtra por categoría o zona, revisa perfiles reales y contacta directamente por WhatsApp.</p>
-    </div>
-
-    <div class="filters reveal d1" id="filtersBar">
-      <button class="f-btn on" data-f="all">Todos</button>
-      <button class="f-btn" data-f="Gasfitería">Gasfitería</button>
-      <button class="f-btn" data-f="Electricidad">Electricidad</button>
-      <button class="f-btn" data-f="Pintura">Pintura</button>
-      <button class="f-btn" data-f="Albañilería">Albañilería</button>
-      <button class="f-btn" data-f="Carpintería">Carpintería</button>
-      <button class="f-btn" data-f="__otros">Más</button>
-      <div class="f-search">
-        <input type="text" id="searchInput" placeholder="Buscar servicio o comuna...">
-      </div>
-    </div>
-
-    <div class="cat-grid" id="catGrid"></div>
   </div>
 </section>
 
@@ -1280,10 +1382,14 @@ footer{background:var(--bg2);border-top:1px solid var(--border2);padding:52px 0 
       <!-- Brand -->
       <div class="foot-brand-wrap">
         <div class="foot-brand-logo">MAESTO</div>
-        <div class="foot-brand-tag">Servicios verificados</div>
+        <div class="foot-brand-tag">Servicios verificados · Santiago, Chile</div>
+        <div class="foot-brand-desc">Directorio digital de especialistas verificados del hogar. Contacto directo por WhatsApp. Sin intermediarios.</div>
         <div class="foot-social">
           <a href="https://instagram.com/maesto.cl" target="_blank" rel="noopener" class="f-social-btn" title="Instagram">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg>
+          </a>
+          <a href="https://facebook.com/maesto.cl" target="_blank" rel="noopener" class="f-social-btn" title="Facebook">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
           </a>
           <a href="https://wa.me/56900000000?text=Hola+MAESTO" target="_blank" rel="noopener" class="f-social-btn" title="WhatsApp">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -1294,9 +1400,9 @@ footer{background:var(--bg2);border-top:1px solid var(--border2);padding:52px 0 
       <div>
         <div class="foot-col-title">Navegación</div>
         <div class="foot-links">
-          <a href="#directorio">Directorio</a>
-          <a href="#registro">Registrarme</a>
-          <a href="#catalogo">Catálogo</a>
+          <a href="#directorio">Ver especialistas</a>
+          <a href="#catalogo">Buscar por categoría</a>
+          <a href="#registro">Registrarme como maestro</a>
         </div>
       </div>
       <!-- Contact col -->
@@ -1304,21 +1410,22 @@ footer{background:var(--bg2);border-top:1px solid var(--border2);padding:52px 0 
         <div class="foot-col-title">Redes sociales</div>
         <div class="foot-links">
           <a href="https://instagram.com/maesto.cl" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://facebook.com/maesto.cl" target="_blank" rel="noopener">Facebook</a>
           <a href="https://wa.me/56900000000?text=Hola+MAESTO,+necesito+información" target="_blank" rel="noopener">WhatsApp</a>
         </div>
       </div>
     </div>
     <div class="foot-bottom">
-      <span class="foot-copy">MAESTO © 2025</span>
-      <span class="foot-seal">✦ SERVICIOS VERIFICADOS</span>
+      <span class="foot-copy">MAESTO © 2026 · Servicios verificados · Santiago, Chile</span>
+      <span class="foot-seal">✦ DIRECTORIO VERIFICADO</span>
     </div>
   </div>
 </footer>
 
 <!-- Floating WA -->
 <div class="wa-float">
-  <div class="wa-tooltip">Ponte en contacto con nosotros 💬</div>
-  <a href="https://wa.me/56900000000?text=Hola+MAESTO,+necesito+un+servicio+del+hogar" target="_blank" rel="noopener" class="wa-btn" title="Contactar por WhatsApp">
+  <div class="wa-tooltip">¿Necesitas un maestro? Escríbenos 💬</div>
+  <a href="https://wa.me/56900000000?text=Hola+MAESTO%2C+necesito+un+maestro+para+un+servicio+del+hogar" target="_blank" rel="noopener" class="wa-btn" title="Contactar MAESTO por WhatsApp">
     <div class="wa-ring"></div>
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
@@ -1545,7 +1652,15 @@ function renderAll() {
   renderCarousel();
   renderCatalogo();
   renderTicker();
+  updateTrustCount();
   if (state.isLayerOpen) renderLayerList();
+}
+
+/* Actualiza el conteo en vivo del hero trust strip */
+function updateTrustCount() {
+  const verified = state.maestros.filter(m => m.verificado !== false).length;
+  const el = document.getElementById('trustCount');
+  if (el) el.textContent = verified;
 }
 
 /* ═══════════════════════════════════════════════
@@ -1583,6 +1698,13 @@ function normTel(t) {
   if (s.startsWith('56')) return s;
   if (s.startsWith('9'))  return '56' + s;
   return '569' + s;
+}
+
+/* Normaliza texto para búsqueda tolerante a tildes, mayúsculas y variaciones */
+function normalize(s) {
+  return String(s).toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9\s]/g, '');
 }
 
 function validarFormulario(v) {
@@ -1668,7 +1790,9 @@ function sortedMaestros(list) {
    ═══════════════════════════════════════════════ */
 function renderTicker() {
   const ticker = document.getElementById('ticker');
-  const list = sortedMaestros(state.maestros);
+  // Solo maestros verificados en el ticker público
+  const list = sortedMaestros(state.maestros.filter(m => m.verificado !== false));
+  if (!list.length) { ticker.innerHTML = ''; return; }
   const chips = list.map(m => `
     <div class="ticker-chip">
       <div class="ticker-chip-ava" style="background:${CAT_COLORS[m.categoria] || '#C8773A'}">${getIni(m.nombre)}</div>
@@ -1683,7 +1807,8 @@ function renderTicker() {
    ═══════════════════════════════════════════════ */
 function renderCarousel() {
   const track = document.getElementById('carTrack');
-  const list  = sortedMaestros(state.maestros);
+  // Solo verificados en la vista pública del carousel
+  const list  = sortedMaestros(state.maestros.filter(m => m.verificado !== false));
 
   track.innerHTML = list.map(m => `
     <div class="dir-card" data-id="${esc(m.id)}">
@@ -1697,7 +1822,7 @@ function renderCarousel() {
       <div class="dir-tags">${m.servicios.split(',').slice(0, 3).map(s => `<span class="dir-tag">${esc(s.trim())}</span>`).join('')}</div>
       <div class="dir-foot">
         <div class="dir-rating"><span class="stars">${renderStars(m.rating)}</span> ${m.rating} <span style="font-size:10px;color:var(--muted2)">(${m.rev})</span></div>
-        <a href="https://wa.me/${m.telefono}?text=Hola+${enc(m.nombre)}%2C+te+vi+en+MAESTO.+¿Podemos+hablar+sobre+un+servicio%3F"
+        <a href="https://wa.me/${m.telefono}?text=Hola+${enc(m.nombre)}%2C+te+vi+en+MAESTO.+Necesito+ayuda+con+${enc(m.categoria)}.+¿Podemos+coordinar%3F"
            target="_blank" rel="noopener" class="btn btn-wa" onclick="event.stopPropagation()">WhatsApp</a>
       </div>
     </div>`).join('');
@@ -1751,20 +1876,23 @@ document.getElementById('carNext').addEventListener('click', () =>
 function renderCatalogo() {
   const grid = document.getElementById('catGrid');
 
-  const list = sortedMaestros(state.maestros).filter(m => {
+  // Solo maestros verificados en la vista pública
+  const list = sortedMaestros(state.maestros.filter(m => m.verificado !== false)).filter(m => {
     const fOk = state.activeFilter === 'all'
       || m.categoria === state.activeFilter
       || (state.activeFilter === '__otros' && !MAIN_CATS.includes(m.categoria));
-    const q   = state.searchQuery.toLowerCase();
-    const sOk = !q || [m.nombre, m.categoria, m.zonas, m.servicios].some(x => x.toLowerCase().includes(q));
+    // Búsqueda tolerante a tildes, mayúsculas y variaciones de escritura
+    const q   = normalize(state.searchQuery);
+    const sOk = !q || [m.nombre, m.categoria, m.zonas, m.servicios].some(x => normalize(x).includes(q));
     return fOk && sOk;
   });
 
   if (!list.length) {
-    grid.innerHTML = `<div class="no-res">🔍<p>Sin resultados. Prueba otra categoría o zona.</p></div>`;
+    grid.innerHTML = `<div class="no-res">🔍<p>Sin resultados para tu búsqueda.<br>Prueba otra categoría, zona o especialidad.</p></div>`;
     return;
   }
 
+  // Mensaje WA con contexto de categoría para reducir fricción
   grid.innerHTML = list.map((m, i) => `
     <div class="p-card" data-id="${esc(m.id)}" style="animation-delay:${i * 0.04}s">
       <div class="p-banner" style="background:linear-gradient(90deg,${CAT_COLORS[m.categoria] || '#C8773A'},#E09B5C)"></div>
@@ -1787,7 +1915,7 @@ function renderCatalogo() {
           <span class="badge badge-verified">✦ VERIFICADO</span>
         </div>
         <button class="p-wa" style="width:100%;justify-content:center;margin-top:12px"
-          data-wa="${m.telefono}" data-nombre="${esc(m.nombre)}">
+          data-wa="${m.telefono}" data-nombre="${esc(m.nombre)}" data-cat="${esc(m.categoria)}">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           Contactar por WhatsApp
         </button>
@@ -1799,7 +1927,7 @@ function renderCatalogo() {
       const waBtn = e.target.closest('[data-wa]');
       if (waBtn) {
         e.stopPropagation();
-        window.open(`https://wa.me/${waBtn.dataset.wa}?text=Hola+${enc(waBtn.dataset.nombre)}%2C+te+vi+en+MAESTO.+¿Podemos+hablar+sobre+un+servicio%3F`, '_blank');
+        window.open(`https://wa.me/${waBtn.dataset.wa}?text=Hola+${enc(waBtn.dataset.nombre)}%2C+te+vi+en+MAESTO.+Necesito+ayuda+con+${enc(waBtn.dataset.cat)}.+%C2%BFPodemos+coordinar%3F`, '_blank');
         return;
       }
       const m = state.maestros.find(x => x.id === card.dataset.id);
@@ -1832,7 +1960,7 @@ function openModal(m) {
       <span class="modal-r-label">${m.rev} evaluaciones</span>
     </div>
     <div class="modal-foot">
-      <a href="https://wa.me/${m.telefono}?text=Hola+${enc(m.nombre)}%2C+te+vi+en+MAESTO.+¿Podemos+hablar+sobre+un+servicio%3F"
+      <a href="https://wa.me/${m.telefono}?text=Hola+${enc(m.nombre)}%2C+te+vi+en+MAESTO.+Necesito+ayuda+con+${enc(m.categoria)}.+%C2%BFPodemos+coordinar%3F"
          target="_blank" rel="noopener" class="btn btn-green">Contactar por WhatsApp</a>
     </div>`;
   document.getElementById('modalBg').classList.add('open');
@@ -1901,12 +2029,17 @@ document.getElementById('regForm').addEventListener('submit', async function (e)
     return;
   }
 
-  const nuevo = await createMaestro(v);
+  const nuevo = await createMaestro({
+    ...v,
+    verificado: false,   // ← Requiere aprobación manual desde el panel admin
+    estado: 'pendiente', // ← Visible solo en panel admin hasta verificar
+  });
   msg.className = 'f-msg ok';
-  msg.textContent = `✅ ¡Listo, ${v.nombre.split(' ')[0]}! Recibirás confirmación en 24 horas hábiles.`;
+  msg.textContent = `✅ ¡Listo, ${v.nombre.split(' ')[0]}! Revisaremos tus datos y te publicamos en las próximas 24-48 horas hábiles.`;
   this.reset();
 
-  const waAdmin = enc(`🆕 Nuevo maestro MAESTO:\n*${v.nombre}* | ${v.categoria}\nZonas: ${v.zonas}\nTel: ${nuevo.telefono}`);
+  // ⚠️ REEMPLAZA 56900000000 con tu número real de WhatsApp admin
+  const waAdmin = enc(`🆕 Nuevo registro MAESTO (pendiente de verificación):\n*${v.nombre}* | ${v.categoria}\nZonas: ${v.zonas}\nTel: ${nuevo.telefono || v.telefono}`);
   setTimeout(() => window.open(`https://wa.me/56900000000?text=${waAdmin}`, '_blank'), 1200);
 });
 
@@ -1992,12 +2125,15 @@ function renderLayerList() {
     const fOk = state.layerFilter === 'all'
       || m.categoria === state.layerFilter
       || (state.layerFilter === 'Otro' && !CATEGORIAS.filter(c => c !== 'Otro').includes(m.categoria));
-    const q   = state.layerSearch.toLowerCase();
-    const sOk = !q || m.nombre.toLowerCase().includes(q) || m.categoria.toLowerCase().includes(q);
+    const q   = normalize(state.layerSearch);
+    const sOk = !q || normalize(m.nombre).includes(q) || normalize(m.categoria).includes(q);
     return fOk && sOk;
   });
 
-  document.getElementById('layerCount').textContent = `${list.length} / ${state.maestros.length} maestros`;
+  const pending = state.maestros.filter(m => m.verificado === false).length;
+  const countEl = document.getElementById('layerCount');
+  countEl.innerHTML = `${list.length} / ${state.maestros.length} maestros`
+    + (pending ? ` &nbsp;<span style="color:#f59e0b;font-weight:700">· ${pending} pendiente${pending > 1 ? 's' : ''}</span>` : '');
 
   const items = document.getElementById('layerItems');
   items.innerHTML = list.map(m => `
@@ -2008,8 +2144,9 @@ function renderLayerList() {
         <div class="layer-row-cat">${esc(m.categoria)}</div>
       </div>
       <div class="layer-row-badges">
-        ${m.destacado ? '<span class="layer-score dest">★</span>' : ''}
-        <span class="layer-score">${m.rating}</span>
+        ${m.verificado === false ? '<span class="badge-pending"><span class="layer-pending-dot"></span>Pendiente</span>' : ''}
+        ${m.destacado && m.verificado !== false ? '<span class="layer-score dest">★</span>' : ''}
+        ${m.verificado !== false ? `<span class="layer-score">${m.rating}</span>` : ''}
       </div>
     </div>`).join('');
 
